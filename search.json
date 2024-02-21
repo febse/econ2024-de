@@ -24,7 +24,7 @@
     "href": "index.html#github-account",
     "title": "Grundlagen der Ökonometrie",
     "section": "GitHub Account",
-    "text": "GitHub Account\nSie brauchen ein GitHub.com Konto, um die an den Übungen teilzunehmen.\n\nErstellen Sie ein Konto auf https://github.com/signup.\nBei der Registrierung wählen Sie ein Passwort, das Sie nirgendwo anders verwenden. Am Ende des Semesters können Sie Ihr Passwort ändern.\nEmpfehlung: Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) in den Einstellungen Ihres GitHub-Kontos.\nEmpfehlung: Beantragen Sie die Studentenvorteile, um kostenlosen Zugang zu GitHub Copilot zu erhalten, einem KI-gestützten Code-Completion- und Chat-Tool.",
+    "text": "GitHub Account\nFür die Übungen brauchen Sie ein GitHub.com Konto:\n\nErstellen Sie ein Konto auf https://github.com/signup.\nBei der Registrierung wählen Sie ein Passwort, das Sie nirgendwo anders verwenden. Am Ende des Semesters können Sie Ihr Passwort ändern.\nEmpfehlung: Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) in den Einstellungen Ihres GitHub-Kontos.\nEmpfehlung: Beantragen Sie die Studentenvorteile, um kostenlosen Zugang zu GitHub Copilot zu erhalten, einem KI-gestützten Code-Completion- und Chat-Tool.",
     "crumbs": [
       "Setup"
     ]
