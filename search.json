@@ -62,21 +62,31 @@
   {
     "objectID": "00-01-Basics.html",
     "href": "00-01-Basics.html",
-    "title": "1  Ganze - und Fließkommazahlen",
+    "title": "1  Jupyter Notebooks in VS Code",
     "section": "",
-    "text": "2 Zuweisung (Assignment)\nWir können Werte Variablen zuweisen.\nx = 1\ny = 5\nx + y\n\n6\ntype(x) == int\n\nTrue",
+    "text": "1.1 Ganze - und Fließkommazahlen\nhttps://www.jetbrains.com/help/pycharm/running-jupyter-notebook-cells.html https://www.jetbrains.com/help/pycharm/editing-jupyter-notebook-files.html#edit-notebook\nDie wichtingsten Shortcuts sind:\nIn Edit Mode können wir mit - Alt + Shift + B: eine neue Zeile unterhalb der aktuellen Zelle einfügen - Alt + Shift + A: eine neue Zeile oberhalb der aktuellen Zelle einfügen\nIn diesem Notebook stellen wir die verschiedenen Datentypen für Zahlen vor.\n1 + 1\n\n2\nx = 23\nz = 222\nxdr = 23\ntype(1)\n\nint\ntype(1.0)\n\nfloat\n1 + 2.0\ntype(1 + 2.0)\n\nfloat\n1 / 2\n\n0.5\n2 ** 3\n\n8\n2.3 ** 8\n\n783.1098528099996\n3.2 - 0.2\n\n3.0",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ganze - und Fließkommazahlen</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
+    ]
+  },
+  {
+    "objectID": "00-01-Basics.html#ganze---und-fließkommazahlen",
+    "href": "00-01-Basics.html#ganze---und-fließkommazahlen",
+    "title": "1  Jupyter Notebooks in VS Code",
+    "section": "",
+    "text": "Shift + Enter - Führt die aktuelle Zelle aus und springt zur nächsten Zelle.\nCtrl + Enter - Führt die aktuelle Zelle aus und bleibt in der Zelle.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
     ]
   },
   {
     "objectID": "00-01-Basics.html#for-schleifen",
     "href": "00-01-Basics.html#for-schleifen",
-    "title": "1  Ganze - und Fließkommazahlen",
+    "title": "1  Jupyter Notebooks in VS Code",
     "section": "6.1 For-Schleifen",
     "text": "6.1 For-Schleifen\n\nfor g in stromverbrauch:\n    print(\"Der Stromverbrauch war\", g, \"EUR\")\n\nDer Stromverbrauch war 5 EUR\nDer Stromverbrauch war 5 EUR\nDer Stromverbrauch war 8 EUR\nDer Stromverbrauch war 90 EUR\nDer Stromverbrauch war 110 EUR\nDer Stromverbrauch war 100 EUR\nDer Stromverbrauch war 120 EUR\nDer Stromverbrauch war 80 EUR\nDer Stromverbrauch war 90.12 EUR\nDer Stromverbrauch war 110 EUR\nDer Stromverbrauch war 100 EUR\nDer Stromverbrauch war 120.22 EUR\n\n\n\nfor idx, g in enumerate(stromverbrauch):\n    print(f\"Der Stromverbrauch im Monat\", monatsnamen[idx], \"war\", g, \"EUR.\")    \n\nDer Stromverbrauch im Monat Januar war 5 EUR.\nDer Stromverbrauch im Monat Februar war 5 EUR.\nDer Stromverbrauch im Monat März war 8 EUR.\nDer Stromverbrauch im Monat April war 90 EUR.\nDer Stromverbrauch im Monat Mai war 110 EUR.\nDer Stromverbrauch im Monat Juni war 100 EUR.\nDer Stromverbrauch im Monat Juli war 120 EUR.\nDer Stromverbrauch im Monat August war 80 EUR.\nDer Stromverbrauch im Monat September war 90.12 EUR.\nDer Stromverbrauch im Monat Oktober war 110 EUR.\nDer Stromverbrauch im Monat November war 100 EUR.\nDer Stromverbrauch im Monat Dezember war 120.22 EUR.\n\n\nDie Namen der Variablen in der for-Schleife können wir frei wählen (diese müssen allerdings valide Variablennamen sein).\n\nfor idx, g in enumerate(stromverbrauch):\n    print(f\"Der Stromverbrauch im Monat\", monatsnamen[idx], \"war\", g, \"EUR.\")   \n\nDer Stromverbrauch im Monat Januar war 5 EUR.\nDer Stromverbrauch im Monat Februar war 5 EUR.\nDer Stromverbrauch im Monat März war 8 EUR.\nDer Stromverbrauch im Monat April war 90 EUR.\nDer Stromverbrauch im Monat Mai war 110 EUR.\nDer Stromverbrauch im Monat Juni war 100 EUR.\nDer Stromverbrauch im Monat Juli war 120 EUR.\nDer Stromverbrauch im Monat August war 80 EUR.\nDer Stromverbrauch im Monat September war 90.12 EUR.\nDer Stromverbrauch im Monat Oktober war 110 EUR.\nDer Stromverbrauch im Monat November war 100 EUR.\nDer Stromverbrauch im Monat Dezember war 120.22 EUR.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Ganze - und Fließkommazahlen</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Jupyter Notebooks in VS Code</span>"
     ]
   },
   {
