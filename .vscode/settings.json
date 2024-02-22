@@ -42,5 +42,6 @@
   "quantile",
   "Regressionsmodell",
   "toolsai"
-]
+],
+"git.mergeEditor": true
 }
