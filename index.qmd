@@ -1,5 +1,15 @@
 # Setup {.unnumbered}
 
+
+:::{.callout-note}
+## URL der Kursseite
+
+<span style="font-size:2em">[https://febse.github.io/econ2024-de/](https://febse.github.io/econ2024-de/)</span>
+
+![](images/qrcode.png)
+
+:::
+
 In den Übungen werden wir die Programmiersprache Python verwenden, um
 die in der Vorlesung behandelten Themen zu erklären und an realen Daten
 zu üben. Die Übungen werden in Form von Jupyter Notebooks bereitgestellt,
