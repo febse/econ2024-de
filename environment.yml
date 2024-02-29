@@ -11,4 +11,10 @@ dependencies:
   - statsmodels
   - seaborn
   - ipykernel
+  - ipython
+  - jinja2
+  - plotly
+  - pyyaml
+  - jupyter
+  - tabulate
 prefix: /home/amarov/anaconda3/envs/econ2024
