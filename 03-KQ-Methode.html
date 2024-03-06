@@ -269,7 +269,7 @@ window.Quarto = {
   <ul>
   <li><a href="#beispiel-bearbeitungszeit-von-kundenrechnungen" id="toc-beispiel-bearbeitungszeit-von-kundenrechnungen" class="nav-link active" data-scroll-target="#beispiel-bearbeitungszeit-von-kundenrechnungen"><span class="header-section-number">7.0.1</span> Beispiel: Bearbeitungszeit von Kundenrechnungen</a></li>
   <li><a href="#modellschätzung" id="toc-modellschätzung" class="nav-link" data-scroll-target="#modellschätzung"><span class="header-section-number">7.1</span> Modellschätzung</a></li>
-  <li><a href="#das-modell-für-die-daten" id="toc-das-modell-für-die-daten" class="nav-link" data-scroll-target="#das-modell-für-die-daten"><span class="header-section-number">7.2</span> Das Modell für die Daten</a></li>
+  <li><a href="#ein-modell-für-die-daten" id="toc-ein-modell-für-die-daten" class="nav-link" data-scroll-target="#ein-modell-für-die-daten"><span class="header-section-number">7.2</span> Ein Modell für die Daten</a></li>
   <li><a href="#die-einfache-lineare-regression-in-matrixform" id="toc-die-einfache-lineare-regression-in-matrixform" class="nav-link" data-scroll-target="#die-einfache-lineare-regression-in-matrixform"><span class="header-section-number">7.3</span> Die einfache lineare Regression in Matrixform</a></li>
   <li><a href="#scenarios" id="toc-scenarios" class="nav-link" data-scroll-target="#scenarios"><span class="header-section-number">7.4</span> Scenarios</a></li>
   <li><a href="#anmerkung" id="toc-anmerkung" class="nav-link" data-scroll-target="#anmerkung"><span class="header-section-number">7.5</span> Anmerkung</a></li>
@@ -573,7 +573,7 @@ dtype: float64</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>16:05:15</td>
+<td>16:20:02</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-8.2528</td>
 </tr>
@@ -667,8 +667,8 @@ dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="das-modell-für-die-daten" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="das-modell-für-die-daten"><span class="header-section-number">7.2</span> Das Modell für die Daten</h2>
+<section id="ein-modell-für-die-daten" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="ein-modell-für-die-daten"><span class="header-section-number">7.2</span> Ein Modell für die Daten</h2>
 <p><span class="math display">
 \begin{align}
 \text{Time}_i = \beta_0 + \beta_1 \cdot \text{Invoices}_i + e_i \\
@@ -728,16 +728,16 @@ e_i \sim N(0, \sigma^2)
 <h2 data-number="7.3" class="anchored" data-anchor-id="die-einfache-lineare-regression-in-matrixform"><span class="header-section-number">7.3</span> Die einfache lineare Regression in Matrixform</h2>
 <p>Unsere Modellgleichung, die wir für die Vorhersage der Bearbeitungszeit verwenden, war:</p>
 <p><span class="math display">
-\hat{\text{Time}} = \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungeen}
+\hat{\text{Time}} = \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}
 </span></p>
 <p>Nun wollen wir dieselbe Gleichung in Matrixform schreiben. Dazu schreiben wir diese Modellgleichung für alle Beobachtungen in unserem Datensatz auf:</p>
 <p><span class="math display">
 \begin{align*}
-\hat{\text{Time}}_1 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungeen}_1 \\
-\hat{\text{Time}}_2 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungeen}_2 \\
-\hat{\text{Time}}_3 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungeen}_3 \\
+\hat{\text{Time}}_1 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_1 \\
+\hat{\text{Time}}_2 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_2 \\
+\hat{\text{Time}}_3 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_3 \\
 \vdots \\
-\hat{\text{Time}}_n &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungeen}_n \\
+\hat{\text{Time}}_n &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_n \\
 \end{align*}
 </span></p>
 <p>Nun laßt uns die obigen Gleichungen in Matrixform schreiben.</p>
@@ -751,11 +751,11 @@ $$
 \end{bmatrix}</span>
 =
 <span class="math display">\begin{bmatrix}
-1 &amp; \text{Rechnungeen}_1 \\
-1 &amp; \text{Rechnungeen}_2 \\
-1 &amp; \text{Rechnungeen}_3 \\
+1 &amp; \text{Rechnungen}_1 \\
+1 &amp; \text{Rechnungen}_2 \\
+1 &amp; \text{Rechnungen}_3 \\
 \vdots &amp; \vdots \\
-1 &amp; \text{Rechnungeen}_n \\
+1 &amp; \text{Rechnungen}_n \\
 \end{bmatrix}
 \begin{bmatrix}
 \hat{\beta}_0 \\
