@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.550">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -202,7 +202,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../02-Review/01-Descriptive-Statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Descriptive Statistics</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deskriptive Statistik mit Pandas</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Das lineare Regressionsmodell</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../06-Interactions/kids.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">kids.html</span></span></a>
   </div>
 </li>
       </ul>
@@ -231,7 +248,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#series" id="toc-series" class="nav-link active" data-scroll-target="#series"><span class="header-section-number">4.1</span> Series</a></li>
   <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">4.2</span> DataFrame</a></li>
-  <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby"><span class="header-section-number">4.3</span> GroupBy</a></li>
+  <li><a href="#axes" id="toc-axes" class="nav-link" data-scroll-target="#axes"><span class="header-section-number">4.3</span> Axes</a></li>
+  <li><a href="#neue-spalte-hinzufügen" id="toc-neue-spalte-hinzufügen" class="nav-link" data-scroll-target="#neue-spalte-hinzufügen"><span class="header-section-number">4.4</span> Neue Spalte hinzufügen</a></li>
+  <li><a href="#selektieren-von-zeilen" id="toc-selektieren-von-zeilen" class="nav-link" data-scroll-target="#selektieren-von-zeilen"><span class="header-section-number">4.5</span> Selektieren von Zeilen</a></li>
+  <li><a href="#selektieren-von-spalten" id="toc-selektieren-von-spalten" class="nav-link" data-scroll-target="#selektieren-von-spalten"><span class="header-section-number">4.6</span> Selektieren von Spalten</a></li>
+  <li><a href="#groupby" id="toc-groupby" class="nav-link" data-scroll-target="#groupby"><span class="header-section-number">4.7</span> GroupBy</a></li>
   </ul>
 </nav>
     </div>
@@ -501,59 +522,100 @@ max      10.000000
 Name: X, dtype: float64</code></pre>
 </div>
 </div>
-<div id="78068c72dc3d288f" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:46:51.678593624Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:46:51.040073828Z&quot;}" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"X"</span>].plot()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
+</section>
+<section id="axes" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="axes"><span class="header-section-number">4.3</span> Axes</h2>
+<p>Die <code>axes</code> eines <code>DataFrame</code> sind die Zeilen und Spalten des <code>DataFrame</code>. Die Zeilen können mit <code>df.index</code> und die Spalten mit <code>df.columns</code> abgerufen werden. Die Eigenschaft (property) <code>shape</code> gibt die Anzahl der Zeilen und Spalten des <code>DataFrame</code> zurück.</p>
+<div id="b68f5a9a" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df1.shape</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>(4, 3)</code></pre>
+</div>
+</div>
+<p>Viele Methoden können auf die Zeilen und Spalten des <code>DataFrame</code> angewendet werden.</p>
+<div id="b1ccb0e5" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df1</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
 <div>
-<figure class="figure">
-<p><img src="01-04-Pandas_files/figure-html/cell-21-output-1.png" width="566" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="9858cf8dff551203" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:46:59.474058025Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:46:59.385334869Z&quot;}" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df1.plot()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
 <div>
-<figure class="figure">
-<p><img src="01-04-Pandas_files/figure-html/cell-22-output-1.png" width="566" height="411" class="figure-img"></p>
-</figure>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Z</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">a</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">b</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">c</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">d</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
-<div id="3362aafaf49d731c" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:47:06.965300022Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:47:06.896817087Z&quot;}" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df1.plot(kind<span class="op">=</span><span class="st">"bar"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-04-Pandas_files/figure-html/cell-23-output-1.png" width="566" height="407" class="figure-img"></p>
-</figure>
+</div>
+<div id="2676d06c" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df1.mean(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>X    5.50
+Y    6.25
+Z    7.50
+dtype: float64</code></pre>
 </div>
 </div>
-</div>
-<div id="13b4ab3c4efe7b79" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:47:12.971312459Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:47:12.878491200Z&quot;}" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>df1.plot(kind<span class="op">=</span><span class="st">"barh"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-04-Pandas_files/figure-html/cell-24-output-1.png" width="558" height="411" class="figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="68a74766f679c725" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:47:17.675800848Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:47:17.595483851Z&quot;}" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df1.plot(kind<span class="op">=</span><span class="st">"box"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="01-04-Pandas_files/figure-html/cell-25-output-1.png" width="566" height="411" class="figure-img"></p>
-</figure>
+<div id="b1f10fa9" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df1.mean(axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>a     2.000000
+b     5.000000
+c     7.666667
+d    11.000000
+dtype: float64</code></pre>
 </div>
 </div>
+<div id="07491318" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df1.mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>X    5.50
+Y    6.25
+Z    7.50
+dtype: float64</code></pre>
 </div>
-<div id="4e6351949f91f977" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:48:29.737328240Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:48:29.689396121Z&quot;}" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"XplusZ"</span>] <span class="op">=</span> df1[<span class="st">"X"</span>] <span class="op">+</span> df1[<span class="st">"Z"</span>]</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="neue-spalte-hinzufügen" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="neue-spalte-hinzufügen"><span class="header-section-number">4.4</span> Neue Spalte hinzufügen</h2>
+<p>Eine neue Spalte kann zu einem <code>DataFrame</code> hinzugefügt werden, indem ein neues Array als Wert der neuen Spalte zugewiesen wird. Die neue Spalte wird automatisch an das Ende des <code>DataFrame</code> hinzugefügt.</p>
+<div id="bc7c9197" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"New"</span>] <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 <div>
@@ -566,7 +628,7 @@ Name: X, dtype: float64</code></pre>
 <th data-quarto-table-cell-role="th">X</th>
 <th data-quarto-table-cell-role="th">Y</th>
 <th data-quarto-table-cell-role="th">Z</th>
-<th data-quarto-table-cell-role="th">XplusZ</th>
+<th data-quarto-table-cell-role="th">New</th>
 </tr>
 </thead>
 <tbody>
@@ -575,28 +637,28 @@ Name: X, dtype: float64</code></pre>
 <td>1</td>
 <td>2</td>
 <td>3</td>
-<td>4</td>
+<td>1</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">b</td>
 <td>4</td>
 <td>5</td>
 <td>6</td>
-<td>10</td>
+<td>2</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">c</td>
 <td>7</td>
 <td>7</td>
 <td>9</td>
-<td>16</td>
+<td>3</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">d</td>
 <td>10</td>
 <td>11</td>
 <td>12</td>
-<td>22</td>
+<td>4</td>
 </tr>
 </tbody>
 </table>
@@ -605,9 +667,10 @@ Name: X, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="9e8eab65a9408f72" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:48:48.141723305Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:48:48.096402591Z&quot;}" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"XtimesZ"</span>] <span class="op">=</span> df1[<span class="st">"X"</span>] <span class="op">*</span> df1[<span class="st">"Z"</span>]</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Häufig wird eine neue Spalte aus bestehenden Spalten berechnet. Dazu können die bestehenden Spalten wie normale Arrays verwendet werden. Die neue Spalte wird automatisch an das Ende des <code>DataFrame</code> hinzugefügt.</p>
+<div id="345a39a3" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"X_min_Y"</span>] <span class="op">=</span> df1[<span class="st">"X"</span>] <span class="op">-</span> df1[<span class="st">"Y"</span>]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 <div>
@@ -620,8 +683,8 @@ Name: X, dtype: float64</code></pre>
 <th data-quarto-table-cell-role="th">X</th>
 <th data-quarto-table-cell-role="th">Y</th>
 <th data-quarto-table-cell-role="th">Z</th>
-<th data-quarto-table-cell-role="th">XplusZ</th>
-<th data-quarto-table-cell-role="th">XtimesZ</th>
+<th data-quarto-table-cell-role="th">New</th>
+<th data-quarto-table-cell-role="th">X_min_Y</th>
 </tr>
 </thead>
 <tbody>
@@ -630,32 +693,32 @@ Name: X, dtype: float64</code></pre>
 <td>1</td>
 <td>2</td>
 <td>3</td>
-<td>4</td>
-<td>3</td>
+<td>1</td>
+<td>-1</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">b</td>
 <td>4</td>
 <td>5</td>
 <td>6</td>
-<td>10</td>
-<td>24</td>
+<td>2</td>
+<td>-1</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">c</td>
 <td>7</td>
 <td>7</td>
 <td>9</td>
-<td>16</td>
-<td>63</td>
+<td>3</td>
+<td>0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">d</td>
 <td>10</td>
 <td>11</td>
 <td>12</td>
-<td>22</td>
-<td>120</td>
+<td>4</td>
+<td>-1</td>
 </tr>
 </tbody>
 </table>
@@ -664,9 +727,9 @@ Name: X, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="964c4965b8c1d5bf" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:48:55.379821041Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:48:55.352634978Z&quot;}" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"XdivZ"</span>] <span class="op">=</span> df1[<span class="st">"X"</span>] <span class="op">/</span> df1[<span class="st">"Z"</span>]</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cbd5fe09" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"X_2"</span>] <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span>df1[<span class="st">"X"</span>]</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>df1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 <div>
@@ -679,9 +742,9 @@ Name: X, dtype: float64</code></pre>
 <th data-quarto-table-cell-role="th">X</th>
 <th data-quarto-table-cell-role="th">Y</th>
 <th data-quarto-table-cell-role="th">Z</th>
-<th data-quarto-table-cell-role="th">XplusZ</th>
-<th data-quarto-table-cell-role="th">XtimesZ</th>
-<th data-quarto-table-cell-role="th">XdivZ</th>
+<th data-quarto-table-cell-role="th">New</th>
+<th data-quarto-table-cell-role="th">X_min_Y</th>
+<th data-quarto-table-cell-role="th">X_2</th>
 </tr>
 </thead>
 <tbody>
@@ -690,36 +753,36 @@ Name: X, dtype: float64</code></pre>
 <td>1</td>
 <td>2</td>
 <td>3</td>
-<td>4</td>
-<td>3</td>
-<td>0.333333</td>
+<td>1</td>
+<td>-1</td>
+<td>2</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">b</td>
 <td>4</td>
 <td>5</td>
 <td>6</td>
-<td>10</td>
-<td>24</td>
-<td>0.666667</td>
+<td>2</td>
+<td>-1</td>
+<td>8</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">c</td>
 <td>7</td>
 <td>7</td>
 <td>9</td>
-<td>16</td>
-<td>63</td>
-<td>0.777778</td>
+<td>3</td>
+<td>0</td>
+<td>14</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">d</td>
 <td>10</td>
 <td>11</td>
 <td>12</td>
-<td>22</td>
-<td>120</td>
-<td>0.833333</td>
+<td>4</td>
+<td>-1</td>
+<td>20</td>
 </tr>
 </tbody>
 </table>
@@ -729,19 +792,173 @@ Name: X, dtype: float64</code></pre>
 </div>
 </div>
 </section>
-<section id="groupby" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="groupby"><span class="header-section-number">4.3</span> GroupBy</h2>
-<p>Mit der Funktion <code>groupby()</code> können die Daten in einem <code>DataFrame</code> gruppiert werden. Die Funktion <code>groupby()</code> gibt ein <code>DataFrameGroupBy</code>-Objekt zurück. Mit diesem Objekt können verschiedene Aggregationsfunktionen aufgerufen werden. Die wichtigsten Aggregationsfunktionen sind: - <code>count()</code>: Anzahl der Elemente - <code>sum()</code>: Summe der Elemente - <code>mean()</code>: Mittelwert der Elemente - <code>median()</code>: Median der Elemente - <code>min()</code>: Minimum der Elemente - <code>max()</code>: Maximum der Elemente - <code>std()</code>: Standardabweichung der Elemente - <code>var()</code>: Varianz der Elemente - <code>describe()</code>: Statistische Kennzahlen der Elemente - <code>first()</code>: Erstes Element - <code>last()</code>: Letztes Element - <code>nth()</code>: n-tes Element</p>
-<div id="92bcf808c85704fb" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:54:51.567889489Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:54:51.565333623Z&quot;}" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Mallory"</span>, <span class="st">"Mallory"</span>, <span class="st">"Bob"</span>, <span class="st">"Mallory"</span>],</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gender"</span>: [<span class="st">"f"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>],</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"YearOfBirth"</span>: [<span class="dv">1999</span>, <span class="dv">1985</span>, <span class="dv">1997</span>, <span class="dv">1990</span>, <span class="dv">1987</span>, <span class="dv">1990</span>],</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">"Age"</span>] <span class="op">=</span> <span class="dv">2024</span> <span class="op">-</span> df2[<span class="st">"YearOfBirth"</span>]</span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>df2.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="selektieren-von-zeilen" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="selektieren-von-zeilen"><span class="header-section-number">4.5</span> Selektieren von Zeilen</h2>
+<p>Häufig möchten wir nur eine Teilmenge der Zeilen eines <code>DataFrame</code> selektieren, z.B. die ersten 5 Zeilen oder die Zeilen, die eine bestimmte Bedingung erfüllen (z.B. Männer/Frauen, beschäftigt/arbeitslos, etc.).</p>
+<div id="84a18db3" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als Beispiel wählen wir die ersten drei Zeilen</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>df1.iloc[<span class="dv">0</span>:<span class="dv">2</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Z</th>
+<th data-quarto-table-cell-role="th">New</th>
+<th data-quarto-table-cell-role="th">X_min_Y</th>
+<th data-quarto-table-cell-role="th">X_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">a</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>-1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">b</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>-1</td>
+<td>8</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="aa891428" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als anderes Beispiel wählen wir die Zeilen, für die X größer als 3 ist</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>df1[df1[<span class="st">"X"</span>] <span class="op">&gt;</span> <span class="dv">3</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th">Y</th>
+<th data-quarto-table-cell-role="th">Z</th>
+<th data-quarto-table-cell-role="th">New</th>
+<th data-quarto-table-cell-role="th">X_min_Y</th>
+<th data-quarto-table-cell-role="th">X_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">b</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>2</td>
+<td>-1</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">c</td>
+<td>7</td>
+<td>7</td>
+<td>9</td>
+<td>3</td>
+<td>0</td>
+<td>14</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">d</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>4</td>
+<td>-1</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="selektieren-von-spalten" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="selektieren-von-spalten"><span class="header-section-number">4.6</span> Selektieren von Spalten</h2>
+<p>Häufig möchten wir nur eine Teilmenge der Spalten eines <code>DataFrame</code> selektieren, z.B. die Spalten, die für eine bestimmte Analyse relevant sind.</p>
+<div id="cbc05fa8" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df1[[<span class="st">"X"</span>, <span class="st">"Y"</span>]]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="30">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">X</th>
+<th data-quarto-table-cell-role="th">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">a</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">b</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">c</td>
+<td>7</td>
+<td>7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">d</td>
+<td>10</td>
+<td>11</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="groupby" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="groupby"><span class="header-section-number">4.7</span> GroupBy</h2>
+<p>Mit der Funktion <code>groupby()</code> können die Daten in einem <code>DataFrame</code> gruppiert werden. Die Funktion <code>groupby()</code> gibt ein <code>DataFrameGroupBy</code>-Objekt zurück. Mit diesem Objekt können verschiedene Aggregationsfunktionen aufgerufen werden. Die wichtigsten Aggregationsfunktionen sind: - <code>count()</code>: Anzahl der Elemente - <code>sum()</code>: Summe der Elemente - <code>mean()</code>: Mittelwert der Elemente - <code>median()</code>: Median der Elemente - <code>min()</code>: Minimum der Elemente - <code>max()</code>: Maximum der Elemente - <code>std()</code>: Standardabweichung der Elemente - <code>var()</code>: Varianz der Elemente - <code>describe()</code>: Statistische Kennzahlen der Elemente - <code>first()</code>: Erstes Element - <code>last()</code>: Letztes Element - <code>nth()</code>: n-tes Element</p>
+<div id="92bcf808c85704fb" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:54:51.567889489Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:54:51.565333623Z&quot;}" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Mallory"</span>, <span class="st">"Mallory"</span>, <span class="st">"Bob"</span>, <span class="st">"Mallory"</span>],</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gender"</span>: [<span class="st">"f"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>, <span class="st">"f"</span>, <span class="st">"m"</span>, <span class="st">"f"</span>],</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"YearOfBirth"</span>: [<span class="dv">1999</span>, <span class="dv">1985</span>, <span class="dv">1997</span>, <span class="dv">1990</span>, <span class="dv">1987</span>, <span class="dv">1990</span>],</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">"Age"</span>] <span class="op">=</span> <span class="dv">2024</span> <span class="op">-</span> df2[<span class="st">"YearOfBirth"</span>]</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>df2.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 <div>
 
@@ -799,16 +1016,16 @@ Name: X, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="ca30e40e6fc7ee42" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:54:53.414979500Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:54:53.378030651Z&quot;}" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>df2_by_gender <span class="op">=</span> df2.groupby(<span class="st">"Gender"</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>df2_by_gender</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f2d0cea5b10&gt;</code></pre>
+<div id="ca30e40e6fc7ee42" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:54:53.414979500Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:54:53.378030651Z&quot;}" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df2_by_gender <span class="op">=</span> df2.groupby(<span class="st">"Gender"</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>df2_by_gender</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x7f5674bd0cd0&gt;</code></pre>
 </div>
 </div>
-<div id="a112ac1d2fe222b2" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:55:03.475702142Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:55:03.459479722Z&quot;}" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>df2_by_gender[<span class="st">"Age"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="30">
+<div id="a112ac1d2fe222b2" class="cell" data-executetime="{&quot;end_time&quot;:&quot;2024-01-19T16:55:03.475702142Z&quot;,&quot;start_time&quot;:&quot;2024-01-19T16:55:03.459479722Z&quot;}" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>df2_by_gender[<span class="st">"Age"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Gender
 f    30.0
 m    38.0
@@ -899,6 +1116,24 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -933,7 +1168,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
