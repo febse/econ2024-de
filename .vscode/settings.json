@@ -37,6 +37,7 @@
     "Miniconda",
     "Numpy",
     "Regressionsmodell",
+    "Residuenquadratsumme",
     "toolsai"
   ]
 }
