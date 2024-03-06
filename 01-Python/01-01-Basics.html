@@ -909,14 +909,15 @@ Im Dezember war der Stromverbrauch 120.22 EUR.</code></pre>
 </section>
 <section id="klassen-und-objekte" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="klassen-und-objekte"><span class="header-section-number">5.1</span> Klassen und Objekte</h2>
-<p>Bisher haben wir verschiedene Datentypen gesehen, drei verschiedene Datenstrukturen (Listen, Tupel und Dictionaries) und Funktionen gesehen. In Python gibt es auch Objekte, die Daten und Funktionen zusammenbinden. Funktionen, die zu einem Objeckt gehören, nennen wir Methoden. Diese Objekte können wir mit Klassen erstellen. Klassen sind wie Baupläne für Objekte.</p>
+<p>Bisher haben wir verschiedene Datentypen gesehen, drei verschiedene Datenstrukturen (Listen, Tupel und Dictionaries) und Funktionen gesehen. In Python gibt es auch Objekte, die Daten und Funktionen zusammenbinden. Funktionen, die zu einem Objekt gehören, nennen wir Methoden. Objekte werden aus Klassen erstellt. Klassen sind wie Baupläne für Objekte. In den Übungen werden wir keine Klassen selber definieren, allerdings werden wir Objekte wie DataFrame, Series, etc. verwenden, die aus Klassen erstellt wurden. Deswegen ist es wichtig, dass Sie wissen, wie Sie mit Objekten umgehen können.</p>
+<p>Zuerst definieren wir eine Klasse <code>Person</code>. Diese hat zwei Attribute: <code>name</code> und <code>age</code>. Die Klasse erlaubt uns, ein Objekt zu erstellen, das diese beiden Attribute hat. Wir können auch eine Methode <code>say_hello</code> definieren, die uns erlaubt, “Hallo” und den Namen der Person auszugeben. Alle Methoden, wie z.B. <code>say_hello</code> erhalten das Argument <code>self</code>, das das Objekt selbst ist. Dadurch können wir über Methoden auf die Eigenschaften des Objekts zugreifen.</p>
 <div id="4a774b97" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb123"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb123-1"><a href="#cb123-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
 <span id="cb123-2"><a href="#cb123-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age):</span>
 <span id="cb123-3"><a href="#cb123-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> name</span>
 <span id="cb123-4"><a href="#cb123-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
 <span id="cb123-5"><a href="#cb123-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> introduce_yourself(<span class="va">self</span>):</span>
+<span id="cb123-6"><a href="#cb123-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> say_hello(<span class="va">self</span>):</span>
 <span id="cb123-7"><a href="#cb123-7" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Hi, my name is"</span>, <span class="va">self</span>.name, <span class="st">"and I am"</span>, <span class="va">self</span>.age, <span class="st">"years old."</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="0657506f" class="cell" data-execution_count="69">
@@ -930,7 +931,7 @@ Im Dezember war der Stromverbrauch 120.22 EUR.</code></pre>
 </div>
 </div>
 <div id="dd716bc6" class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>ivan.introduce_yourself()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb126"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb126-1"><a href="#cb126-1" aria-hidden="true" tabindex="-1"></a>ivan.say_hello()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi, my name is Ivan and I am 20 years old.</code></pre>
 </div>
