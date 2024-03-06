@@ -18,12 +18,8 @@ book:
         - 01-Python/01-03-Numpy.ipynb
         - 01-Python/01-04-Pandas.ipynb
         - 01-Python/01-05-Pandas-Ex.ipynb
-    - part: "Statistik Überblick"
-      chapters:
-        - 02-Review/01-Descriptive-Statistics.ipynb
-    - part: "Das lineare Regressionsmodell"
-      chapters:
-        - 06-Interactions/kids.ipynb
+    - 02-Descriptive-Statistics.ipynb
+    - 03-KQ-Methode.ipynb
     #     - 02-Review/02-Probability.ipynb
     # - part: "Einfache Lineare Regression"
     #   chapters:
