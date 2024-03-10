@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Einführung in die Ökonometrie - 7&nbsp; KQ-Methode</title>
+<title>Einführung in die Ökonometrie - 7&nbsp; Die KQ-Methode</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-KQ-Methode.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">KQ-Methode</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-KQ-Methode.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Die KQ-Methode</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -242,7 +242,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-KQ-Methode.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">KQ-Methode</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Die KQ-Methode</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -267,13 +267,8 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#beispiel-bearbeitungszeit-von-kundenrechnungen" id="toc-beispiel-bearbeitungszeit-von-kundenrechnungen" class="nav-link active" data-scroll-target="#beispiel-bearbeitungszeit-von-kundenrechnungen"><span class="header-section-number">7.0.1</span> Beispiel: Bearbeitungszeit von Kundenrechnungen</a></li>
-  <li><a href="#modellschätzung" id="toc-modellschätzung" class="nav-link" data-scroll-target="#modellschätzung"><span class="header-section-number">7.1</span> Modellschätzung</a></li>
-  <li><a href="#ein-modell-für-die-daten" id="toc-ein-modell-für-die-daten" class="nav-link" data-scroll-target="#ein-modell-für-die-daten"><span class="header-section-number">7.2</span> Ein Modell für die Daten</a></li>
-  <li><a href="#die-einfache-lineare-regression-in-matrixform" id="toc-die-einfache-lineare-regression-in-matrixform" class="nav-link" data-scroll-target="#die-einfache-lineare-regression-in-matrixform"><span class="header-section-number">7.3</span> Die einfache lineare Regression in Matrixform</a></li>
-  <li><a href="#scenarios" id="toc-scenarios" class="nav-link" data-scroll-target="#scenarios"><span class="header-section-number">7.4</span> Scenarios</a></li>
-  <li><a href="#anmerkung" id="toc-anmerkung" class="nav-link" data-scroll-target="#anmerkung"><span class="header-section-number">7.5</span> Anmerkung</a></li>
-  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">7.6</span> Interpretation</a></li>
+  <li><a href="#the-one-variable-case" id="toc-the-one-variable-case" class="nav-link active" data-scroll-target="#the-one-variable-case"><span class="header-section-number">7.1</span> The one variable case</a></li>
+  <li><a href="#übung" id="toc-übung" class="nav-link" data-scroll-target="#übung"><span class="header-section-number">7.2</span> Übung</a></li>
   </ul>
 </nav>
     </div>
@@ -282,7 +277,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">KQ-Methode</span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Die KQ-Methode</span></h1>
 </div>
 
 
@@ -299,9 +294,13 @@ window.Quarto = {
 </header>
 
 
-<section id="beispiel-bearbeitungszeit-von-kundenrechnungen" class="level3" data-number="7.0.1">
-<h3 data-number="7.0.1" class="anchored" data-anchor-id="beispiel-bearbeitungszeit-von-kundenrechnungen"><span class="header-section-number">7.0.1</span> Beispiel: Bearbeitungszeit von Kundenrechnungen</h3>
-<p>Ein Buchhaltungsunternehmen möchte die Bearbeitungszeit von Kundenrechnungen besser verstehen und vorhersagen. Das Unternehmen hat uns Daten über die Anzahl der täglich bearbeiteten Rechnungen und die dafür benötigte Zeit zur Verfügung gestellt. Wir sollen nun eine Vorhersage für die Bearbeitungszeit treffen, wenn die Anzahl der Rechnungen bekannt ist.</p>
+<p>In dieser Übung werden wir als Beispiel Daten über ein Buchchaltungsunternehmen verwenden. Das Unternehmen erhält täglich Rechnungen von seinen Kunden und bearbeitet sie (z.B. prüft sie, gibt sie in das Buchhaltungssystem ein, etc.). Der Datensatz enthält die Anzahl der bearbeiteten Rechnungen an jedem Tag und die dafür benötigte Zeit. Unser Ziel ist es, die Zeit vorherzusagen, die benötigt wird, um eine gegebene Anzahl von Rechnungen zu bearbeiten.</p>
+<p>Die Variablen in dem Datensatz sind:</p>
+<ul>
+<li><code>Day</code> (numeric): Tag der Beobachtung</li>
+<li><code>Invoices</code> (numeric): Die Anzahl der bearbeiteten Rechnungen</li>
+<li><code>Time</code> (numeric): Die Bearbeitungszeit in Stunden</li>
+</ul>
 <div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -309,7 +308,7 @@ window.Quarto = {
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Einlesen der Daten</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/febse/data/main/econ/invoices.txt'</span>, delimiter<span class="op">=</span><span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -364,35 +363,125 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Der Datensatz enthält die folgenden Variable (Spalten):</p>
-<ul>
-<li><code>Day</code> (numeric): Nummer des Tages, an dem die Rechnungen bearbeitet wurden</li>
-<li><code>Invoices</code> (numeric): Anzahl der bearbeiteten Rechnungen</li>
-<li><code>Time</code> (numeric): Zeit in Stunden, die für die Bearbeitung benötigt wurde</li>
-</ul>
-<div id="cell-fig-invoices-scatter" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Eine erste Zusammenfassung der Daten</p>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Day</th>
+<th data-quarto-table-cell-role="th">Invoices</th>
+<th data-quarto-table-cell-role="th">Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">count</td>
+<td>30.000000</td>
+<td>30.000000</td>
+<td>30.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">mean</td>
+<td>15.500000</td>
+<td>130.033333</td>
+<td>2.11000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">std</td>
+<td>8.803408</td>
+<td>74.825537</td>
+<td>0.90491</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">min</td>
+<td>1.000000</td>
+<td>23.000000</td>
+<td>0.80000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25%</td>
+<td>8.250000</td>
+<td>62.500000</td>
+<td>1.50000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">50%</td>
+<td>15.500000</td>
+<td>127.500000</td>
+<td>2.00000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">75%</td>
+<td>22.750000</td>
+<td>189.500000</td>
+<td>2.77500</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">max</td>
+<td>30.000000</td>
+<td>289.000000</td>
+<td>4.10000</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Zuerst werden wir den Datensatz in einem Streudiagramm visualisieren. Der Zweck der Visualisierung ist es, eine erste Einsicht über die Assoziation zwischen den Variablen <code>Invoices</code> und <code>Time</code> zu bekommen.</p>
+<div id="cell-fig-invoices-scatter" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="dv">50</span>, <span class="dv">120</span>, <span class="dv">201</span>, <span class="dv">250</span>, <span class="dv">400</span>]:</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    ax.axvline(x, color<span class="op">=</span><span class="st">'r'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, lw<span class="op">=</span><span class="dv">1</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div id="fig-invoices-scatter" class="quarto-figure quarto-figure-center quarto-float anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-invoices-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="03-KQ-Methode_files/figure-html/fig-invoices-scatter-output-1.png" width="598" height="429" class="figure-img">
+<img src="03-KQ-Methode_files/figure-html/fig-invoices-scatter-output-1.png" width="589" height="429" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-invoices-scatter-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Abbildung&nbsp;7.1: Streudiagramm der Bearbeitungszeit der Rechnungen und der Anzahl der Rechnungen
+Abbildung&nbsp;7.1: Streudiagramm der Bearbeitungszeit der Rechnungen und der Anzahl der Rechnungen.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Naives Modell:</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>time_predicted1 <span class="op">=</span> np.repeat(df[<span class="st">'Time'</span>].mean(), <span class="bu">len</span>(df))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>res_1 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted1</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>res_1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<p>Wie können wir die Zeit vorhersagen, die benötigt wird, um eine gegebene Anzahl von Rechnungen zu bearbeiten? Die roten vertikalen Geraden in <a href="#fig-invoices-scatter" class="quarto-xref">Abbildung&nbsp;<span>7.1</span></a> sind bei 50, 120, 201, 250, 400. Für diese Anzahlen von Rechnungen wollen wir die Bearbeitungszeit vorhersagen.</p>
+<p><strong>Strategie 1</strong></p>
+<p>Eine einfache Methode wäre, die Bearbeitungszeit einfach mit der durchschnittlichen Bearbeitungszeit vorherzusagen.</p>
+<p><strong>Strategie 2</strong></p>
+<p>Eine andere Möglichkeit wäre, eine Gleichung zu unterstellen, um die Anzahl der Rechnungen zu berücksichtigen. Eine lineare Gleichung könnte z.B. so aussehen (die Koeffizienten sind hier nur Beispiele, es gibt keine konkrete Rechtfertigung für diese Werte):</p>
+<p><span class="math display">
+\widehat{\text{Time}}^{eq1} = 0.6 + 0.01 \text{Invoices}
+</span></p>
+<div id="exr-prediction-strategies" class="theorem exercise">
+<p><span class="theorem-title"><strong>Übungsaufgabe 7.1 (Aufgabe 1)</strong></span> Berechnen Sie die Vorhersagen für die Bearbeitungszeit für die zwei Strategien.</p>
+</div>
+<div id="cell-9" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 1</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 2</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-11" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 1</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>time_predicted1 <span class="op">=</span> np.repeat(df[<span class="st">'Time'</span>].mean(), <span class="bu">len</span>(df))</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>res_1 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted1</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>res_1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0   -0.01
 1   -0.31
 2    0.19
@@ -401,68 +490,66 @@ Abbildung&nbsp;7.1: Streudiagramm der Bearbeitungszeit der Rechnungen und der An
 Name: Time, dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ein Modell, das die Anzahl der Rechnungen berücksichtigt:</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>time_predicted2 <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>res_2 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted2</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>res_2.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>0    0.11
-1    0.70
-2   -0.08
-3    0.07
-4    0.19
+<div id="cell-12" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ein Modell, das die Anzahl der Rechnungen berücksichtigt:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>time_predicted2 <span class="op">=</span> <span class="fl">0.6</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res_2 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted2</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>res_2.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>0    0.01
+1    0.60
+2   -0.18
+3   -0.03
+4    0.09
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ax.hlines(y<span class="op">=</span>time_predicted1.mean(), xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">300</span>, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Mean'</span>)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted1, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-13" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span>time_predicted1.mean(), xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">300</span>, color<span class="op">=</span><span class="st">'red'</span>, label<span class="op">=</span><span class="st">'Strategie 1'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted1, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-KQ-Methode_files/figure-html/cell-7-output-1.png" width="589" height="429" class="figure-img"></p>
+<p><img src="03-KQ-Methode_files/figure-html/cell-10-output-1.png" width="598" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">"Invoices"</span>], time_predicted2, <span class="st">'-'</span>, label<span class="op">=</span><span class="st">'Modell 1'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted2, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-14" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">"Invoices"</span>], time_predicted2, <span class="st">'-'</span>, label<span class="op">=</span><span class="st">'Strategie 2'</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted2, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">'red'</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-KQ-Methode_files/figure-html/cell-8-output-1.png" width="598" height="429" class="figure-img"></p>
+<p><img src="03-KQ-Methode_files/figure-html/cell-11-output-1.png" width="598" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Welches Modell passt besser zu den Daten? Aus den graphischen Darstellungen können wir sehen, daß die Abweichungen zwischen den Prognosen (Modell) und den tatsächlichen Werten (Daten) beim zweiten Modell geringer sind. Es ist allerdings wichtig, die Modellgüte mit Hilfe von Kennzahlen zu bewerten.</p>
-<p>Wir könnten z.B. die Summe der Abweichungen zwischen Prognosen und Beobachtungen berechnen.</p>
+<p>Welche Strategie passt ist besser? Um dieser Frage eine Antwort zu geben, müssen wir uns auf ein Kriterium einigen, das wir verwenden, um die Vorhersagen zu bewerten und zu vergleichen.</p>
+<p>Wir könnten z.B. die mittlere Differenz zwischen den Vorhersagen und den beobachteten Werten verwenden.</p>
 <p><span class="math display">
-\frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)
+\text{Mittlere Differenz} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)
 </span></p>
-<div id="cell-10" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>res_1.<span class="bu">sum</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>2.886579864025407e-15</code></pre>
+<p>Dabei sind <span class="math inline">y_i</span> die beobachteten Werte und <span class="math inline">\hat{y}_i</span> die Vorhersagen.</p>
+<div id="exr-mse" class="theorem exercise">
+<p><span class="theorem-title"><strong>Übungsaufgabe 7.2 (Aufgabe 2)</strong></span> Berechnen Sie die mittlere Differenz und den MSE für die beiden Strategien.</p>
 </div>
+<div id="cell-16" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 1</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>res_2.<span class="bu">sum</span>()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>9.29</code></pre>
-</div>
+<div id="cell-17" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 2</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Dieses scheint allerdings unsinnige Ergebnisse zu produzieren, denn die Prognosen des zweiten Modells offensichtlich näher an den Daten liegen. Die Summe der Abweichungen ist allerdings größer als beim ersten Modell. Das liegt daran, daß sich positive und negative Abweichungen in der Summe gegenseitig aufheben. Um das zu vermeiden, könnten wir die z.B. die Beträge der Abweichungen summieren</p>
 <p><span class="math display">
@@ -476,308 +563,332 @@ dtype: float64</code></pre>
 <p><span class="math display">
 \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) = \sum_{i=1}^{n} (y_i - (\hat{\beta}_0 + \hat{\beta}_1 x_i))^2
 </span></p>
+<div id="exr-rss" class="theorem exercise">
+<p><span class="theorem-title"><strong>Übungsaufgabe 7.3 (Aufgabe 3)</strong></span> Berechnen Sie die Residuenquadratsumme für die beiden Strategien.</p>
+</div>
+<div id="cell-21" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 1</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-22" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 2</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-23" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ihre Strategie</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Versuchen Sie eine eigene Strategie zu entwickeln, indem Sie Koeffizienten </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># wählen, die die Residuenquadratsumme möglichst klein machen.</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie die RSS für Ihre Strategie und vergleichen Sie sie mit den anderen Strategien.</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Lasst uns die Residuenquadratsumme für verschiedene Werte der Koeffizienten berechnen und die Ergebnisse graphisch darstellen. Wir werden die Residuenquadratsumme als Funktion der Koeffizienten in einem 3D-Diagramm darstellen.</p>
-<div id="cell-16" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>exp_f <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>bb0, bb1 <span class="op">=</span> np.meshgrid(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    np.linspace(<span class="fl">0.6417</span> <span class="op">-</span> <span class="fl">0.6417</span> <span class="op">*</span> exp_f, <span class="fl">0.6417</span> <span class="op">+</span> <span class="fl">0.6417</span> <span class="op">*</span> exp_f, <span class="dv">100</span>),</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    np.linspace(<span class="fl">0.0113</span> <span class="op">-</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="fl">0.0113</span> <span class="op">+</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="dv">100</span>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># bb0, bb1 = np.meshgrid(</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.7 , 0.7, 100),</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.01, 0.01, 100)</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>rss <span class="op">=</span> np.zeros_like(bb0)</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">0</span>]):</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">1</span>]):</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        time_predicted <span class="op">=</span> bb0[i, j] <span class="op">+</span> bb1[i, j] <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        rss[i, j] <span class="op">=</span> np.<span class="bu">sum</span>(res<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(bb0, bb1, rss, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$\hat{\beta}_0$"</span>)</span>
-<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\hat{\beta}_1$"</span>)</span>
-<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'RSS'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="cell-25" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: der Code ist nur da, um die RSS zu berechnen und zu visualisieren.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sie müssen ihn nicht studieren oder verstehen</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>exp_f <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>bb0, bb1 <span class="op">=</span> np.meshgrid(</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    np.linspace(<span class="fl">0.6417</span> <span class="op">-</span> <span class="fl">0.6417</span> <span class="op">*</span> exp_f, <span class="fl">0.6417</span> <span class="op">+</span> <span class="fl">0.6417</span> <span class="op">*</span> exp_f, <span class="dv">100</span>),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    np.linspace(<span class="fl">0.0113</span> <span class="op">-</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="fl">0.0113</span> <span class="op">+</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="dv">100</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># bb0, bb1 = np.meshgrid(</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.7 , 0.7, 100),</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.01, 0.01, 100)</span></span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>rss <span class="op">=</span> np.zeros_like(bb0)</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">0</span>]):</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">1</span>]):</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>        time_predicted <span class="op">=</span> bb0[i, j] <span class="op">+</span> bb1[i, j] <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        rss[i, j] <span class="op">=</span> np.<span class="bu">sum</span>(res<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(bb0, bb1, rss, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$\hat{\beta}_0$"</span>)</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\hat{\beta}_1$"</span>)</span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'RSS'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>Text(0.5, 0, 'RSS')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-KQ-Methode_files/figure-html/cell-11-output-2.png" width="410" height="398" class="figure-img"></p>
+<p><img src="03-KQ-Methode_files/figure-html/cell-17-output-2.png" width="410" height="398" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Bisher haben wir die Koeffizienten der Prognosegleichung manuell festgelegt. Es wäre jedoch besser, wenn wir die Koeffizienten automatisch so festlegen könnten, dass die Vorhersage möglichst genau ist. Dieses Ziel erreichen wir mit der Methode der kleinsten Quadrate.</p>
+<p>Zuerst werden wir das Problem in einem sehr einfachen Fall betrachten. Betrachten wir die Vorhersagegleichung</p>
 <p><span class="math display">
-\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 \cdot x
+\hat{y} = \hat{\beta}_0
 </span></p>
-<p>Wir möchten die Koeffizienten <span class="math inline">\hat{\beta}_0</span> und <span class="math inline">\hat{\beta}_1</span> so bestimmen, dass die Summe der quadrierten Abweichungen zwischen den beobachteten und den vorhergesagten Werten minimal ist.</p>
-</section>
-<section id="modellschätzung" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="modellschätzung"><span class="header-section-number">7.1</span> Modellschätzung</h2>
-<p>Es gibt mehrere Möglichkeiten, die Koeffizienten mit der KQ-Methode in <code>Python</code> zu bestimmen.</p>
-<div id="cell-19" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>lm <span class="op">=</span> LinearRegression()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>lm.fit(df[[<span class="st">'Invoices'</span>]], df[<span class="st">'Time'</span>])</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>lm.intercept_, lm.coef_</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<pre><code>(0.6417098798216139, array([0.01129164]))</code></pre>
-</div>
-</div>
-<div id="cell-20" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(formula<span class="op">=</span><span class="st">'Time ~ Invoices'</span>, data<span class="op">=</span>df).fit()</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>model.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<div>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
-<caption>OLS Regression Results</caption>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Dep. Variable:</td>
-<td>Time</td>
-<td data-quarto-table-cell-role="th">R-squared:</td>
-<td>0.872</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Model:</td>
-<td>OLS</td>
-<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
-<td>0.867</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Method:</td>
-<td>Least Squares</td>
-<td data-quarto-table-cell-role="th">F-statistic:</td>
-<td>190.4</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Date:</td>
-<td>Sat, 09 Mar 2024</td>
-<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
-<td>5.17e-14</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Time:</td>
-<td>12:55:54</td>
-<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-8.2528</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">No. Observations:</td>
-<td>30</td>
-<td data-quarto-table-cell-role="th">AIC:</td>
-<td>20.51</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Df Residuals:</td>
-<td>28</td>
-<td data-quarto-table-cell-role="th">BIC:</td>
-<td>23.31</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Df Model:</td>
-<td>1</td>
-<td data-quarto-table-cell-role="th"></td>
-<td></td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Covariance Type:</td>
-<td>nonrobust</td>
-<td data-quarto-table-cell-role="th"></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td></td>
-<td data-quarto-table-cell-role="th">coef</td>
-<td data-quarto-table-cell-role="th">std err</td>
-<td data-quarto-table-cell-role="th">t</td>
-<td data-quarto-table-cell-role="th">P&gt;|t|</td>
-<td data-quarto-table-cell-role="th">[0.025</td>
-<td data-quarto-table-cell-role="th">0.975]</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Intercept</td>
-<td>0.6417</td>
-<td>0.122</td>
-<td>5.248</td>
-<td>0.000</td>
-<td>0.391</td>
-<td>0.892</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Invoices</td>
-<td>0.0113</td>
-<td>0.001</td>
-<td>13.797</td>
-<td>0.000</td>
-<td>0.010</td>
-<td>0.013</td>
-</tr>
-</tbody>
-</table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Omnibus:</td>
-<td>2.815</td>
-<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
-<td>1.760</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
-<td>0.245</td>
-<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
-<td>1.341</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">Skew:</td>
-<td>-0.042</td>
-<td data-quarto-table-cell-role="th">Prob(JB):</td>
-<td>0.511</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">Kurtosis:</td>
-<td>1.968</td>
-<td data-quarto-table-cell-role="th">Cond. No.</td>
-<td>303.</td>
-</tr>
-</tbody>
-</table>
-<br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-</div>
-</div>
-</div>
-</section>
-<section id="ein-modell-für-die-daten" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="ein-modell-für-die-daten"><span class="header-section-number">7.2</span> Ein Modell für die Daten</h2>
+<p>Das ist eine sehr einfache Vorhersagegleichung, die nur einen Koeffizienten hat. Die Vorhersage ist für alle Werte von <span class="math inline">x</span> gleich <span class="math inline">\hat{\beta}_0</span> (d.h. die Vorhersage ist eine horizontale Gerade). Wo sollten wir diese horizontale Gerade zeichnen, um die Residuenquadratsumme zu minimieren?</p>
+<p>Die Antwort mag nicht ganz offenbar sein, aber es ist letztendlich sehr einfach.</p>
+<p>Für die Gleichung oben ist die Residuenquadratsumme:</p>
 <p><span class="math display">
-\begin{align}
-\text{Time}_i = \beta_0 + \beta_1 \cdot \text{Invoices}_i + e_i \\
-e_i \sim N(0, \sigma^2)
-\end{align}
+\text{RSS}(\hat{\beta}_0) = \sum_{i=1}^{n} (y_i - \hat{\beta}_0)^2
 </span></p>
-<div id="cell-22" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Define variables</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>x_breaks <span class="op">=</span> np.array([<span class="dv">50</span>, <span class="dv">150</span>, <span class="dv">250</span>])</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>y_hat <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> x_breaks</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame similar to expand_grid in R</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> pd.DataFrame(np.array(np.meshgrid(np.arange(<span class="dv">1</span>, <span class="dv">2001</span>), x_breaks)).T.reshape(<span class="op">-</span><span class="dv">1</span>,<span class="dv">2</span>), columns<span class="op">=</span>[<span class="st">'B'</span>, <span class="st">'x'</span>])</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add mu, y, and dy columns</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>dt[<span class="st">'mu'</span>] <span class="op">=</span> <span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> dt[<span class="st">'x'</span>]</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>dt[<span class="st">'y'</span>] <span class="op">=</span> np.random.normal(loc<span class="op">=</span>dt[<span class="st">'mu'</span>], scale<span class="op">=</span><span class="fl">0.33</span>)</span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>dt[<span class="st">'dy'</span>] <span class="op">=</span> dt[<span class="st">'x'</span>] <span class="op">+</span> <span class="dv">20</span> <span class="op">*</span> norm.pdf(dt[<span class="st">'y'</span>], loc<span class="op">=</span>dt[<span class="st">'mu'</span>], scale<span class="op">=</span><span class="fl">0.33</span>)</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort values</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> dt.sort_values([<span class="st">'x'</span>, <span class="st">'dy'</span>])</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting</span></span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'invoices' is a DataFrame with 'Invoices' and 'Time' columns</span></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># plt.scatter(invoices['Invoices'], invoices['Time'], alpha=0.5)</span></span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_val <span class="kw">in</span> dt[<span class="st">'x'</span>].unique():</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>    dt_x <span class="op">=</span> dt[dt[<span class="st">'x'</span>] <span class="op">==</span> x_val]</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a>    plt.plot(dt_x[<span class="st">'dy'</span>], dt_x[<span class="st">'y'</span>], alpha<span class="op">=</span><span class="fl">0.2</span>, color<span class="op">=</span><span class="st">'salmon'</span>)</span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>plt.plot(dt[<span class="st">'x'</span>], dt[<span class="st">'mu'</span>], color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>plt.vlines(x_breaks, ymin<span class="op">=</span>dt[<span class="st">'y'</span>].<span class="bu">min</span>(), ymax<span class="op">=</span>dt[<span class="st">'y'</span>].<span class="bu">max</span>(), linestyles<span class="op">=</span><span class="st">'dashed'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x_val, y_val <span class="kw">in</span> <span class="bu">zip</span>(x_breaks, y_hat):</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>    plt.text(x_val, y_val, <span class="vs">r'$\mu = </span><span class="sc">{}</span><span class="vs">$'</span>.<span class="bu">format</span>(<span class="bu">round</span>(y_val, <span class="dv">1</span>)), va<span class="op">=</span><span class="st">'top'</span>)</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>plt.xticks(x_breaks)</span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>plt.yticks(<span class="fl">0.5</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> x_breaks)</span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="exr-rss-1d" class="theorem exercise">
+<p><span class="theorem-title"><strong>Übungsaufgabe 7.4 (KQ-Methode im Intercept-Only-Modell)</strong></span> Leiten Sie den Wert von <span class="math inline">\hat{\beta}_0</span> her, der die Residuenquadratsumme minimiert.</p>
+</div>
+<div class="proof" data-collapse="True">
+<p><span class="proof-title"><em>Beweis</em>. </span>Wir fangen mit der ersten Ableitung der Residuenquadratsumme nach <span class="math inline">\hat{\beta}_0</span> an.</p>
+<p><span class="math display">
+\begin{align*}
+\frac{\partial}{\partial \hat{\beta}_0} RSS(\hat{\beta}_0) &amp; =
+\sum_{i=1}^n 2(y_i - \hat{\beta}_0) \cdot (-1) \\
+&amp; = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0) \\
+&amp; = -2 \sum_{i=1}^n y_i + 2 \sum_{i=1}^n \hat{\beta}_0 \\
+&amp; = -2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0
+\end{align*}
+</span></p>
+<p>Im Minimum ist die Ableitung gleich 0.</p>
+<p><span class="math display">
+\begin{align*}
+-2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0 &amp; = 0 \\
+\hat{\beta}_0 &amp; = \frac{1}{n} \sum_{i=1}^n y_i \\
+&amp; = \overline{y}
+\end{align*}
+</span></p>
+<p>Der optimale Wert von <span class="math inline">\hat{\beta}_0</span>, der die Residuenquadratsumme minimiert, ist eifach der Durchschnitt der beobachteten Werte.</p>
+</div>
+<section id="the-one-variable-case" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="the-one-variable-case"><span class="header-section-number">7.1</span> The one variable case</h2>
+<p>Now let us consider the case where we have two variables, <span class="math inline">\text{Invoices}_i</span> and <span class="math inline">\text{Time}_i</span>. We want to find the values of <span class="math inline">\hat{\beta}_0</span> and <span class="math inline">\hat{\beta}_1</span> that minimize the RSS.</p>
+<p>The prediction equation is</p>
+<p><span class="math display">
+\hat{y}_i = \hat{\beta}_0 + \hat{\beta}_1 x_i
+</span></p>
+<p>The RSS is (as above)</p>
+<p><span class="math display">
+\begin{align*}
+\text{RSS}(\hat{\beta}_0, \hat{\beta}_1) &amp; = \sum_{i=1}^n (y_i - \hat{y}_i)^2 \\
+  &amp; = \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i)^2
+\end{align*}
+</span></p>
+<p>The first order conditions for the minimum are</p>
+<p><span class="math display">
+\begin{align*}
+\frac{\partial}{\partial \hat{\beta}_0} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) &amp; = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) = 0 \\
+\frac{\partial}{\partial \hat{\beta}_1} \text{RSS}(\hat{\beta}_0, \hat{\beta}_1) &amp; = -2 \sum_{i=1}^n (y_i - \hat{\beta}_0 - \hat{\beta}_1 x_i) x_i = 0
+\end{align*}
+</span></p>
+<p>The first equation gives</p>
+<p><span class="math display">
+\begin{align*}
+\sum_{i=1}^n y_i - \hat{\beta}_0 n - \hat{\beta}_1 \sum_{i=1}^n x_i &amp; = 0 \\
+\hat{\beta}_0 n + \hat{\beta}_1 \sum_{i=1}^n x_i &amp; = \sum_{i=1}^n y_i \\
+\hat{\beta}_0 &amp; = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+</span></p>
+<p>The second equation gives</p>
+<p><span class="math display">
+\begin{align*}
+\sum_{i=1}^n y_i x_i - \hat{\beta}_0 \sum_{i=1}^n x_i - \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = 0 \\
+\hat{\beta}_0 \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = \sum_{i=1}^n y_i x_i \\
+\hat{\beta}_0 &amp; = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+</span></p>
+<p>Substituting the expression for <span class="math inline">\hat{\beta}_0</span> in the second equation, we get</p>
+<p><span class="math display">
+\begin{align*}
+(\overline{y} - \hat{\beta}_1 \overline{x}) \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = \sum_{i=1}^n y_i x_i \\
+\overline{y} \sum_{i=1}^n x_i - \hat{\beta}_1 \overline{x} \sum_{i=1}^n x_i + \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = \sum_{i=1}^n y_i x_i \\
+\hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = \sum_{i=1}^n y_i x_i - \overline{y} \sum_{i=1}^n x_i + \hat{\beta}_1 \overline{x} \sum_{i=1}^n x_i \\
+\hat{\beta}_1 &amp; = \frac{\sum_{i=1}^n y_i x_i - \overline{y} \sum_{i=1}^n x_i}{\sum_{i=1}^n x_i^2 - \overline{x} \sum_{i=1}^n x_i}
+\end{align*}
+</span></p>
+<p>Simplyfing the expression, we get</p>
+<p><span class="math display">
+\begin{align*}
+\hat{\beta}_1 &amp; = \frac{\overline{x y} - \overline{x} \cdot \overline{y}}{\overline{x^2} - \overline{x}^2} \\
+\hat{\beta}_0 &amp; = \overline{y} - \hat{\beta}_1 \overline{x}
+\end{align*}
+</span></p>
+<p>The last expression may seem a bit complicated, but it is actually quite simple. It is just the ratio between the empirical covariance between <span class="math inline">x_i</span> and <span class="math inline">y_i</span> divided by the variance of <span class="math inline">x_i</span>.</p>
+<p>The empirical covariance between <span class="math inline">x_i</span> and <span class="math inline">y_i</span> is defined as the sum of the products of the deviations of <span class="math inline">x_i</span> and <span class="math inline">y_i</span> from their respective means, divided by the number of observations.</p>
+<div id="def-covariance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.1 (Covariance)</strong></span> The covariance between two variables <span class="math inline">x</span> and <span class="math inline">y</span> with <span class="math inline">n</span> values is defined as</p>
+<p><span class="math display">
+S_{xy} = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})
+</span></p>
+</div>
+<div id="def-variance-decomposition" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.2 (Variance decomposition)</strong></span> We have already defined the variance of a variable <span class="math inline">x</span> as</p>
+<p><span class="math display">
+S_x^2 = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})^2
+</span></p>
+<p>It can be shown that the variance of <span class="math inline">x</span> can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.</p>
+<p><span class="math display">
+S_x^2 = \frac{1}{n  - 1}(\overline{x_i^2} - \overline{x}^2)
+</span></p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Beweis</em>. </span>The proof is straightforward. We have</p>
+<p><span class="math display">
+\begin{align*}
+(n - 1) S_x^2 &amp; =  \sum_{i=1}^n (x_i - \overline{x})^2 \\
+&amp; =  \sum_{i=1}^n (x_i^2 - 2x_i \overline{x} + \overline{x}^2) \\
+&amp; =  \sum_{i=1}^n x_i^2 - 2\overline{x} \sum_{i=1}^n x_i + \overline{x}^2 \sum_{i=1}^n 1 \\
+&amp; =  \sum_{i=1}^n x_i^2 - 2\overline{x} \sum_{i=1}^n x_i + \overline{x}^2 n \\
+&amp; =  \sum_{i=1}^n x_i^2 - 2\overline{x}^2 n + \overline{x}^2 n \\
+&amp; =  \sum_{i=1}^n x_i^2 - n \overline{x}^2 \\
+&amp; = n (\overline{x_i^2} - \overline{x}^2)
+\end{align*}
+</span></p>
+</div>
+<div id="def-covariance" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.3 (Covariance and Covariance decomposition)</strong></span> The covariance between two variables <span class="math inline">x</span> and <span class="math inline">y</span> with <span class="math inline">n</span> values is defined as</p>
+<p><span class="math display">
+S_{xy} = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})
+</span></p>
+<p>Much in the same way as the variance, the covariance can be decomposed into the sum of the squared mean and the variance of the deviations from the mean.</p>
+<p><span class="math display">
+(n - 1) S_{xy} = n(\overline{x y} - \overline{x} \overline{y})
+</span></p>
+<p>The proof is similar to the proof for the variance decomposition.</p>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Beweis</em>. </span>The proof is straightforward. We have</p>
+<p><span class="math display">
+\begin{align*}
+(n - 1) S_{xy} &amp; = \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y}) \\
+&amp; = \sum_{i=1}^n x_i y_i - \overline{x} \sum_{i=1}^n y_i - \overline{y} \sum_{i=1}^n x_i + n \overline{x} \overline{y} \\
+&amp; = n(\overline{x y} - \overline{x} \overline{y})
+\end{align*}
+</span></p>
+</div>
+<p>To understand what the covariance measures, consider the following scatterplot:</p>
+<div id="cell-28" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">0</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>plt.axvline(x.mean(), color<span class="op">=</span><span class="st">'firebrick'</span>, label<span class="op">=</span><span class="st">'Mittelwert von x'</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>plt.axhline(y.mean(), color<span class="op">=</span><span class="st">'steelblue'</span>, label<span class="op">=</span><span class="st">'Mittelwert von y'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="03-KQ-Methode_files/figure-html/cell-14-output-1.png" width="781" height="485" class="figure-img"></p>
+<p><img src="03-KQ-Methode_files/figure-html/cell-18-output-1.png" width="569" height="411" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-<section id="die-einfache-lineare-regression-in-matrixform" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="die-einfache-lineare-regression-in-matrixform"><span class="header-section-number">7.3</span> Die einfache lineare Regression in Matrixform</h2>
-<p>Unsere Modellgleichung, die wir für die Vorhersage der Bearbeitungszeit verwenden, war:</p>
+<p>Die rote Linie ist bei dem Durchschnitt der <span class="math inline">x</span>-Werte gezeichnet und die blaue Linie ist bei dem Durchschnitt der <span class="math inline">y</span>-Werte gezeichnet. Die Kovarianz misst das durchschnittliche Produkt der Abweichungen der <span class="math inline">x</span>- und $</p>
+<p>Die zwei Mittelwertgeraden teilen die Ebene in vier Quadranten. Wenn das Produkt positiv ist, bedeutet das, dass wenn <span class="math inline">x</span> über seinem Durchschnitt liegt, <span class="math inline">y</span> auch über seinem Durchschnitt liegt. Wenn das Produkt negativ ist, bedeutet das, dass wenn <span class="math inline">x</span> über seinem Durchschnitt liegt, <span class="math inline">y</span> unter seinem Durchschnitt liegt.</p>
+<div id="cell-30" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kovarianz von zwei NumPy-Arrays</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Achten Sie darauf, dass eine ganze Kovarianzmatrix zurückgegeben wird.</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Die Diagonalelemente sind die Varianzen der einzelnen Arrays.</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>np.cov(x, y)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<pre><code>array([[1.02608749, 2.16986562],
+       [2.16986562, 5.65646178]])</code></pre>
+</div>
+</div>
+<div id="cell-31" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>np.var(x, ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>1.0260874941564961</code></pre>
+</div>
+</div>
+<div id="cell-32" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.var(y, ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>5.656461778144082</code></pre>
+</div>
+</div>
+<p>Nur das <em>Vorzeichen</em> der Kovarianz ist wichtig. Die Größe der Kovarianz hängt von den Einheiten der Variablen ab. Um die Kovarianz dimensionslos zu machen, können wir sie durch das Produkt der Standardabweichungen der beiden Variablen teilen. Das gibt uns den Korrelationskoeffizienten.</p>
+<div id="cell-34" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>np.cov(x, <span class="dv">20</span> <span class="op">*</span> y)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>array([[1.02608749e+00, 4.33973123e+01],
+       [4.33973123e+01, 2.26258471e+03]])</code></pre>
+</div>
+</div>
+<p>Lasst uns auch ein Beispiel betrachten, wo die Kovarianz negativ ist. In dem folgenden Code ändern wir nur das Vorzeichen des Koeffizienten von <code>x</code> in der Gleichung von <code>y</code>.</p>
+<div id="cell-36" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">23</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> <span class="op">-</span> <span class="dv">2</span> <span class="op">*</span> x1 <span class="op">+</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(x1, y1, color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>plt.axvline(x1.mean(), color<span class="op">=</span><span class="st">'firebrick'</span>, label<span class="op">=</span><span class="st">'Mittelwert von x'</span>)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>plt.axhline(y1.mean(), color<span class="op">=</span><span class="st">'steelblue'</span>, label<span class="op">=</span><span class="st">'Mittelwert von y'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="03-KQ-Methode_files/figure-html/cell-23-output-1.png" width="569" height="411" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-37" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>np.cov(x1, y1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>array([[ 0.90312011, -1.81047309],
+       [-1.81047309,  4.67610569]])</code></pre>
+</div>
+</div>
+<div id="def-correlation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.4 (Korrelationskoeffizient)</strong></span> Der empirische Korrelationskoeffizient zwischen zwei Variablen <span class="math inline">x</span> und <span class="math inline">y</span> mit <span class="math inline">n</span> Werten ist definiert als</p>
 <p><span class="math display">
-\hat{\text{Time}} = \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}
+r_{xy} = \frac{S_{xy}}{S_x S_y}
 </span></p>
-<p>Nun wollen wir dieselbe Gleichung in Matrixform schreiben. Dazu schreiben wir diese Modellgleichung für alle Beobachtungen in unserem Datensatz auf:</p>
-<p><span class="math display">
-\begin{align*}
-\hat{\text{Time}}_1 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_1 \\
-\hat{\text{Time}}_2 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_2 \\
-\hat{\text{Time}}_3 &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_3 \\
-\vdots \\
-\hat{\text{Time}}_n &amp;= \hat{\beta}_0 + \hat{\beta}_1 \text{Rechnungen}_n \\
-\end{align*}
-</span></p>
-<p>Nun laßt uns die obigen Gleichungen in Matrixform schreiben.</p>
-$$
-<span class="math display">\begin{bmatrix}
-\hat{\text{Time}}_1 \\
-\hat{\text{Time}}_2 \\
-\hat{\text{Time}}_3 \\
-\vdots \\
-\hat{\text{Time}}_n \\
-\end{bmatrix}</span>
-=
-<span class="math display">\begin{bmatrix}
-1 &amp; \text{Rechnungen}_1 \\
-1 &amp; \text{Rechnungen}_2 \\
-1 &amp; \text{Rechnungen}_3 \\
-\vdots &amp; \vdots \\
-1 &amp; \text{Rechnungen}_n \\
-\end{bmatrix}
-\begin{bmatrix}
-\hat{\beta}_0 \\
-\hat{\beta}_1 \\
-\end{bmatrix}</span>
-<p>$$</p>
+<p>dabei ist <span class="math inline">S_{xy}</span> die Kovarianz zwischen <span class="math inline">x</span> und <span class="math inline">y</span>, und <span class="math inline">S_x</span> und <span class="math inline">S_y</span> sind die Standardabweichungen von <span class="math inline">x</span> und <span class="math inline">y</span>.</p>
+</div>
+<p>Weil die Kovarianz durch das Produkt der Standardabweichungen geteilt wird, ist der Korrelationskoeffizient dimensionslos. Außerdem ist der Korrelationskoeffizient immer zwischen -1 und 1. Ein Korrelationskoeffizient von 1 bedeutet, dass die beiden Variablen auf einer Geraden mit positiver Steigung liegen. Ein Korrelationskoeffizient von -1 bedeutet, dass die beiden Variablen auf einer Geraden mit negativer Steigung liegen. Ein Korrelationskoeffizient von 0 bedeutet, dass es keine <em>lineare</em> Assoziation zwischen den beiden Variablen gibt.</p>
+<div id="cell-39" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef(x, y)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>array([[1.        , 0.90067522],
+       [0.90067522, 1.        ]])</code></pre>
+</div>
+</div>
+<div id="cell-40" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef(x1, y1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>array([[ 1.        , -0.88100254],
+       [-0.88100254,  1.        ]])</code></pre>
+</div>
+</div>
 </section>
-<section id="scenarios" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="scenarios"><span class="header-section-number">7.4</span> Scenarios</h2>
-<p>Die Koeffizienten in Regressionsmodellen vergleichen verschiedene Szenarien. Es ist unsere Aufgabe, die Modelle so aufzustellen, dass wir sinnvolle Vergleiche anstellen können.</p>
-<p>Insbesonderen in Modellen mit Interaktionseffekten ist es wichtig, die Variablen zu skalieren (XXX, w), um den Koeffizienten eine sinnvolle Interpretation zu geben.</p>
-</section>
-<section id="anmerkung" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="anmerkung"><span class="header-section-number">7.5</span> Anmerkung</h2>
-<p>Die Variablen, die wir in den Modellen verwenden, nennen wir auch Prädiktoren</p>
-</section>
-<section id="interpretation" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">7.6</span> Interpretation</h2>
-<p>Es gibt zwei Interpretationen der Koeffizienten in Regressionsmodellen (XXX, check):</p>
-<ul>
-<li>Vorhersage:</li>
-</ul>
+<section id="übung" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="übung"><span class="header-section-number">7.2</span> Übung</h2>
+<p>Definieren Sie eine Funktion, die für zwei Numpy-Arrays die KQ-Koeffizienten berechnet und als eine Tupel zurückgibt.</p>
+<div id="cell-42" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span> <span class="op">*</span> x <span class="op">+</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="fl">1.5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-43" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ols_two_variable(x, y):</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-44" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>pd.DataFrame({<span class="st">'x'</span>: x, <span class="st">'y'</span>: y})).fit().params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>Intercept    0.847662
+x            2.153929
+dtype: float64</code></pre>
+</div>
+</div>
 
 
 </section>
