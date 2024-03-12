@@ -477,10 +477,10 @@ Abbildung&nbsp;7.1: Streudiagramm der Bearbeitungszeit der Rechnungen und der An
 <div id="cell-11" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategie 1</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>time_predicted1 <span class="op">=</span> np.repeat(df[<span class="st">'Time'</span>].mean(), <span class="bu">len</span>(df))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>time_predicted_avg <span class="op">=</span> df[<span class="st">'Time'</span>].mean()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>res_1 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted1</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>res_1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>res_avg <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted_avg</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>res_avg.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>0   -0.01
 1   -0.31
@@ -493,10 +493,10 @@ Name: Time, dtype: float64</code></pre>
 <div id="cell-12" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ein Modell, das die Anzahl der Rechnungen berücksichtigt:</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>time_predicted2 <span class="op">=</span> <span class="fl">0.6</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>time_predicted_eq1 <span class="op">=</span> <span class="fl">0.6</span> <span class="op">+</span> <span class="fl">0.01</span> <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res_2 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted2</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>res_2.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res_eq1 <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted_eq1</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>res_eq1.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>0    0.01
 1    0.60
@@ -511,9 +511,9 @@ dtype: float64</code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span>df[<span class="st">'Time'</span>].mean(), xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">300</span>, color<span class="op">=</span><span class="st">"red"</span>, label<span class="op">=</span><span class="vs">r"$\widehat</span><span class="sc">{Time}</span><span class="vs"> = 2.2$"</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>ax.axhline(y<span class="op">=</span>time_predicted_avg, xmin<span class="op">=</span><span class="dv">0</span>, xmax<span class="op">=</span><span class="dv">300</span>, color<span class="op">=</span><span class="st">"firebrick"</span>, label<span class="op">=</span><span class="vs">r"$\widehat</span><span class="sc">{Time}</span><span class="vs"> = 2.2$"</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted1, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">"red"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted_avg, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">"red"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -527,9 +527,9 @@ dtype: float64</code></pre>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(data<span class="op">=</span>df, x<span class="op">=</span><span class="st">"Invoices"</span>, y<span class="op">=</span><span class="st">"Time"</span>, ax<span class="op">=</span>ax)</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">"Invoices"</span>], time_predicted2, <span class="st">"-"</span>, label<span class="op">=</span><span class="vs">r"$\widehat</span><span class="sc">{Time}</span><span class="vs"> = 0.6 + 0.01 \cdot \text</span><span class="sc">{Invoices}</span><span class="vs">$"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>ax.plot(df[<span class="st">"Invoices"</span>], time_predicted_eq1, <span class="st">"-"</span>, label<span class="op">=</span><span class="vs">r"$\widehat</span><span class="sc">{Time}</span><span class="vs"> = 0.6 + 0.01 \cdot \text</span><span class="sc">{Invoices}</span><span class="vs">$"</span>)</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted2, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">"red"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>ax.vlines(x<span class="op">=</span>df[<span class="st">"Invoices"</span>], ymin<span class="op">=</span>time_predicted_eq1, ymax<span class="op">=</span>df[<span class="st">"Time"</span>], color<span class="op">=</span><span class="st">"red"</span>, alpha<span class="op">=</span><span class="fl">0.2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
