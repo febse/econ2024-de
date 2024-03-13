@@ -483,6 +483,9 @@ Abbildung&nbsp;7.1: Streudiagramm der Bearbeitungszeit der Rechnungen und der An
 <p>Wie können wir die Zeit vorhersagen, die benötigt wird, um eine gegebene Anzahl von Rechnungen zu bearbeiten? Die roten vertikalen Geraden in <a href="#fig-invoices-scatter" class="quarto-xref">Abbildung&nbsp;<span>7.1</span></a> sind bei 50, 120, 201, 250, 400. Für diese Anzahlen von Rechnungen wollen wir die Bearbeitungszeit vorhersagen.</p>
 <p><strong>Strategie 1</strong></p>
 <p>Eine einfache Methode wäre, die Bearbeitungszeit einfach mit der durchschnittlichen Bearbeitungszeit vorherzusagen.</p>
+<p><span class="math display">
+\widehat{\text{Time}}^{avg} = \overline{\text{Time}}
+</span></p>
 <p><strong>Strategie 2</strong></p>
 <p>Eine andere Möglichkeit wäre, eine Gleichung zu unterstellen, um die Anzahl der Rechnungen zu berücksichtigen. Eine lineare Gleichung könnte z.B. so aussehen (die Koeffizienten sind hier nur Beispiele, es gibt keine konkrete Rechtfertigung für diese Werte):</p>
 <p><span class="math display">
@@ -607,6 +610,8 @@ dtype: float64</code></pre>
 </div>
 <p>Lasst uns die Residuenquadratsumme für verschiedene Werte der Koeffizienten berechnen und die Ergebnisse graphisch darstellen. Wir werden die Residuenquadratsumme als Funktion der Koeffizienten in einem 3D-Diagramm darstellen.</p>
 <div id="cell-25" class="cell" data-execution_count="16">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: der Code ist nur da, um die RSS zu berechnen und zu visualisieren.</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sie müssen ihn nicht studieren oder verstehen</span></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -632,6 +637,7 @@ dtype: float64</code></pre>
 <span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$\hat{\beta}_0$"</span>)</span>
 <span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\hat{\beta}_1$"</span>)</span>
 <span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'RSS'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>Text(0.5, 0, 'RSS')</code></pre>
 </div>
