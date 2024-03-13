@@ -18,7 +18,7 @@ book:
         - 01-Python/01-03-Numpy.ipynb
         - 01-Python/01-04-Pandas.ipynb
         - 01-Python/01-05-Pandas-Ex.ipynb
-    - 02-Descriptive-Statistics.ipynb
+    - 02-Deskriptive-Statistik.ipynb
     - 03-KQ-Methode.ipynb
     #     - 02-Review/02-Probability.ipynb
     # - part: "Einfache Lineare Regression"
