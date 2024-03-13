@@ -1,5 +1,5 @@
 
-# Literatur {.unnumbered}
+# Empfohlene Literatur {.unnumbered}
 
 1. @JAMES2023IntroductionStatisticalLearning
 

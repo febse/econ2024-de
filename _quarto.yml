@@ -34,6 +34,10 @@ book:
     # - 05-Hypothesis-Testing-and-CI.qmd
     - Literature.qmd
     - references.qmd
+  appendices:
+    - Appendices/02-Random-Variables.ipynb
+    - Appendices/03-Die-Normalverteilung.ipynb
+
 
 bibliography: references.bib
 
