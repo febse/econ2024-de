@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./Literature.html" rel="next">
-<link href="./02-Descriptive-Statistics.html" rel="prev">
+<link href="./02-Deskriptive-Statistik.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -235,7 +235,7 @@ window.Quarto = {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-Descriptive-Statistics.html" class="sidebar-item-text sidebar-link">
+  <a href="./02-Deskriptive-Statistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
   </div>
 </li>
@@ -248,7 +248,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Literature.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Literatur</span></a>
+ <span class="menu-text">Empfohlene Literatur</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -257,6 +257,29 @@ window.Quarto = {
  <span class="menu-text">Literaturverzeichnis</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Anhang</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Appendices/02-Random-Variables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diskrete Zufallsvariablen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Appendices/03-Die-Normalverteilung.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Die Normalverteilung</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -594,26 +617,21 @@ dtype: float64</code></pre>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    np.linspace(<span class="fl">0.0113</span> <span class="op">-</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="fl">0.0113</span> <span class="op">+</span> <span class="fl">0.0113</span> <span class="op">*</span> exp_f, <span class="dv">100</span>)</span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># bb0, bb1 = np.meshgrid(</span></span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.7 , 0.7, 100),</span></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#     np.linspace(-0.01, 0.01, 100)</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>rss <span class="op">=</span> np.zeros_like(bb0)</span>
-<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">0</span>]):</span>
-<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">1</span>]):</span>
-<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>        time_predicted <span class="op">=</span> bb0[i, j] <span class="op">+</span> bb1[i, j] <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
-<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted</span>
-<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>        rss[i, j] <span class="op">=</span> np.<span class="bu">sum</span>(res<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
-<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(bb0, bb1, rss, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
-<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$\hat{\beta}_0$"</span>)</span>
-<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\hat{\beta}_1$"</span>)</span>
-<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'RSS'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>rss <span class="op">=</span> np.zeros_like(bb0)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">0</span>]):</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(bb0.shape[<span class="dv">1</span>]):</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>        time_predicted <span class="op">=</span> bb0[i, j] <span class="op">+</span> bb1[i, j] <span class="op">*</span> df[<span class="st">'Invoices'</span>]</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>        res <span class="op">=</span> df[<span class="st">'Time'</span>] <span class="op">-</span> time_predicted</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>        rss[i, j] <span class="op">=</span> np.<span class="bu">sum</span>(res<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> fig.add_subplot(<span class="dv">111</span>, projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>ax.plot_surface(bb0, bb1, rss, cmap<span class="op">=</span><span class="st">'viridis'</span>)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="vs">r"$\hat{\beta}_0$"</span>)</span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="vs">r"$\hat{\beta}_1$"</span>)</span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'RSS'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>Text(0.5, 0, 'RSS')</code></pre>
 </div>
@@ -649,7 +667,7 @@ dtype: float64</code></pre>
 &amp; = -2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0
 \end{align*}
 </span></p>
-<p>Im Minimum ist die Ableitung gleich 0.</p>
+<p>Die notwendige Bedingung für ein Extremum (Minimum oder Maximum) ist, daß die erste Ableitung gleich Null ist.</p>
 <p><span class="math display">
 \begin{align*}
 -2 \sum_{i=1}^n y_i + 2 n \hat{\beta}_0 &amp; = 0 \\
@@ -1307,13 +1325,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-Descriptive-Statistics.html" class="pagination-link" aria-label="Deskriptive Statistik">
+      <a href="./02-Deskriptive-Statistik.html" class="pagination-link" aria-label="Deskriptive Statistik">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Literature.html" class="pagination-link" aria-label="Literatur">
-        <span class="nav-page-text">Literatur</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Literature.html" class="pagination-link" aria-label="Empfohlene Literatur">
+        <span class="nav-page-text">Empfohlene Literatur</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
