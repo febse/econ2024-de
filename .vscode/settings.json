@@ -25,6 +25,8 @@
     "boyko",
     "Boyko",
     "codespaces",
+    "countplot",
+    "ddof",
     "debugpy",
     "github",
     "hosten",
@@ -32,12 +34,20 @@
     "ipynb",
     "jupyter",
     "katex",
+    "kdeplot",
     "Kursrepositories",
     "Kursrepository",
     "Miniconda",
     "Numpy",
+    "plotly",
+    "quantile",
     "Regressionsmodell",
     "Residuenquadratsumme",
-    "toolsai"
+    "scatterplot",
+    "stripplot",
+    "toolsai",
+    "xlabel",
+    "xlim",
+    "ylabel"
   ]
 }
