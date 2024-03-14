@@ -17,4 +17,7 @@ dependencies:
   - pyyaml
   - jupyter
   - tabulate
+  - pip
+  - pip:
+    - otter-grader
 prefix: /home/amarov/anaconda3/envs/econ2024
