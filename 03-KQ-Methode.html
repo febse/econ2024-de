@@ -770,7 +770,9 @@ Beweis
 \begin{align*}
 -2 \sum_{i=1}^n x_i y_i + 2 \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = 0 \\
 \hat{\beta}_1 \sum_{i=1}^n x_i^2 &amp; = \sum_{i=1}^n x_i y_i \\
-\hat{\beta}_1 &amp; = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2}
+\hat{\beta}_1 &amp; = \frac{\sum_{i=1}^n x_i y_i}{\sum_{i=1}^n x_i^2} \\
+&amp; = \frac{\frac{1}{n}\sum_{i=1}^n x_i y_i}{\frac{1}{n}\sum_{i=1}^n x_i^2} \\
+&amp; = \frac{\overline{x y}}{\overline{x^2}}
 \end{align*}
 </span></p>
 </section>
@@ -917,8 +919,7 @@ Beweis
 </div>
 </div>
 </div>
-<p>Die rote Linie ist bei dem Durchschnitt der <span class="math inline">x</span>-Werte gezeichnet und die blaue Linie ist bei dem Durchschnitt der <span class="math inline">y</span>-Werte gezeichnet. Die Kovarianz misst das durchschnittliche Produkt der Abweichungen der <span class="math inline">x</span>- und $</p>
-<p>Die zwei Mittelwertgeraden teilen die Ebene in vier Quadranten. Wenn das Produkt positiv ist, bedeutet das, dass wenn <span class="math inline">x</span> über seinem Durchschnitt liegt, <span class="math inline">y</span> auch über seinem Durchschnitt liegt. Wenn das Produkt negativ ist, bedeutet das, dass wenn <span class="math inline">x</span> über seinem Durchschnitt liegt, <span class="math inline">y</span> unter seinem Durchschnitt liegt.</p>
+<p>Die rote Linie ist bei dem Durchschnitt der <span class="math inline">x</span>-Werte gezeichnet und die blaue Linie ist bei dem Durchschnitt der <span class="math inline">y</span>-Werte gezeichnet. Die Kovarianz misst das durchschnittliche Produkt der Abweichungen der <span class="math inline">x</span>-Werte von ihrem Durchschnitt und der <span class="math inline">y</span>-Werte von ihrem Durchschnitt. Das Produkt ist positiv, wenn die <span class="math inline">x</span>-Werte und die <span class="math inline">y</span>-Werte gleichzeitig über oder unter ihren Durchschnitten liegen. Das Produkt ist negativ, wenn die <span class="math inline">x</span>-Werte über ihrem Durchschnitt liegen, während die <span class="math inline">y</span>-Werte unter ihrem Durchschnitt liegen, oder umgekehrt.</p>
 <div id="cell-27" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Kovarianz von zwei NumPy-Arrays</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Achten Sie darauf, dass eine ganze Kovarianzmatrix zurückgegeben wird.</span></span>
