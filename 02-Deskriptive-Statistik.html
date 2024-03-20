@@ -829,7 +829,9 @@ Name: count, dtype: int64</code></pre>
 <h2 data-number="6.6" class="anchored" data-anchor-id="aufgabe"><span class="header-section-number">6.6</span> Aufgabe</h2>
 <p>Berechnen Sie den BMI (Body Mass Index) für die Kunden. Der BMI ist definiert als das Körpergewicht in Kilogramm geteilt durch das Quadrat der Größe in Metern. Das Gewicht muss in Kilogramm und die Größe in Metern sein.</p>
 <div id="cell-40" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Spalte "bmi" in dem Dataframe "customers", die den Body Mass Index berechnet.</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Spalte "bmi" in dem Dataframe "customers", die den Body Mass Index berechnet.</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"bmi"</span>] <span class="op">=</span> customers[<span class="st">"weight"</span>] <span class="op">/</span> (customers[<span class="st">"height"</span>] <span class="op">/</span> <span class="dv">100</span>) <span class="op">**</span> <span class="dv">2</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Die <a href="https://www.cdc.gov/healthyweight/assessing/index.html">Referenzwerte</a> für den BMI sind:</p>
 <ul>
@@ -841,36 +843,56 @@ Name: count, dtype: int64</code></pre>
 <li><p>Ein anderer Verkäufer behauptet, daß mehr als ein Viertel der Besucher im Einkaufszentrum adipös sind. Überprüfen Sie diese Behauptung anhand der Daten.</p></li>
 </ul>
 <div id="cell-42" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie den durchschnittlichen BMI</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie den durchschnittlichen BMI</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"bmi"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>351.1234041165582</code></pre>
+</div>
 </div>
 <div id="cell-43" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lassen Sie sich die Beschreibung der Spalte "bmi" anzeigen. (Tipp: Verwenden Sie die Methode .describe() der Spalte "bmi").</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lassen Sie sich die Beschreibung der Spalte "bmi" anzeigen. (Tipp: Verwenden Sie die Methode .describe() der Spalte "bmi").</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"bmi"</span>].describe()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>count    1789.000000
+mean      351.123404
+std        65.866606
+min       163.265306
+25%       307.478675
+50%       340.136054
+75%       378.703497
+max       761.862330
+Name: bmi, dtype: float64</code></pre>
+</div>
 </div>
 <p>Erstellen Sie eine neue Spalte <code>is_underweight</code> in der Tabelle <code>customers</code>, die angibt, ob ein Kunde untergewichtig ist oder nicht. Erstellen Sie eine weitere Spalte <code>is_normal</code> in der Tabelle <code>customers</code>, die angibt, ob ein Kunde ein Normalgewicht hat oder nicht.</p>
 <p><em>Hinweis</em>: Sie können diese Variable mit den logischen Operatoren <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code> und <code>==</code> erstellen. Logische Operationen können Sie mit den Operatoren <code>&amp;</code> (und), <code>|</code> (oder) und <code>~</code> (nicht) verknüpfen (Hinweis: hier brauchen Sie <code>und</code>).</p>
 <div id="cell-45" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die zwei Variablen hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die zwei Variablen hier</span></span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"is_overweight"</span>] <span class="op">=</span> customers[<span class="st">"bmi"</span>] <span class="op">&gt;</span> <span class="dv">25</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Wie viele Kunden sind untergewichtig? Wie viele Kunden haben ein Normalgewicht? <em>Hinweis</em>: Benutzen Sie die Methode <code>value_counts</code> um die Anzahl der Kunden in jeder Kategorie zu berechnen. Sie können auch die Methode <code>sum</code> benutzen, um die Anzahl der Kunden in einer Kategorie zu berechnen.</p>
 <div id="cell-47" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wie viele Kunden sind untergewichtig?</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a) mit .value_counts()</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b) mit .sum()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wie viele Kunden sind untergewichtig?</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="co"># a) mit .value_counts()</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co"># b) mit .sum()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Erstellen Sie eine neue Spalte <code>bmi_category</code> in der Tabelle <code>customers</code>, die die Kategorie des BMI angibt (Untergewicht, Normalgewicht, Übergewicht, Adipositas). <em>Hinweis</em>: Sie können diese Variable mit der Funktion <code>pd.cut</code> erstellen.</p>
 <div id="cell-49" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie `bmi_category` hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie `bmi_category` hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Visualisieren Sie die Verteilung der Kategorien des BMI. <em>Hinweis</em>: Benutzen Sie die Funktion <code>sns.countplot</code> aus der Bibliothek <code>seaborn</code>.</p>
 <div id="cell-51" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Graphik hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Graphik hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Nun möchten Wir die Verteilung des BMI für Männer und Frauen vergleichen. Berechnen Sie den Mittelwert des BMI für Männer und Frauen. <em>Hinweis</em>: Sie können die Methode <code>groupby</code> benutzen, um die Mittelwerte für verschiedene Gruppen zu berechnen.</p>
 <div id="cell-53" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als Beispiel für die Benutzung von .groupby() werden hier die Mittelwerte des Alters für jede Ethnie berechnet</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>customers.groupby(<span class="st">"ethnicity"</span>)[<span class="st">"age"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Als Beispiel für die Benutzung von .groupby() werden hier die Mittelwerte des Alters für jede Ethnie berechnet</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>customers.groupby(<span class="st">"ethnicity"</span>)[<span class="st">"age"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>ethnicity
 Black       41.733333
@@ -881,15 +903,15 @@ Name: age, dtype: float64</code></pre>
 </div>
 </div>
 <div id="cell-54" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie die Mittelwerte des BMI für Männer und Frauen.</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie die Mittelwerte des BMI für Männer und Frauen.</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-55" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vergleichen Sie die Verteilungen des BMI für Männer und Frauen mit einem Boxplot.</span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Bevor wir die Boxplots erstellen, müssen wir die Variable "male" in eine kategorische Variable umwandeln. Die neue Variable nenne wir "sex"</span></span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"sex"</span>] <span class="op">=</span> pd.Categorical(customers[<span class="st">"male"</span>], ordered<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Boxplots hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Vergleichen Sie die Verteilungen des BMI für Männer und Frauen mit einem Boxplot.</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Bevor wir die Boxplots erstellen, müssen wir die Variable "male" in eine kategorische Variable umwandeln. Die neue Variable nenne wir "sex"</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>customers[<span class="st">"sex"</span>] <span class="op">=</span> pd.Categorical(customers[<span class="st">"male"</span>], ordered<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Erstellen Sie die Boxplots hier</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
