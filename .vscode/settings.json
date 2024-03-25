@@ -42,6 +42,7 @@
     "Kovarianzmatrix",
     "Kursrepositories",
     "Kursrepository",
+    "linalg",
     "Miniconda",
     "Numpy",
     "plotly",
