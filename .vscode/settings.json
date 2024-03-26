@@ -42,6 +42,7 @@
     "Kovarianzmatrix",
     "Kursrepositories",
     "Kursrepository",
+    "linestyle",
     "Miniconda",
     "Numpy",
     "plotly",
@@ -51,10 +52,14 @@
     "scatterplot",
     "steelblue",
     "stripplot",
+    "textcoords",
     "toolsai",
     "vlines",
+    "widehat",
     "xlabel",
     "xlim",
-    "ylabel"
+    "xytext",
+    "ylabel",
+    "ylim"
   ]
 }
