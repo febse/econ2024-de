@@ -43,6 +43,7 @@
     "Kursrepositories",
     "Kursrepository",
     "linestyle",
+    "linalg",
     "Miniconda",
     "Numpy",
     "plotly",
