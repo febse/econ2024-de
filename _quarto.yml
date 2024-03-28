@@ -37,6 +37,7 @@ book:
   appendices:
     - Appendices/02-Random-Variables.ipynb
     - Appendices/03-Die-Normalverteilung.ipynb
+    - Appendices/04-LA.ipynb
 
 
 bibliography: references.bib
