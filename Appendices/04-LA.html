@@ -588,7 +588,7 @@ v + w = \begin{pmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{pmatr
 <p>wobei <span class="math inline">\|\vec{a}\|</span> die Länge des Vektors <span class="math inline">\vec{a}</span> ist und <span class="math inline">\theta</span> der Winkel zwischen den beiden Vektoren ist.</p>
 <p>Daraus folgt:</p>
 <p><span class="math display">\cos(\theta) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \cdot \|\vec{b}\|}</span></p>
-<div id="cell-21" class="cell" data-execution_count="12">
+<div id="cell-22" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">4</span>])</span>
@@ -629,12 +629,12 @@ v + w = \begin{pmatrix} v_1 + w_1 \\ v_2 + w_2 \\ \vdots \\ v_n + w_n \end{pmatr
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04-LA_files/figure-html/cell-13-output-2.png" width="576" height="429" class="figure-img"></p>
+<p><img src="04-LA_files/figure-html/cell-14-output-2.png" width="576" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="13">
+<div id="cell-23" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.dot(b <span class="op">-</span> c, a <span class="op">-</span> proj_a_bc)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>0.0</code></pre>
@@ -707,7 +707,7 @@ a^T a - 2 a^T b + b^T b &amp; = |a|^2 + |b|^2 - 2|a||b|\cos(\theta) \\
 a^Tb &amp; = |a||b|\cos(\theta)
 \end{align*}
 </span></p>
-<div id="cell-25" class="cell" data-execution_count="14">
+<div id="cell-26" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>])</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>(x1<span class="op">**</span><span class="dv">2</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -715,7 +715,7 @@ a^Tb &amp; = |a||b|\cos(\theta)
 <pre><code>5</code></pre>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="15">
+<div id="cell-27" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>np.linalg.norm(x1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>2.23606797749979</code></pre>
