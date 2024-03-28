@@ -278,6 +278,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Die Normalverteilung</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Appendices/04-LA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Elemente der Linearen Algebra</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -1084,7 +1090,7 @@ r_{xy} = \frac{S_{xy}}{S_x S_y}
 <p>Weil die Kovarianz durch das Produkt der Standardabweichungen geteilt wird, ist der Korrelationskoeffizient dimensionslos. Außerdem ist der Korrelationskoeffizient immer zwischen -1 und 1. Ein Korrelationskoeffizient von 1 bedeutet, dass die beiden Variablen auf einer Geraden mit positiver Steigung liegen. Ein Korrelationskoeffizient von -1 bedeutet, dass die beiden Variablen auf einer Geraden mit negativer Steigung liegen. Ein Korrelationskoeffizient von 0 bedeutet, dass es keine <em>lineare</em> Assoziation zwischen den beiden Variablen gibt.</p>
 <p>Zusammengefasst:</p>
 <p><span class="math display">
--1 \geq r_{xy} \leq 1
+-1 \leq r_{xy} \leq 1
 </span></p>
 <p><span class="math display">
 y = a + b x \implies r_{xy} = 1, \quad b &gt; 0
@@ -1092,6 +1098,43 @@ y = a + b x \implies r_{xy} = 1, \quad b &gt; 0
 <p><span class="math display">
 y = a - b x \implies r_{xy} = -1, \quad b &gt; 0
 </span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wieso ist der Korrelationskoeffizient immer zwischen -1 und 1?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Für den Beweis werden wir zuerst zeigen, dass sich die Skalierungsfaktoren im Zähler und im Nenner der Definition des Korrelationskoeffizienten kürzen.</p>
+<p><span class="math display">
+\begin{align*}
+r_{xy} &amp; = \frac{S_{xy}}{S_x S_y} \\
+    &amp; = \frac{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\frac{1}{n-1} \sum_{i=1}^n (y_i - \overline{y})^2}} \\
+    &amp; = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\sum_{i=1}^n (y_i - \overline{y})^2}}
+\end{align*}
+</span></p>
+<p>Für den Beweis brauchen wir zuerst die Cauchy-Schwarz-Ungleichung. Diese Ungleichung besagt, dass das Quadrat des Skalarprodukts zweier Vektoren kleiner oder gleich dem Produkt der Längen der beiden Vektoren ist. Für einen Beweis der Cauchy-Schwarz-Ungleichung siehe <a href="Appendices/04-LA.html#thm-cauchy-schwarz-inequality" class="quarto-xref">Theorem&nbsp;<span>C.1</span></a>.</p>
+<p>Betrachten wir die Vektoren <span class="math inline">x</span> und <span class="math inline">y</span> als Vektoren im <span class="math inline">n</span>-dimensionalen Raum. Der Korrelationskoeffizient ist definiert als</p>
+<p><span class="math display">
+x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}, \quad y = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_n \end{pmatrix}
+</span></p>
+<p>Es ist einfacher zu rechnen, wenn die Vektoren zentriert sind. Das bedeutet, dass wir die Mittelwerte von <span class="math inline">x</span> und <span class="math inline">y</span> von den Vektoren abziehen.</p>
+<p><span class="math display">
+x^{*} = \begin{pmatrix} x_1 - \overline{x} \\ x_2 - \overline{x} \\ \vdots \\ x_n - \overline{x} \end{pmatrix}, \quad y^{*} = \begin{pmatrix} y_1 - \overline{y} \\ y_2 - \overline{y} \\ \vdots \\ y_n - \overline{y} \end{pmatrix}
+</span></p>
+<p>Die Kovarianz ist dann einfach das Skalarprodukt der zentrierten Vektoren multipliziert mit <span class="math inline">1/(n-1)</span>.</p>
+<p><span class="math display">
+S_xy = \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y}) = \frac{1}{n-1} x^{*T} y^{*}
+</span></p>
+<p>Die Standardabweichungen sind die Längen der zentrierten Vektoren.</p>
+</div>
+</div>
+</div>
 <div id="cell-39" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>np.corrcoef(x, y)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
