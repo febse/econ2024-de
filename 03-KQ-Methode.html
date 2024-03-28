@@ -672,7 +672,7 @@ MSE (Strategie 2): 0.15448999999999996</code></pre>
 </figure>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-invoices-rss-2" class="quarto-figure quarto-figure-center quarto-float anchored" height="398" width="410">
+<div id="fig-invoices-rss-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="410" height="398">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-invoices-rss-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="03-KQ-Methode_files/figure-html/fig-invoices-rss-output-2.png" id="fig-invoices-rss-2" data-ref-parent="fig-invoices-rss" width="410" height="398" class="figure-img">
@@ -734,7 +734,7 @@ Abbildung&nbsp;7.4
 </figure>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-invoices-rss-beta0-2" class="quarto-figure quarto-figure-center quarto-float anchored" height="437" width="592">
+<div id="fig-invoices-rss-beta0-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="592" height="437">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-invoices-rss-beta0-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="03-KQ-Methode_files/figure-html/fig-invoices-rss-beta0-output-2.png" id="fig-invoices-rss-beta0-2" data-ref-parent="fig-invoices-rss-beta0" width="592" height="437" class="figure-img">
@@ -1110,11 +1110,12 @@ Wieso ist der Korrelationskoeffizient immer zwischen -1 und 1?
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Für den Beweis werden wir zuerst zeigen, dass sich die Skalierungsfaktoren im Zähler und im Nenner der Definition des Korrelationskoeffizienten kürzen.</p>
+<p>Für den Beweis werden wir zuerst zeigen, dass sich die Skalierungsfaktoren <span class="math inline">1 / (n - 1)</span> im Zähler und im Nenner der Definition des Korrelationskoeffizienten kürzen.</p>
 <p><span class="math display">
 \begin{align*}
 r_{xy} &amp; = \frac{S_{xy}}{S_x S_y} \\
     &amp; = \frac{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\frac{1}{n-1} \sum_{i=1}^n (y_i - \overline{y})^2}} \\
+    &amp; = \frac{\frac{1}{n - 1}}{\frac{1}{n - 1}}\frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\sum_{i=1}^n (y_i - \overline{y})^2}} \\
     &amp; = \frac{\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\sum_{i=1}^n (y_i - \overline{y})^2}}
 \end{align*}
 </span></p>
@@ -1125,13 +1126,16 @@ x = \begin{pmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{pmatrix}, \quad y = \begin{
 </span></p>
 <p>Es ist einfacher zu rechnen, wenn die Vektoren zentriert sind. Das bedeutet, dass wir die Mittelwerte von <span class="math inline">x</span> und <span class="math inline">y</span> von den Vektoren abziehen.</p>
 <p><span class="math display">
-x^{*} = \begin{pmatrix} x_1 - \overline{x} \\ x_2 - \overline{x} \\ \vdots \\ x_n - \overline{x} \end{pmatrix}, \quad y^{*} = \begin{pmatrix} y_1 - \overline{y} \\ y_2 - \overline{y} \\ \vdots \\ y_n - \overline{y} \end{pmatrix}
+x^{*} = x - \overline{x} = \begin{pmatrix} x_1 - \overline{x} \\ x_2 - \overline{x} \\ \vdots \\ x_n - \overline{x} \end{pmatrix}, \quad y^{*}  = y - \overline{y}= \begin{pmatrix} y_1 - \overline{y} \\ y_2 - \overline{y} \\ \vdots \\ y_n - \overline{y} \end{pmatrix}
 </span></p>
-<p>Die Kovarianz ist dann einfach das Skalarprodukt der zentrierten Vektoren multipliziert mit <span class="math inline">1/(n-1)</span>.</p>
+<p>Das Skalarprodukt der zentrierten Vektoren ist dann einfach die Summe im Zähler der Definition des Korrelationskoeffizienten.</p>
 <p><span class="math display">
-S_xy = \sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y}) = \frac{1}{n-1} x^{*T} y^{*}
+\sum_{i=1}^n (x_i - \overline{x})(y_i - \overline{y}) = x^{*T} y^{*}
 </span></p>
-<p>Die Standardabweichungen sind die Längen der zentrierten Vektoren.</p>
+<p>Nun schauen wir uns den Nenner an. Der Nenner ist das Produkt der Längen der zentrierten Vektoren.</p>
+<p><span class="math display">
+\sqrt{\sum_{i=1}^n (x_i - \overline{x})^2} \sqrt{\sum_{i=1}^n (y_i - \overline{y})^2} = ||x^{*}|| \cdot ||y^{*}||
+</span></p>
 </div>
 </div>
 </div>
@@ -1331,7 +1335,7 @@ dtype: float64</code></pre>
 </figure>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-vec-proj-2" class="quarto-figure quarto-figure-center quarto-float anchored" height="411" width="571">
+<div id="fig-vec-proj-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="571" height="411">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-vec-proj-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="03-KQ-Methode_files/figure-html/fig-vec-proj-output-2.png" id="fig-vec-proj-2" data-ref-parent="fig-vec-proj" width="571" height="411" class="figure-img">
