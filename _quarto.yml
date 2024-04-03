@@ -20,6 +20,7 @@ book:
         - 01-Python/01-05-Pandas-Ex.ipynb
     - 02-Deskriptive-Statistik.ipynb
     - 03-KQ-Methode.ipynb
+    - 04-Diskrete-Verteilungen.ipynb
     #     - 02-Review/02-Probability.ipynb
     # - part: "Einfache Lineare Regression"
     #   chapters:
