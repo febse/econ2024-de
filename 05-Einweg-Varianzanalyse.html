@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Einführung in die Ökonometrie - 2&nbsp; Übung: Python Basics</title>
+<title>Einführung in die Ökonometrie - 10&nbsp; ANOVA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../01-Python/01-03-Numpy.html" rel="next">
-<link href="../01-Python/01-01-Basics.html" rel="prev">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Literature.html" rel="next">
+<link href="./04b-Stetige-Verteilungen.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -68,7 +102,53 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Suchen"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -81,7 +161,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-Python/01-01-Basics.html">Einführung in Python</a></li><li class="breadcrumb-item"><a href="../01-Python/01-02-Basics-Ex.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Übung: Python Basics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-Einweg-Varianzanalyse.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ANOVA</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -96,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">Einführung in die Ökonometrie</a> 
+      <a href="./">Einführung in die Ökonometrie</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -108,7 +188,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Setup</span></a>
   </div>
 </li>
@@ -123,31 +203,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-Python/01-01-Basics.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-Python/01-01-Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-Python/01-02-Basics-Ex.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01-Python/01-02-Basics-Ex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Übung: Python Basics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-Python/01-03-Numpy.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-Python/01-03-Numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">NumPy</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-Python/01-04-Pandas.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-Python/01-04-Pandas.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Pandas</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../01-Python/01-05-Pandas-Ex.html" class="sidebar-item-text sidebar-link">
+  <a href="./01-Python/01-05-Pandas-Ex.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Übung zu Pandas</span></span></a>
   </div>
 </li>
@@ -155,43 +235,43 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02-Deskriptive-Statistik.html" class="sidebar-item-text sidebar-link">
+  <a href="./02-Deskriptive-Statistik.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Deskriptive Statistik</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../03-KQ-Methode.html" class="sidebar-item-text sidebar-link">
+  <a href="./03-KQ-Methode.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Die KQ-Methode</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04a-Diskrete-Verteilungen.html" class="sidebar-item-text sidebar-link">
+  <a href="./04a-Diskrete-Verteilungen.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Diskrete Verteilungen</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../04b-Stetige-Verteilungen.html" class="sidebar-item-text sidebar-link">
+  <a href="./04b-Stetige-Verteilungen.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Die Gleichverteilung auf \[-1, 1\]</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05-Einweg-Varianzanalyse.html" class="sidebar-item-text sidebar-link">
+  <a href="./05-Einweg-Varianzanalyse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ANOVA</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Literature.html" class="sidebar-item-text sidebar-link">
+  <a href="./Literature.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Empfohlene Literatur</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literaturverzeichnis</span></a>
   </div>
 </li>
@@ -206,19 +286,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendices/02-Random-Variables.html" class="sidebar-item-text sidebar-link">
+  <a href="./Appendices/02-Random-Variables.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diskrete Zufallsvariablen</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendices/03-Die-Normalverteilung.html" class="sidebar-item-text sidebar-link">
+  <a href="./Appendices/03-Die-Normalverteilung.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Die Normalverteilung</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../Appendices/04-LA.html" class="sidebar-item-text sidebar-link">
+  <a href="./Appendices/04-LA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Elemente der Linearen Algebra</span></span></a>
   </div>
 </li>
@@ -234,22 +314,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#aufgabe-1" id="toc-aufgabe-1" class="nav-link active" data-scroll-target="#aufgabe-1"><span class="header-section-number">2.0.1</span> Aufgabe 1</a></li>
-  <li><a href="#aufgabe-2" id="toc-aufgabe-2" class="nav-link" data-scroll-target="#aufgabe-2"><span class="header-section-number">2.0.2</span> Aufgabe 2</a></li>
-  <li><a href="#aufgabe-3" id="toc-aufgabe-3" class="nav-link" data-scroll-target="#aufgabe-3"><span class="header-section-number">2.0.3</span> Aufgabe 3</a></li>
-  <li><a href="#aufgabe-4" id="toc-aufgabe-4" class="nav-link" data-scroll-target="#aufgabe-4"><span class="header-section-number">2.0.4</span> Aufgabe 4</a></li>
-  <li><a href="#aufgabe-5" id="toc-aufgabe-5" class="nav-link" data-scroll-target="#aufgabe-5"><span class="header-section-number">2.0.5</span> Aufgabe 5</a></li>
-  <li><a href="#aufgabe-6" id="toc-aufgabe-6" class="nav-link" data-scroll-target="#aufgabe-6"><span class="header-section-number">2.0.6</span> Aufgabe 6</a></li>
-  <li><a href="#aufgabe-7" id="toc-aufgabe-7" class="nav-link" data-scroll-target="#aufgabe-7"><span class="header-section-number">2.0.7</span> Aufgabe 7</a></li>
+  <li><a href="#das-modell" id="toc-das-modell" class="nav-link active" data-scroll-target="#das-modell"><span class="header-section-number">10.1</span> Das Modell</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../01-Python/01-01-Basics.html">Einführung in Python</a></li><li class="breadcrumb-item"><a href="../01-Python/01-02-Basics-Ex.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Übung: Python Basics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Übung: Python Basics</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ANOVA</span></h1>
 </div>
 
 
@@ -266,50 +340,200 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="aufgabe-1" class="level3" data-number="2.0.1">
-<h3 data-number="2.0.1" class="anchored" data-anchor-id="aufgabe-1"><span class="header-section-number">2.0.1</span> Aufgabe 1</h3>
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>kids <span class="op">=</span> pd.read_csv(<span class="st">"https://github.com/febse/data/raw/main/econ/childiq.csv"</span>)[[<span class="st">"kid_score"</span>, <span class="st">"mom_hs"</span>]]</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>kids.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">kid_score</th>
+<th data-quarto-table-cell-role="th">mom_hs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>65</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>98</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>85</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>83</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>115</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<p>Beschreibung der Variablen in der Datei <code>kids.csv</code>:</p>
 <ul>
-<li>Berechnen Sie die Summe der Zahlen 32.8 und 45.1</li>
-<li>Berechnen Sie die Differenz der Zahlen 32.8 und 45.1</li>
-<li>Speichern Sie die Zahl 32.8 in <code>a</code> und die Zahl 45.1 in <code>b</code>. Berechnen Sie das Verhältnis von <code>a</code> zu <code>b</code> und speichern Sie das Ergebnis in <code>c</code>.</li>
+<li><code>kid_score</code>: (numeric) Punkte im IQ-Test</li>
+<li><code>mom_hs</code> (numeric): 1 falls die Mutter des Kindes einen High School Abschluss hat, 0 sonst</li>
 </ul>
-</section>
-<section id="aufgabe-2" class="level3" data-number="2.0.2">
-<h3 data-number="2.0.2" class="anchored" data-anchor-id="aufgabe-2"><span class="header-section-number">2.0.2</span> Aufgabe 2</h3>
-<p>Erstellen Sie eine Liste mit den Zahlen 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 und speichern Sie diese in der Variable <code>numbers</code>. - Geben Sie die Liste aus (mit <code>print()</code>) - Geben Sie das erste Element der Liste aus - Geben Sie das letzte Element der Liste aus - Geben Sie das dritte Element der Liste aus - Geben Sie das dritte und das siebte Element der Liste aus - Ersetzen Sie das vierte Element der Liste durch die Zahl 42</p>
-</section>
-<section id="aufgabe-3" class="level3" data-number="2.0.3">
-<h3 data-number="2.0.3" class="anchored" data-anchor-id="aufgabe-3"><span class="header-section-number">2.0.3</span> Aufgabe 3</h3>
-<p>Erstellen Sie zwei Listen <code>names</code> und <code>ages</code> mit den folgenden Elementen: - <code>names</code>: “Alice”, “Bob”, “Charlie”, “Dave”, “Eve” - <code>ages</code>: 17, 42, 30, 37, 21</p>
-<ul>
-<li>Geben Sie die Liste <code>names</code> aus</li>
-<li>Schreiben Sie eine <code>for</code>-Schleife, die die Namen und das Alter der Personen ausdruckt. Die Ausgabe soll folgendermaßen aussehen: “Alice ist 23 Jahre alt”</li>
-<li>Sie möchten nur die Namen der Personen ausdrucken, die älter als 30 Jahre sind. Schreiben Sie eine <code>for</code>-Schleife, die das tut.</li>
-<li>Sie möchten eine neue Liste erstellen, die nur die Namen der Personen enthält, die älter als 30 Jahre sind. Schreiben Sie eine Listenabstraktion, die das tut.</li>
-</ul>
-</section>
-<section id="aufgabe-4" class="level3" data-number="2.0.4">
-<h3 data-number="2.0.4" class="anchored" data-anchor-id="aufgabe-4"><span class="header-section-number">2.0.4</span> Aufgabe 4</h3>
-<p>In dieser Aufgabe werden wir eine Funktion <code>is_in_list</code> schreiben, die einen Namen als Argument annimmt und <code>True</code> oder <code>False</code> zurückgibt, falls der Name einer Person entspricht, die in der Liste <code>names</code> aus Aufgabe 3 enthalten ist.</p>
-</section>
-<section id="aufgabe-5" class="level3" data-number="2.0.5">
-<h3 data-number="2.0.5" class="anchored" data-anchor-id="aufgabe-5"><span class="header-section-number">2.0.5</span> Aufgabe 5</h3>
-<p>In dieser Aufgabe werden wir eine Funktion <code>get_age</code> schreiben, die einen Namen als Argument annimmt und das Alter der Person zurückgibt, falls der Name einer Person entspricht, die in der Liste <code>names</code> aus Aufgabe 3 enthalten ist. Falls der Name nicht in der Liste enthalten ist, soll die Funktion <code>None</code> zurückgeben.</p>
-</section>
-<section id="aufgabe-6" class="level3" data-number="2.0.6">
-<h3 data-number="2.0.6" class="anchored" data-anchor-id="aufgabe-6"><span class="header-section-number">2.0.6</span> Aufgabe 6</h3>
-<p>In dieser Aufgabe werden wir eine Funktion <code>is_eligible</code> schreiben, die <code>True</code>, <code>False</code> oder <code>None</code> zurückgibt, je nachdem ob eine Person wahlberechtigt ist oder nicht. Die Funktion soll einen Namen als Argument annehmen und das Alter der Person zurückgeben, falls der Name einer Person entspricht, die in der Liste <code>names</code> aus Aufgabe 3 enthalten ist. Falls der Name nicht in der Liste enthalten ist, soll die Funktion <code>None</code> zurückgeben. Falls der Name in der Liste enthalten ist, soll die Funktion <code>True</code> zurückgeben, falls die Person älter als 18 Jahre ist, andernfalls soll die Funktion <code>False</code> zurückgeben.</p>
-</section>
-<section id="aufgabe-7" class="level3" data-number="2.0.7">
-<h3 data-number="2.0.7" class="anchored" data-anchor-id="aufgabe-7"><span class="header-section-number">2.0.7</span> Aufgabe 7</h3>
-<p>In dieser Aufgabe werden wir ein Dictionary erstellen, das die Namen aus Aufgabe 3 als Schlüssel und die Alter aus Aufgabe 3 als Werte enthält. Speichern Sie das Dictionary in der Variable <code>persons</code>.</p>
-<ul>
-<li>Benutzen Sie das Dictionary, um das Alter von Bob auszudrucken.</li>
-<li>Ändern Sie das Alter von Alice auf 43 Jahre.</li>
-<li>Fügen Sie eine neue Person “Frank” mit dem Alter 33 Jahre hinzu.</li>
-<li>Schreiben Sie eine <code>for</code>-Schleife, die die Namen und das Alter der Personen ausdruckt. Die Ausgabe soll folgendermaßen aussehen: “Alice ist 23 Jahre alt”</li>
-<li>Sie möchten nur die Namen der Personen ausdrucken, die mit “A” anfangen. Schreiben Sie eine <code>for</code>-Schleife, die über <code>persons</code> iteriert und das tut.</li>
-</ul>
+<p>In dieser Aufgabe werden wir annehmen, dass die Kinder rein zufällig aus allen Kindern im Alter zwischen 3 und 5 Jahren in den USA ausgewählt wurden (zur Zeit der Untersuchung).</p>
+<p>Wir möchten die folgende Forschungsfrage untersuchen: Erreichen Kinder, deren Mutter keinen High School Abschluss hat, im Durchschnitt niedrigere IQ-Werte als Kinder, deren Mutter einen High School Abschluss hat?</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming kids is a pandas DataFrame</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>kids[<span class="st">'mom_hs'</span>] <span class="op">=</span> kids[<span class="st">'mom_hs'</span>].astype(<span class="st">'category'</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'kid_score'</span>, y<span class="op">=</span><span class="st">'mom_hs'</span>, data<span class="op">=</span>kids, color<span class="op">=</span><span class="st">'white'</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x<span class="op">=</span><span class="st">'kid_score'</span>, y<span class="op">=</span><span class="st">'mom_hs'</span>, data<span class="op">=</span>kids, size<span class="op">=</span><span class="dv">4</span>, jitter<span class="op">=</span><span class="va">True</span>, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'IQ score'</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Bildung der Mutter"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/categorical.py:641: FutureWarning:
+
+The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+</code></pre>
+</div>
+<div id="fig-kid-score-plot" class="cell quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="2">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kid-score-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div id="fig-kid-score-plot-1" class="cell-output cell-output-display quarto-figure quarto-figure-center quarto-float anchored" data-execution_count="2">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kid-score-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<pre id="fig-kid-score-plot-1" class="cell-output cell-output-display" data-execution_count="2"><code>Text(0, 0.5, 'Bildung der Mutter')</code></pre>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kid-score-plot-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) IQ scores of the children by the status of their mother (high school degree/no high school degree). The plot adds a small amount of noise to the observations to avoid overplotting.
+</figcaption>
+</figure>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-kid-score-plot-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="651" height="503">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-kid-score-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05-Einweg-Varianzanalyse_files/figure-html/fig-kid-score-plot-output-3.png" id="fig-kid-score-plot-2" data-ref-parent="fig-kid-score-plot" width="651" height="503" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-kid-score-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-kid-score-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Abbildung&nbsp;10.1
+</figcaption>
+</figure>
+</div>
+</div>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Berechnen Sie die durchschnittlichen IQ-Scores für Kinder, deren Mütter einen High-School-Abschluss haben, und für Kinder,</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># deren Mütter keinen High-School-Abschluss haben.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Berechnen Sie die Koeffizienten der folgenden Prognosegleichung für den IQ-Wert eines Kindes:</p>
+<p><span class="math display">
+\hat{y} = \beta_0 + \beta_1 \cdot x
+</span></p>
+<p>wobei <span class="math inline">y</span> der IQ-Wert des Kindes ist, <span class="math inline">x</span> die Variable <code>mom_hs</code> und <span class="math inline">\hat{y}</span> die Prognose für den IQ-Wert ist. Benutzen Sie <a href="https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung">https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung</a></p>
+<section id="das-modell" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="das-modell"><span class="header-section-number">10.1</span> Das Modell</h2>
+<p><span class="math display">
+\begin{align*}
+&amp; i = 1,\ldots, n = 434 \text{ observations}\\
+&amp; y_i: \text{IQ score} \\
+&amp; \hat{y}_i: \text{Predicted IQ score} \\
+&amp; x_i \in \{0, 1\}: \text{status of the mother}
+\end{align*}
+</span></p>
+<p><span class="math display">
+y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
+</span></p>
+<p><span id="eq-simple-anova"><span class="math display">
+\begin{align*}
+&amp; y_i \sim N(\mu_i, \sigma^2), \quad i = 1,\ldots,n \\
+&amp; \mu_i = \beta_0 + \beta_1 x_i, \quad x_i \in \{0, 1\}
+\end{align*}
+\tag{10.1}</span></span></p>
+<p><span id="eq-mu-x-1"><span class="math display">
+\mu_1 = \beta_0 + \beta_1 \cdot 1
+\tag{10.2}</span></span></p>
+<p>Für <span class="math inline">x = 0</span></p>
+<p><span id="eq-mu-x-0"><span class="math display">
+\mu_0 = \beta_0 + \beta_1 \cdot 0
+\tag{10.3}</span></span></p>
+<p>Die Differenz der zwei Gleichungen <a href="#eq-mu-x-1" class="quarto-xref"><span>10.2</span></a> und <a href="#eq-mu-x-0" class="quarto-xref"><span>10.3</span></a> ergibt:</p>
+<p><span class="math display">
+\begin{align*}
+\beta_0 &amp; = \mu_0 \\
+\beta_1 &amp; = \mu_1 - \mu_0
+\end{align*}
+</span></p>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the range of x</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">180</span>, <span class="dv">1000</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the densities of the normal distributions</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> norm.pdf(x, loc<span class="op">=</span><span class="dv">77</span>, scale<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> norm.pdf(x, loc<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the plot</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y1, color<span class="op">=</span><span class="st">'steelblue'</span>, label<span class="op">=</span><span class="st">'Mutter ohne HS'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y2, color<span class="op">=</span><span class="st">'firebrick'</span>, label<span class="op">=</span><span class="st">'Mother mit HS'</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">77</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'firebrick'</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">100</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, color<span class="op">=</span><span class="st">'steelblue'</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.text(<span class="dv">90</span>, <span class="fl">0.005</span>, <span class="vs">r'$\beta_1$'</span>, verticalalignment<span class="op">=</span><span class="st">'bottom'</span>, horizontalalignment<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.xlim([<span class="dv">0</span>, <span class="dv">180</span>])</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'IQ score'</span>)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Dichte'</span>)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-6-output-1.png" width="702" height="503" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>
@@ -726,13 +950,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../01-Python/01-01-Basics.html" class="pagination-link" aria-label="Python Basics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Python Basics</span></span>
+      <a href="./04b-Stetige-Verteilungen.html" class="pagination-link" aria-label="Die Gleichverteilung auf \[-1, 1\]">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Die Gleichverteilung auf [-1, 1]</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../01-Python/01-03-Numpy.html" class="pagination-link" aria-label="NumPy">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">NumPy</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Literature.html" class="pagination-link" aria-label="Empfohlene Literatur">
+        <span class="nav-page-text">Empfohlene Literatur</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
