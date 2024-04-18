@@ -469,11 +469,6 @@ Abbildung&nbsp;10.1
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># deren Mütter keinen High-School-Abschluss haben.</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Berechnen Sie die Koeffizienten der folgenden Prognosegleichung für den IQ-Wert eines Kindes:</p>
-<p><span class="math display">
-\hat{y} = \beta_0 + \beta_1 \cdot x
-</span></p>
-<p>wobei <span class="math inline">y</span> der IQ-Wert des Kindes ist, <span class="math inline">x</span> die Variable <code>mom_hs</code> und <span class="math inline">\hat{y}</span> die Prognose für den IQ-Wert ist. Benutzen Sie <a href="https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung">https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung</a></p>
 <section id="das-modell" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="das-modell"><span class="header-section-number">10.1</span> Das Modell</h2>
 <p><span class="math display">
@@ -507,7 +502,7 @@ y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
 \beta_1 &amp; = \mu_1 - \mu_0
 \end{align*}
 </span></p>
-<div id="cell-8" class="cell" data-execution_count="5">
+<div id="cell-7" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span>
@@ -538,52 +533,46 @@ y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">"kid_score ~ mom_hs"</span>, data<span class="op">=</span>kids).fit()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>Intercept      77.548387
-mom_hs[T.1]    11.771261
-dtype: float64</code></pre>
-</div>
-</div>
+<p>Berechnen Sie die Koeffizienten der folgenden Prognosegleichung für den IQ-Wert eines Kindes:</p>
+<p><span class="math display">
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1 \cdot x
+</span></p>
+<p>wobei <span class="math inline">y</span> der IQ-Wert des Kindes ist, <span class="math inline">x</span> die Variable <code>mom_hs</code> und <span class="math inline">\hat{y}</span> die Prognose für den IQ-Wert ist. Benutzen Sie <a href="https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung">https://febse.github.io/econ2024-de/03-KQ-Methode.html#%C3%BCbung</a></p>
 </section>
 <section id="simulation" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="simulation"><span class="header-section-number">10.2</span> Simulation</h2>
 <div id="cell-12" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the random deviations</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">20</span>, size<span class="op">=</span>N <span class="op">*</span> B)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.tile(np.arange(<span class="dv">1</span>, N<span class="op">+</span><span class="dv">1</span>), B)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">80</span> <span class="op">+</span> <span class="dv">15</span><span class="op">*</span>x <span class="op">+</span> e</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>sim_id <span class="op">=</span> np.repeat(np.arange(<span class="dv">1</span>, B<span class="op">+</span><span class="dv">1</span>), N)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> pd.DataFrame({<span class="st">'sim_id'</span>: sim_id, <span class="st">'x'</span>: x, <span class="st">'y'</span>: y})</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the models</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_ols(dat):</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, dat).fit()</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series({</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept'</span>: fit.params[<span class="st">'Intercept'</span>],</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept_se'</span>: fit.bse[<span class="st">'Intercept'</span>],</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope'</span>: fit.params[<span class="st">'x'</span>],</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope_se'</span>: fit.bse[<span class="st">'x'</span>]</span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    })</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> dt.groupby(<span class="st">'sim_id'</span>).<span class="bu">apply</span>(fit_ols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the random deviations</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">20</span>, size<span class="op">=</span>N <span class="op">*</span> B)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.tile(np.arange(<span class="dv">1</span>, N<span class="op">+</span><span class="dv">1</span>), B)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">80</span> <span class="op">+</span> <span class="dv">15</span><span class="op">*</span>x <span class="op">+</span> e</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>sim_id <span class="op">=</span> np.repeat(np.arange(<span class="dv">1</span>, B<span class="op">+</span><span class="dv">1</span>), N)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> pd.DataFrame({<span class="st">'sim_id'</span>: sim_id, <span class="st">'x'</span>: x, <span class="st">'y'</span>: y})</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the models</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_ols(dat):</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, dat).fit()</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series({</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept'</span>: fit.params[<span class="st">'Intercept'</span>],</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept_se'</span>: fit.bse[<span class="st">'Intercept'</span>],</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope'</span>: fit.params[<span class="st">'x'</span>],</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope_se'</span>: fit.bse[<span class="st">'x'</span>]</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> dt.groupby(<span class="st">'sim_id'</span>).<span class="bu">apply</span>(fit_ols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2486/3913161793.py:29: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2480/3913161793.py:29: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
@@ -596,7 +585,10 @@ DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprec
 <section id="verteilung-der-koeffizienten" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="verteilung-der-koeffizienten"><span class="header-section-number">10.3</span> Verteilung der Koeffizienten</h2>
 <div id="cell-16" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, jitter<span class="op">=</span><span class="fl">0.2</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, jitter<span class="op">=</span><span class="fl">0.2</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>sns.boxplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'white'</span>, width<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.axvline(x<span class="op">=</span><span class="dv">15</span>, color<span class="op">=</span><span class="st">'red'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
 
@@ -614,13 +606,15 @@ When grouping with a length-1 list-like, you will need to pass a length-1 tuple 
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-11-output-2.png" width="545" height="429" class="figure-img"></p>
+<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-11-output-2.png" width="619" height="503" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-17" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, color<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">6</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
 
@@ -630,7 +624,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-12-output-2.png" width="576" height="429" class="figure-img"></p>
+<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-12-output-2.png" width="651" height="503" class="figure-img"></p>
 </figure>
 </div>
 </div>
