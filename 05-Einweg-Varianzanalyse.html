@@ -315,6 +315,9 @@ window.Quarto = {
    
   <ul>
   <li><a href="#das-modell" id="toc-das-modell" class="nav-link active" data-scroll-target="#das-modell"><span class="header-section-number">10.1</span> Das Modell</a></li>
+  <li><a href="#simulation" id="toc-simulation" class="nav-link" data-scroll-target="#simulation"><span class="header-section-number">10.2</span> Simulation</a></li>
+  <li><a href="#verteilung-der-koeffizienten" id="toc-verteilung-der-koeffizienten" class="nav-link" data-scroll-target="#verteilung-der-koeffizienten"><span class="header-section-number">10.3</span> Verteilung der Koeffizienten</a></li>
+  <li><a href="#hypothesentests" id="toc-hypothesentests" class="nav-link" data-scroll-target="#hypothesentests"><span class="header-section-number">10.4</span> Hypothesentests</a></li>
   </ul>
 </nav>
     </div>
@@ -342,9 +345,10 @@ window.Quarto = {
 
 <div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>kids <span class="op">=</span> pd.read_csv(<span class="st">"https://github.com/febse/data/raw/main/econ/childiq.csv"</span>)[[<span class="st">"kid_score"</span>, <span class="st">"mom_hs"</span>]]</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>kids.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>kids <span class="op">=</span> pd.read_csv(<span class="st">"https://github.com/febse/data/raw/main/econ/childiq.csv"</span>)[[<span class="st">"kid_score"</span>, <span class="st">"mom_hs"</span>]]</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>kids.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 <div>
@@ -442,7 +446,7 @@ When grouping with a length-1 list-like, you will need to pass a length-1 tuple 
 </figure>
 </div>
 <div class="cell-output cell-output-display">
-<div id="fig-kid-score-plot-2" class="quarto-figure quarto-figure-center quarto-float anchored" width="651" height="503">
+<div id="fig-kid-score-plot-2" class="quarto-figure quarto-figure-center quarto-float anchored" height="503" width="651">
 <figure class="quarto-float quarto-subfloat-fig figure">
 <div aria-describedby="fig-kid-score-plot-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="05-Einweg-Varianzanalyse_files/figure-html/fig-kid-score-plot-output-3.png" id="fig-kid-score-plot-2" data-ref-parent="fig-kid-score-plot" width="651" height="503" class="figure-img">
@@ -534,6 +538,129 @@ y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
 </div>
 </div>
 </div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>mod <span class="op">=</span> ols(<span class="st">"kid_score ~ mom_hs"</span>, data<span class="op">=</span>kids).fit()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>mod.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>Intercept      77.548387
+mom_hs[T.1]    11.771261
+dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="simulation" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="simulation"><span class="header-section-number">10.2</span> Simulation</h2>
+<div id="cell-12" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">123</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate the random deviations</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>e <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">20</span>, size<span class="op">=</span>N <span class="op">*</span> B)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.tile(np.arange(<span class="dv">1</span>, N<span class="op">+</span><span class="dv">1</span>), B)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">80</span> <span class="op">+</span> <span class="dv">15</span><span class="op">*</span>x <span class="op">+</span> e</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>sim_id <span class="op">=</span> np.repeat(np.arange(<span class="dv">1</span>, B<span class="op">+</span><span class="dv">1</span>), N)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> pd.DataFrame({<span class="st">'sim_id'</span>: sim_id, <span class="st">'x'</span>: x, <span class="st">'y'</span>: y})</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit the models</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_ols(dat):</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    fit <span class="op">=</span> ols(<span class="st">'y ~ x'</span>, dat).fit()</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.Series({</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept'</span>: fit.params[<span class="st">'Intercept'</span>],</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'intercept_se'</span>: fit.bse[<span class="st">'Intercept'</span>],</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope'</span>: fit.params[<span class="st">'x'</span>],</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">'slope_se'</span>: fit.bse[<span class="st">'x'</span>]</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> dt.groupby(<span class="st">'sim_id'</span>).<span class="bu">apply</span>(fit_ols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_2486/3913161793.py:29: DeprecationWarning:
+
+DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+</code></pre>
+</div>
+</div>
+<div id="exr-simulation-first-sample" class="theorem exercise">
+<p><span class="theorem-title"><strong>Übungsaufgabe 10.1</strong></span> Benutzen Sie die Daten der ersten Stichprobe aus der Simulation, um die Koeffizienten <span class="math inline">\beta_0</span> und <span class="math inline">\beta_1</span> zu schätzen. <em>Hinweis</em>: Benutzen Sie die Funktion <code>ols</code> aus dem Paket <code>statsmodels</code> in Python.</p>
+</div>
+</section>
+<section id="verteilung-der-koeffizienten" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="verteilung-der-koeffizienten"><span class="header-section-number">10.3</span> Verteilung der Koeffizienten</h2>
+<div id="cell-16" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.stripplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, jitter<span class="op">=</span><span class="fl">0.2</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-11-output-2.png" width="545" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-17" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(x<span class="op">=</span><span class="st">'slope'</span>, data<span class="op">=</span>sim, color<span class="op">=</span><span class="st">'black'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="05-Einweg-Varianzanalyse_files/figure-html/cell-12-output-2.png" width="576" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="hypothesentests" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="hypothesentests"><span class="header-section-number">10.4</span> Hypothesentests</h2>
+<ul>
+<li>Testen Sie die Nullhypothese, dass der Koeffizient <span class="math inline">\beta_1</span> gleich 0 ist gegen die Alternative, dass <span class="math inline">\beta_1</span> größer als 0 ist.</li>
+</ul>
+<p><span class="math display">
+\begin{align*}
+H_0: &amp; \beta_1 \leq 0 \\
+H_1: &amp; \beta_1 &gt; 0
+\end{align*}
+</span></p>
+<ul>
+<li>Testen Sie die Nullhypothese, dass der Koeffizient <span class="math inline">\beta_0</span> gleich 15 ist gegen die Alternative, dass <span class="math inline">\beta_0</span> grösser als 15 ist.</li>
+</ul>
+<p><span class="math display">
+\begin{align*}
+H_0: &amp; \beta_1 \leq 15 \\
+H_1: &amp; \beta_1 &gt; 15
+\end{align*}
+</span></p>
+<p>Berechnen Sie die Teststatistik in jeder Stichprobe</p>
+<p><span class="math display">
+t = \frac{\hat{\beta}_1 - \beta_1^{H_0}}{\text{SE}(\hat{\beta}_1)}
+</span></p>
+<p>für beide Hypothesen.</p>
 
 
 </section>
