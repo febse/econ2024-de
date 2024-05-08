@@ -1404,7 +1404,7 @@ E(Y|X = x) = \sum_{y} y \cdot p_{Y|X}(y|x)
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>E_Y_given_X <span class="op">=</span> games2.groupby(<span class="st">"x"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> gr: np.<span class="bu">sum</span>(gr[<span class="st">"y"</span>] <span class="op">*</span> gr[<span class="st">"p_y_given_x"</span>]))</span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>E_Y_given_X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2438/2565904380.py:4: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2620/2565904380.py:4: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
@@ -1424,7 +1424,7 @@ dtype: float64</code></pre>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>E_Y_given_X_ind <span class="op">=</span> games_ind.groupby(<span class="st">"x"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> gr: np.<span class="bu">sum</span>(gr[<span class="st">"y"</span>] <span class="op">*</span> gr[<span class="st">"p_y_given_x"</span>]))</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>E_Y_given_X_ind</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2438/3047749272.py:3: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2620/3047749272.py:3: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
