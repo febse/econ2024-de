@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Einführung in die Ökonometrie - 11&nbsp; Cholera outbreak</title>
+<title>Einführung in die Ökonometrie - 11&nbsp; Multiples Regressionsmodell</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -161,7 +161,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-Multiples-Regressionsmodell.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Cholera outbreak</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-Multiples-Regressionsmodell.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiples Regressionsmodell</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -266,7 +266,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-Multiples-Regressionsmodell.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Cholera outbreak</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiples Regressionsmodell</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -320,7 +320,8 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#world-war-ii" id="toc-world-war-ii" class="nav-link active" data-scroll-target="#world-war-ii"><span class="header-section-number">11.1</span> World War II</a></li>
+  <li><a href="#cholera-outbreak" id="toc-cholera-outbreak" class="nav-link active" data-scroll-target="#cholera-outbreak"><span class="header-section-number">11.1</span> Cholera outbreak</a></li>
+  <li><a href="#world-war-ii" id="toc-world-war-ii" class="nav-link" data-scroll-target="#world-war-ii"><span class="header-section-number">11.2</span> World War II</a></li>
   <li><a href="#modell-1-kriminalität-und-bildung" id="toc-modell-1-kriminalität-und-bildung" class="nav-link" data-scroll-target="#modell-1-kriminalität-und-bildung"><span class="header-section-number">12</span> Modell 1: Kriminalität und Bildung</a></li>
   <li><a href="#modell-2-kriminalität-und-urbanisierung" id="toc-modell-2-kriminalität-und-urbanisierung" class="nav-link" data-scroll-target="#modell-2-kriminalität-und-urbanisierung"><span class="header-section-number">13</span> Modell 2: Kriminalität und Urbanisierung</a></li>
   <li><a href="#modell-3-bildung-und-urbanisierung" id="toc-modell-3-bildung-und-urbanisierung" class="nav-link" data-scroll-target="#modell-3-bildung-und-urbanisierung"><span class="header-section-number">14</span> Modell 3: Bildung und Urbanisierung</a></li>
@@ -336,7 +337,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Cholera outbreak</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Multiples Regressionsmodell</span></h1>
 </div>
 
 
@@ -353,14 +354,14 @@ window.Quarto = {
 </header>
 
 
-<div id="cell-0" class="cell" data-execution_count="1">
+<div id="cell-1" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>pip install geopandas</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Collecting geopandas
   Downloading geopandas-0.14.4-py3-none-any.whl.metadata (1.5 kB)
 Collecting fiona&gt;=1.8.21 (from geopandas)
   Downloading fiona-1.9.6-cp311-cp311-manylinux2014_x86_64.whl.metadata (50 kB)
-     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/50.2 kB ? eta -:--:--     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.2/50.2 kB 2.6 MB/s eta 0:00:00
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/50.2 kB ? eta -:--:--     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.2/50.2 kB 3.7 MB/s eta 0:00:00
 Requirement already satisfied: numpy&gt;=1.22 in /usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages (from geopandas) (1.26.4)
 Requirement already satisfied: packaging in /usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages (from geopandas) (23.2)
 Requirement already satisfied: pandas&gt;=1.4.0 in /usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages (from geopandas) (2.2.1)
@@ -380,13 +381,13 @@ Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/share/miniconda
 Requirement already satisfied: pytz&gt;=2020.1 in /usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages (from pandas&gt;=1.4.0-&gt;geopandas) (2024.1)
 Requirement already satisfied: tzdata&gt;=2022.7 in /usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages (from pandas&gt;=1.4.0-&gt;geopandas) (2023.3)
 Downloading geopandas-0.14.4-py3-none-any.whl (1.1 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/1.1 MB ? eta -:--:--   ━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━ 0.6/1.1 MB 20.6 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 24.1 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/1.1 MB ? eta -:--:--   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/1.1 MB 69.5 MB/s eta 0:00:00
 Downloading fiona-1.9.6-cp311-cp311-manylinux2014_x86_64.whl (15.7 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/15.7 MB ? eta -:--:--   ━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/15.7 MB 146.7 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━━━━━━ 9.0/15.7 MB 132.5 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺ 15.5/15.7 MB 187.5 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 15.7/15.7 MB 184.4 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 109.6 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/15.7 MB ? eta -:--:--   ━━━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/15.7 MB 167.9 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━╸━━━━━━━━━━━━ 10.9/15.7 MB 163.0 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 15.7/15.7 MB 175.4 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 106.2 MB/s eta 0:00:00
 Downloading pyproj-3.6.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (8.6 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/8.6 MB ? eta -:--:--   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╺━━━━━━━━━ 6.5/8.6 MB 194.0 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.6/8.6 MB 126.7 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/8.6 MB ? eta -:--:--   ━━━━╸━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.1/8.6 MB 122.7 MB/s eta 0:00:01   ━━━━━━━━━━━━╺━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/8.6 MB 38.2 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╸ 8.6/8.6 MB 86.7 MB/s eta 0:00:01   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.6/8.6 MB 70.0 MB/s eta 0:00:00
 Downloading shapely-2.0.4-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.5 MB)
-   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/2.5 MB ? eta -:--:--   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 123.4 MB/s eta 0:00:00
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0.0/2.5 MB ? eta -:--:--   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.5/2.5 MB 121.6 MB/s eta 0:00:00
 Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
 Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
 Installing collected packages: shapely, pyproj, cligj, click-plugins, fiona, geopandas
@@ -394,6 +395,8 @@ Successfully installed click-plugins-1.1.1 cligj-0.7.2 fiona-1.9.6 geopandas-0.1
 Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
+<section id="cholera-outbreak" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="cholera-outbreak"><span class="header-section-number">11.1</span> Cholera outbreak</h2>
 <p><img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/John_Snow.jpg" class="img-fluid" alt="John Snow"> <a href="https://en.wikipedia.org/wiki/John_Snow">John Snow</a> was an English physicist famous for locating the source of the London cholera epidemic of 1854. At the time of the outbreak the germ theory of disease transmission was not developed yet and cholera was blamed on bad air. John Snow investigated the cases and concluded that the source of the outbreak is a water pump located on Broad Street. He was able to convince the city council to close the pump but people initially resisted his theory of water born transmission, because it seemed to be socially unacceptable.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -407,8 +410,9 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <figcaption>Broad street pump</figcaption>
 </figure>
 </div>
-<section id="world-war-ii" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="world-war-ii"><span class="header-section-number">11.1</span> World War II</h2>
+</section>
+<section id="world-war-ii" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="world-war-ii"><span class="header-section-number">11.2</span> World War II</h2>
 <p>During World war 2 combat aviation played a crucial role but also suffered heavy casualties. British bomber command for example reports a death rate of about 46 percent over the entire war. In order to reduce the number of planes that were being shot down during mission, the military collected data on the damage taken from returning bombers in order to decide where to place armour on the planes.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -429,7 +433,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </figure>
 </div>
 <p><img src="https://riskwerk.files.wordpress.com/2016/11/abraham-wald1.png" class="img-fluid"></p>
-<div id="cell-2" class="cell" data-execution_count="2">
+<div id="cell-3" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
@@ -451,11 +455,11 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> urlopen(<span class="st">'https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json'</span>) <span class="im">as</span> response:</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    counties <span class="op">=</span> json.load(response)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
+<div id="cell-4" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>us_counties <span class="op">=</span> gpd.GeoDataFrame.from_features(counties)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>us_counties[<span class="st">"NAME"</span>] <span class="op">=</span> us_counties[<span class="st">"NAME"</span>].<span class="bu">str</span>.upper()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
+<div id="cell-5" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>crime</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
@@ -558,7 +562,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
+<div id="cell-6" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define county name compatibility</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>county_name_compat <span class="op">=</span> {</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"WASHINGTON"</span>: <span class="st">"WASHING"</span>,</span>
@@ -581,7 +585,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 <span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Florida counties</span></span>
 <span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>florida_crime <span class="op">=</span> pd.merge(florida_counties, crime, right_on<span class="op">=</span><span class="st">"County"</span>, left_on<span class="op">=</span><span class="st">"NAME"</span>, how<span class="op">=</span><span class="st">'right'</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="6">
+<div id="cell-7" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot urbanisation</span></span>
@@ -627,7 +631,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 \text{C}_i \sim N(\mu_i, \sigma^2) \\
 \mu_i = \beta_0 + \beta_1 \text{HS}_i \\
 </span></p>
-<div id="cell-8" class="cell" data-execution_count="7">
+<div id="cell-9" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(x<span class="op">=</span><span class="st">'HS'</span>, y<span class="op">=</span><span class="st">'C'</span>, data<span class="op">=</span>florida_crime)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -637,7 +641,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="8">
+<div id="cell-10" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Schätzen Sie das Modell</span></span>
@@ -675,7 +679,7 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>07:53:17</td>
+<td>09:03:29</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-310.05</td>
 </tr>
@@ -775,10 +779,10 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 \text{C}_i \sim N(\mu_i, \sigma^2) \\
 \mu_i = \beta_0 + \beta_1 \text{U}_i \\
 </span></p>
-<div id="cell-11" class="cell" data-execution_count="9">
+<div id="cell-12" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stellen Sie die Daten und die Regressionsgerade in einem Streudiagramm dar</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="10">
+<div id="cell-13" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Schätzen Sie das Modell</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -788,16 +792,16 @@ Note: you may need to restart the kernel to use updated packages.</code></pre>
 \text{HS}_i \sim N(\mu_i, \sigma^2) \\
 \mu_i = \beta_0 + \beta_1 \text{U}_i
 </span></p>
-<div id="cell-14" class="cell" data-execution_count="11">
+<div id="cell-15" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stellen Sie die Daten und die Regressionsgerade in einem Streudiagramm dar</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-15" class="cell" data-execution_count="12">
+<div id="cell-16" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Schätzen Sie das Modell</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="graphische-darstellung-der-daten" class="level1" data-number="15">
 <h1 data-number="15"><span class="header-section-number">15</span> Graphische Darstellung der Daten</h1>
-<div id="cell-17" class="cell" data-execution_count="13">
+<div id="cell-18" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming 'crime' is the pandas DataFrame containing the data</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>sns.pairplot(crime)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -829,17 +833,17 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 \text{C}_i \sim N(\mu_i, \sigma^2) \\
 \mu_i = \beta_0 + \beta_1 \text{HS}_i + \beta_2 \text{U}_i
 </span></p>
-<div id="cell-19" class="cell" data-execution_count="14">
+<div id="cell-20" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Schätzen Sie das Modell</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>Schätzen Sie die erwartete Kriminalitätsrate für eine County mit einer Urbanisierung von 0% und einer High School Abschlussrate 0%.</li>
 <li>Schätzen Sie die erwartete Kriminalitätsrate für eine County mit einem mittleren Urbanisierungsgrad und einer mittleren High School Abschlussrate</li>
 </ul>
-<div id="cell-22" class="cell" data-execution_count="16">
+<div id="cell-23" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m.get_prediction({'HS': 0.5, 'U': 0.5}).summary_frame()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-23" class="cell" data-execution_count="17">
+<div id="cell-24" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> normalize(x):</span>
@@ -877,7 +881,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>07:53:18</td>
+<td>09:03:30</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-296.93</td>
 </tr>
