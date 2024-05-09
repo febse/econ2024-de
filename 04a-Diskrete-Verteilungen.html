@@ -509,23 +509,23 @@ Abbildung&nbsp;8.1: Die PMF von <span class="math inline">X</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Wir können uns die ersten 10 Zufallszahlen anschauen</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>smpl_x[<span class="dv">0</span>:<span class="dv">10</span>]</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>array([3, 2, 2, 3, 3, 1, 2, 0, 3, 1])</code></pre>
+<pre><code>array([0, 3, 3, 2, 3, 0, 1, 2, 3, 3])</code></pre>
 </div>
 </div>
 <p>Wir können die absoluten Häufigkeiten (Anzahl) der Werte zählen</p>
 <div id="cell-10" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>pd.value_counts(smpl_x)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2502/1849734910.py:1: FutureWarning:
+<pre><code>/tmp/ipykernel_2434/1849734910.py:1: FutureWarning:
 
 pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
 </code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>3    3707
-2    2747
-0    2607
-1     939
+<pre><code>3    3842
+2    2682
+0    2463
+1    1013
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
@@ -533,16 +533,16 @@ Name: count, dtype: int64</code></pre>
 <div id="cell-12" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pd.value_counts(smpl_x, normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2502/979932776.py:1: FutureWarning:
+<pre><code>/tmp/ipykernel_2434/979932776.py:1: FutureWarning:
 
 pandas.value_counts is deprecated and will be removed in a future version. Use pd.Series(obj).value_counts() instead.
 </code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>3    0.3707
-2    0.2747
-0    0.2607
-1    0.0939
+<pre><code>3    0.3842
+2    0.2682
+0    0.2463
+1    0.1013
 Name: proportion, dtype: float64</code></pre>
 </div>
 </div>
@@ -551,7 +551,7 @@ Name: proportion, dtype: float64</code></pre>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04a-Diskrete-Verteilungen_files/figure-html/cell-10-output-1.png" width="602" height="411" class="figure-img"></p>
+<p><img src="04a-Diskrete-Verteilungen_files/figure-html/cell-10-output-1.png" width="602" height="413" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -592,7 +592,7 @@ Name: proportion, dtype: float64</code></pre>
 <div id="cell-21" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>np.mean(smpl_x)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>1.7554</code></pre>
+<pre><code>1.7903</code></pre>
 </div>
 </div>
 <div id="cell-22" class="cell" data-execution_count="16">
@@ -1149,7 +1149,7 @@ E(Y | X = x) = \begin{cases}
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>pxy.groupby(<span class="st">"x"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.<span class="bu">sum</span>(x[<span class="st">"p_y_given_x_ind"</span>] <span class="op">*</span> x[<span class="st">"y"</span>]))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2502/3384244227.py:1: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2434/3384244227.py:1: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
@@ -1178,7 +1178,7 @@ dtype: float64</code></pre>
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pxy.groupby(<span class="st">"x"</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: np.<span class="bu">sum</span>(x[<span class="st">"p_y_given_x"</span>] <span class="op">*</span> x[<span class="st">"y"</span>]))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2502/388503762.py:1: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2434/388503762.py:1: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
