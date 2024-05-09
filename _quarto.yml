@@ -23,6 +23,7 @@ book:
     - 04a-Diskrete-Verteilungen.ipynb
     - 04b-Stetige-Verteilungen.ipynb
     - 05-Einweg-Varianzanalyse.ipynb
+    - 06-Multiples-Regressionsmodell.ipynb
     
     #     - 02-Review/02-Probability.ipynb
     # - part: "Einfache Lineare Regression"
