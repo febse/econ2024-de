@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Literature.html" rel="next">
+<link href="./08-Interaction-Effects.html" rel="next">
 <link href="./06-Multiples-Regressionsmodell.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -277,6 +277,12 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./08-Interaction-Effects.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./Literature.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Empfohlene Literatur</span></a>
   </div>
@@ -322,7 +328,13 @@ window.Quarto = {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link active" data-scroll-target="#polynomial-regression"><span class="header-section-number">12.1</span> Polynomial regression</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -418,8 +430,10 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>gdpsp <span class="op">=</span> gdpsp.dropna()</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove countries with missing values</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gdpsp <span class="op">=</span> gdpsp.dropna()</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <div>
@@ -479,19 +493,114 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.regplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, data<span class="op">=</span>gdpsp)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, data<span class="op">=</span>gdpsp)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-4-output-1.png" width="619" height="429" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-4-output-1.png" width="469" height="468" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending"</span>, data<span class="op">=</span>gdpsp).fit()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mod1.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gdpsp.sort_values(by<span class="op">=</span><span class="st">"spending"</span>).tail(<span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">gdppc</th>
+<th data-quarto-table-cell-role="th">spending</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">46</td>
+<td>Denmark</td>
+<td>2019</td>
+<td>59678.596</td>
+<td>49.667778</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">128</td>
+<td>Norway</td>
+<td>2019</td>
+<td>76518.169</td>
+<td>50.674256</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">17</td>
+<td>Belgium</td>
+<td>2019</td>
+<td>46780.073</td>
+<td>51.888048</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">91</td>
+<td>Kuwait</td>
+<td>2019</td>
+<td>28513.431</td>
+<td>52.340009</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">58</td>
+<td>Finland</td>
+<td>2019</td>
+<td>48667.723</td>
+<td>53.281525</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">112</td>
+<td>Micronesia, Fed. States of</td>
+<td>2019</td>
+<td>3979.627</td>
+<td>54.456060</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">59</td>
+<td>France</td>
+<td>2019</td>
+<td>41924.837</td>
+<td>55.351806</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>Lesotho</td>
+<td>2019</td>
+<td>1159.368</td>
+<td>55.809805</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">108</td>
+<td>Marshall Islands</td>
+<td>2019</td>
+<td>4302.655</td>
+<td>64.756959</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">88</td>
+<td>Kiribati</td>
+<td>2019</td>
+<td>1492.126</td>
+<td>132.572621</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-5" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod1.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
@@ -516,13 +625,13 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Thu, 16 May 2024</td>
+<td>Wed, 29 May 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>7.86e-05</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>07:32:08</td>
+<td>16:48:45</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1605.1</td>
 </tr>
@@ -624,14 +733,15 @@ window.Quarto = {
 <li>Very high: if <span class="math inline">\text{gdppc} &gt; 30000</span></li>
 </ul>
 <p>Count the number of countries in each category</p>
-<div id="cell-6" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>] <span class="op">=</span> pd.cut(</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    gdpsp[<span class="st">"gdppc"</span>], </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1025</span>, <span class="dv">3995</span>, <span class="dv">12375</span>, <span class="dv">30000</span>, np.inf], </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">"Low"</span>, <span class="st">"Medium-low"</span>, <span class="st">"Medium-high"</span>, <span class="st">"High"</span>, <span class="st">"Very high"</span>]</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="cell-7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    gdpsp[<span class="st">"gdppc"</span>], </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1025</span>, <span class="dv">3995</span>, <span class="dv">12375</span>, <span class="dv">30000</span>, np.inf], </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">"Low"</span>, <span class="st">"Medium-low"</span>, <span class="st">"Medium-high"</span>, <span class="st">"High"</span>, <span class="st">"Very high"</span>]</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 <div>
 
@@ -695,9 +805,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>].value_counts()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="cell-8" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>].value_counts()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>gdppc_gr
 Medium-high    40
 Medium-low     36
@@ -723,54 +833,55 @@ Name: count, dtype: int64</code></pre>
 &amp; e_i \sim N(0, \sigma^2)
 \end{align*}
 </span></p>
-<div id="cell-9" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ols(<span class="st">"spending ~ gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit().summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-10" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"gdppc ~ gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mod2.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 <table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Dep. Variable:</td>
-<td>spending</td>
+<td>gdppc</td>
 <td data-quarto-table-cell-role="th">R-squared:</td>
-<td>0.161</td>
+<td>0.838</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Model:</td>
 <td>OLS</td>
 <td data-quarto-table-cell-role="th">Adj. R-squared:</td>
-<td>0.137</td>
+<td>0.833</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Method:</td>
 <td>Least Squares</td>
 <td data-quarto-table-cell-role="th">F-statistic:</td>
-<td>6.596</td>
+<td>177.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Thu, 16 May 2024</td>
+<td>Wed, 29 May 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
-<td>6.95e-05</td>
+<td>4.38e-53</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>07:32:09</td>
+<td>16:48:45</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
-<td>-563.36</td>
+<td>-1483.9</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">No. Observations:</td>
 <td>142</td>
 <td data-quarto-table-cell-role="th">AIC:</td>
-<td>1137.</td>
+<td>2978.</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Df Residuals:</td>
 <td>137</td>
 <td data-quarto-table-cell-role="th">BIC:</td>
-<td>1151.</td>
+<td>2992.</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Df Model:</td>
@@ -799,48 +910,48 @@ Name: count, dtype: int64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Intercept</td>
-<td>19.1232</td>
-<td>3.610</td>
-<td>5.297</td>
-<td>0.000</td>
-<td>11.984</td>
-<td>26.262</td>
+<td>712.2514</td>
+<td>2359.420</td>
+<td>0.302</td>
+<td>0.763</td>
+<td>-3953.340</td>
+<td>5377.843</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">gdppc_gr[T.Medium-low]</td>
-<td>9.9512</td>
-<td>4.212</td>
-<td>2.363</td>
-<td>0.020</td>
-<td>1.622</td>
-<td>18.280</td>
+<td>1754.0958</td>
+<td>2752.657</td>
+<td>0.637</td>
+<td>0.525</td>
+<td>-3689.094</td>
+<td>7197.286</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">gdppc_gr[T.Medium-high]</td>
-<td>10.7116</td>
-<td>4.156</td>
-<td>2.577</td>
-<td>0.011</td>
-<td>2.494</td>
-<td>18.929</td>
+<td>6315.7737</td>
+<td>2715.897</td>
+<td>2.325</td>
+<td>0.022</td>
+<td>945.275</td>
+<td>1.17e+04</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">gdppc_gr[T.High]</td>
-<td>17.3340</td>
-<td>4.422</td>
-<td>3.920</td>
+<td>1.924e+04</td>
+<td>2889.688</td>
+<td>6.657</td>
 <td>0.000</td>
-<td>8.590</td>
-<td>26.078</td>
+<td>1.35e+04</td>
+<td>2.5e+04</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">gdppc_gr[T.Very high]</td>
-<td>19.8787</td>
-<td>4.394</td>
-<td>4.524</td>
+<td>5.281e+04</td>
+<td>2871.795</td>
+<td>18.390</td>
 <td>0.000</td>
-<td>11.189</td>
-<td>28.568</td>
+<td>4.71e+04</td>
+<td>5.85e+04</td>
 </tr>
 </tbody>
 </table>
@@ -848,25 +959,25 @@ Name: count, dtype: int64</code></pre>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Omnibus:</td>
-<td>156.037</td>
+<td>126.634</td>
 <td data-quarto-table-cell-role="th">Durbin-Watson:</td>
-<td>2.171</td>
+<td>2.135</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
 <td>0.000</td>
 <td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
-<td>5102.555</td>
+<td>2560.171</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Skew:</td>
-<td>3.851</td>
+<td>2.935</td>
 <td data-quarto-table-cell-role="th">Prob(JB):</td>
 <td>0.00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Kurtosis:</td>
-<td>31.339</td>
+<td>22.956</td>
 <td data-quarto-table-cell-role="th">Cond. No.</td>
 <td>8.43</td>
 </tr>
@@ -877,15 +988,26 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Compare the coefficient estimates with the group averages of <code>gdppc</code></p>
-<div id="cell-11" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>gdpsp.groupby(<span class="st">"gdppc_gr"</span>)[<span class="st">"spending"</span>].mean() </span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>Intercept                    712.251385
+gdppc_gr[T.Medium-low]      1754.095838
+gdppc_gr[T.Medium-high]     6315.773740
+gdppc_gr[T.High]           19236.702769
+gdppc_gr[T.Very high]      52811.176245
+dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-13" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gdpsp.groupby(<span class="st">"gdppc_gr"</span>)[<span class="st">"spending"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2505/107957476.py:1: FutureWarning:
+<pre><code>/tmp/ipykernel_2558/2092294420.py:1: FutureWarning:
 
 The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>gdppc_gr
 Low            19.123154
 Medium-low     29.074398
@@ -896,10 +1018,10 @@ Name: spending, dtype: float64</code></pre>
 </div>
 </div>
 <p>How is the variable <code>gdppc_gr</code> represented inside the model?</p>
-<div id="cell-13" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'gdppc ~ gdppc_gr'</span>, data<span class="op">=</span>gdpsp, return_type<span class="op">=</span><span class="st">'dataframe'</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="cell-15" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'gdppc ~ gdppc_gr'</span>, data<span class="op">=</span>gdpsp, return_type<span class="op">=</span><span class="st">'dataframe'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 <div>
 
@@ -1012,6 +1134,15 @@ Name: spending, dtype: float64</code></pre>
 </div>
 </div>
 </div>
+<div id="cell-16" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>]).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x1</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># np.linalg.inv(x1.T @ x1)</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>array([[1, 2],
+       [2, 4]])</code></pre>
+</div>
+</div>
 <p>Very often we want test the hypothesis that a certain subset of the coefficients are simultaneously equal to zero. This is called a joint hypothesis.</p>
 <p>In our example we could test the hypothesis that the coefficients of <code>Med Low</code>, <code>Med High</code>, <code>High</code> and <code>Very High</code> are all equal to zero. This is equivalent to testing if the average of <code>gdppc</code> is the same in all groups.</p>
 <p>The test is called an F-test and is based on the ratio of the sum of squared errors of the restricted model and the sum of squared errors of the unrestricted model.</p>
@@ -1022,14 +1153,14 @@ Name: spending, dtype: float64</code></pre>
 F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{restricted}} - p_{\text{unrestricted}})}{RSS_{\text{unrestricted}} / (n - p_{\text{unrestricted}})}
 </span></p>
 <p>where <span class="math inline">p</span> is the number of coefficients in the model and <span class="math inline">n</span> is the number of observations.</p>
-<div id="cell-15" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The zero model is the model with no predictors, i.e. the mean of the dependent variable</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mod0 <span class="op">=</span> ols(<span class="st">"gdppc ~ 1"</span>, data<span class="op">=</span>gdpsp).fit()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>anova_lm(mod0, mod1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="cell-18" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The zero model is the model with no predictors, i.e. the mean of the dependent variable</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>mod0 <span class="op">=</span> ols(<span class="st">"gdppc ~ 1"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>anova_lm(mod0, mod1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 <div>
 
@@ -1089,18 +1220,172 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 &amp; e_i \sim N(0, \sigma^2)
 \end{align*}
 </span></p>
-<div id="cell-19" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>gdpsp, x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, hue<span class="op">=</span><span class="st">"gdppc_gr"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>gdpsp, x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, hue<span class="op">=</span><span class="st">"gdppc_gr"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-14-output-1.png" width="586" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-16-output-1.png" width="586" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="polynomial-regression" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="polynomial-regression"><span class="header-section-number">12.1</span> Polynomial regression</h2>
+<div id="cell-23" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">+</span> <span class="dv">3</span><span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">20</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> pd.DataFrame({<span class="st">"x"</span>: x, <span class="st">"y"</span>: y})</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>dt, x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NL_files/figure-html/cell-17-output-1.png" width="469" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-24" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod_lin <span class="op">=</span> ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>dt).fit()</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dt[<span class="st">"resid_lin"</span>] <span class="op">=</span> mod_lin.resid</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>dt, x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"resid_lin"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NL_files/figure-html/cell-18-output-1.png" width="470" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-25" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mq <span class="op">=</span> ols(<span class="st">"y ~ x + I(x**2)"</span>, data<span class="op">=</span>dt).fit()</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>pred_mq <span class="op">=</span> mq.get_prediction(dt).summary_frame()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>dt_with_pred <span class="op">=</span> pd.concat([dt, pred_mq], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>dt_with_pred.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">x</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">resid_lin</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">mean_se</th>
+<th data-quarto-table-cell-role="th">mean_ci_lower</th>
+<th data-quarto-table-cell-role="th">mean_ci_upper</th>
+<th data-quarto-table-cell-role="th">obs_ci_lower</th>
+<th data-quarto-table-cell-role="th">obs_ci_upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1.658050</td>
+<td>61.176444</td>
+<td>5.532831</td>
+<td>8.433512</td>
+<td>2.922088</td>
+<td>2.633976</td>
+<td>14.233048</td>
+<td>-37.160070</td>
+<td>54.027094</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3.012611</td>
+<td>6.106948</td>
+<td>-55.788986</td>
+<td>27.431770</td>
+<td>3.040459</td>
+<td>21.397301</td>
+<td>33.466240</td>
+<td>-18.192290</td>
+<td>73.055831</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>5.483327</td>
+<td>90.831690</td>
+<td>17.531536</td>
+<td>89.873997</td>
+<td>3.827032</td>
+<td>82.278398</td>
+<td>97.469596</td>
+<td>44.017338</td>
+<td>135.730657</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1.804414</td>
+<td>26.233061</td>
+<td>-30.086132</td>
+<td>9.966369</td>
+<td>2.931986</td>
+<td>4.147188</td>
+<td>15.785549</td>
+<td>-35.629716</td>
+<td>55.562454</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>3.707052</td>
+<td>39.546331</td>
+<td>-25.554972</td>
+<td>41.355389</td>
+<td>3.154309</td>
+<td>35.094958</td>
+<td>47.615819</td>
+<td>-4.299108</td>
+<td>87.009886</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-26" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.scatterplot(x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>, data<span class="op">=</span>dt_with_pred)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"mean"</span>, data<span class="op">=</span>dt_with_pred, ax<span class="op">=</span>ax)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>dt_sorted <span class="op">=</span> dt_with_pred.sort_values(by<span class="op">=</span><span class="st">"x"</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ax.fill_between(dt_sorted[<span class="st">"x"</span>], dt_sorted[<span class="st">"mean_ci_lower"</span>], dt_sorted[<span class="st">"mean_ci_upper"</span>], color<span class="op">=</span><span class="st">"gray"</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07-NL_files/figure-html/cell-20-output-2.png" width="602" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1519,8 +1804,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Literature.html" class="pagination-link" aria-label="Empfohlene Literatur">
-        <span class="nav-page-text">Empfohlene Literatur</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08-Interaction-Effects.html" class="pagination-link" aria-label="Interaction Effects">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

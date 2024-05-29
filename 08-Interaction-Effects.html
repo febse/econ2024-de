@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Einführung in die Ökonometrie - Literaturverzeichnis</title>
+<title>Einführung in die Ökonometrie - 13&nbsp; Interaction Effects</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 /* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -42,15 +77,15 @@ div.csl-indent {
 }</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Appendices/02-Random-Variables.html" rel="next">
-<link href="./Literature.html" rel="prev">
+<link href="./Literature.html" rel="next">
+<link href="./07-NL.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -87,7 +122,53 @@ div.csl-indent {
     "search-label": "Suchen"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -100,7 +181,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">Literaturverzeichnis</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08-Interaction-Effects.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -216,7 +297,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08-Interaction-Effects.html" class="sidebar-item-text sidebar-link">
+  <a href="./08-Interaction-Effects.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></span></a>
   </div>
 </li>
@@ -228,7 +309,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Literaturverzeichnis</span></a>
   </div>
 </li>
@@ -267,14 +348,22 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#modell-1" id="toc-modell-1" class="nav-link active" data-scroll-target="#modell-1"><span class="header-section-number">13.1</span> Modell 1</a></li>
+  <li><a href="#modell-2" id="toc-modell-2" class="nav-link" data-scroll-target="#modell-2"><span class="header-section-number">13.2</span> Modell 2</a></li>
+  <li><a href="#modell-3" id="toc-modell-3" class="nav-link" data-scroll-target="#modell-3"><span class="header-section-number">13.3</span> Modell 3</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Literaturverzeichnis</h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></h1>
 </div>
 
 
@@ -291,34 +380,259 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-GELMAN2021RegressionOtherStories" class="csl-entry" role="listitem">
-Gelman, Andrew, Jennifer Hill, and Aki Vehtari. 2021. <em>Regression and
-Other Stories</em>. Analytical Methods for Social Research.
-<span>Cambridge New York, NY Port Melbourne, VIC New Delhi
-Singapore</span>: <span>Cambridge University Press</span>. <a href="https://doi.org/10.1017/9781139161879">https://doi.org/10.1017/9781139161879</a>.
+<p>Im folgenden werden wir einen Datensatz verwenden, um Interaktionseffekte zu untersuchen. Der Datensatz stammt aus <span class="citation" data-cites="WARD1990AIDSKnowledgeFear">Ward und Ault (<a href="references.html#ref-WARD1990AIDSKnowledgeFear" role="doc-biblioref">1990</a>)</span>.</p>
+<div id="cell-1" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.formula.api <span class="im">import</span> ols</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the data</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/febse/data/main/econ/drinking.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">male</th>
+<th data-quarto-table-cell-role="th">drink</th>
+<th data-quarto-table-cell-role="th">gpa</th>
+<th data-quarto-table-cell-role="th">malegpa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>5</td>
+<td>3.20</td>
+<td>3.20</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>9</td>
+<td>3.00</td>
+<td>0.00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>29</td>
+<td>2.85</td>
+<td>2.85</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>22</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>19</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div id="ref-JAMES2023IntroductionStatisticalLearning" class="csl-entry" role="listitem">
-James, Gareth, Daniela Witten, Trevor Hastie, Robert Tibshirani, and
-Jonathan Taylor. 2023. <em>An <span>Introduction</span> to
-<span>Statistical Learning</span> with <span>Applications</span> in
-<span>Python</span></em>. <span>Cham</span>: <span>Springer
-International Publishing</span>.
 </div>
-<div id="ref-MCKINNEY2022PythonDataAnalysis" class="csl-entry" role="listitem">
-McKinney, Wes. 2022. <em>Python for Data Analysis: Data Wrangling with
-<span>Pandas</span>, <span>NumPy</span>, and <span>Jupyter</span></em>.
-Third edition. <span>Beijing Boston Farnham Sebastopol Tokyo</span>:
-<span>O’Reilly</span>.
 </div>
+</div>
+<div id="cell-2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'drink'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">"male"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-Interaction-Effects_files/figure-html/cell-3-output-1.png" width="527" height="468" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="modell-1" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="modell-1"><span class="header-section-number">13.1</span> Modell 1</h2>
+<p>Schätzen Sie das folgende Modell:</p>
+<p><span class="math display">
+\text{drink} = \beta_0 + \beta_1 \text{gpa} + \epsilon
+</span></p>
+<p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span> und <span class="math inline">\hat{\beta}_1</span> in diesem Modell schätzen.</p>
+<div id="cell-4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m1 = ols("", data=df).fit()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="modell-2" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="modell-2"><span class="header-section-number">13.2</span> Modell 2</h2>
+<p>Schätzen Sie das folgende Modell:</p>
+<p><span class="math display">
+\text{drink} = \beta_0 + \beta_1 \text{gpa} + \beta_2 \text{male} + \epsilon
+</span></p>
+<p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span>, <span class="math inline">\hat{\beta}_1</span> und <span class="math inline">\hat{\beta}_2</span> in diesem Modell schätzen.</p>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 = ols("", data=df).fit()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="modell-3" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="modell-3"><span class="header-section-number">13.3</span> Modell 3</h2>
+<p>Schätzen Sie das folgende Modell:</p>
+<p><span class="math display">
+\text{drink} = \beta_0 + \beta_1 \text{gpa} + \beta_2 \text{male} + \beta_3 \text{gpa} \times \text{male} + \epsilon
+</span></p>
+<p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span>, <span class="math inline">\hat{\beta}_1</span>, <span class="math inline">\hat{\beta}_2</span> und <span class="math inline">\hat{\beta}_3</span> in diesem Modell schätzen.</p>
+<div id="cell-8" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="op">=</span> ols(<span class="st">"drink ~ gpa*male"</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>m3.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Intercept    28.522064
+gpa          -4.011209
+male          0.148815
+gpa:male      1.212068
+dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-9" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m3p <span class="op">=</span> m3.get_prediction().summary_frame()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m3p_with_ci <span class="op">=</span> pd.concat([df, m3p], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>m3p_with_ci.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">male</th>
+<th data-quarto-table-cell-role="th">drink</th>
+<th data-quarto-table-cell-role="th">gpa</th>
+<th data-quarto-table-cell-role="th">malegpa</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">mean_se</th>
+<th data-quarto-table-cell-role="th">mean_ci_lower</th>
+<th data-quarto-table-cell-role="th">mean_ci_upper</th>
+<th data-quarto-table-cell-role="th">obs_ci_lower</th>
+<th data-quarto-table-cell-role="th">obs_ci_upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>5</td>
+<td>3.20</td>
+<td>3.20</td>
+<td>19.713625</td>
+<td>0.917598</td>
+<td>17.904938</td>
+<td>21.522312</td>
+<td>7.232428</td>
+<td>32.194822</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>9</td>
+<td>3.00</td>
+<td>0.00</td>
+<td>16.488436</td>
+<td>0.593608</td>
+<td>15.318369</td>
+<td>17.658503</td>
+<td>4.083680</td>
+<td>28.893192</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>29</td>
+<td>2.85</td>
+<td>2.85</td>
+<td>20.693325</td>
+<td>0.655452</td>
+<td>19.401357</td>
+<td>21.985293</td>
+<td>8.276478</td>
+<td>33.110172</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>22</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>19</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'drink'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'mean'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="08-Interaction-Effects_files/figure-html/cell-8-output-2.png" width="585" height="429" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
 <div id="ref-WARD1990AIDSKnowledgeFear" class="csl-entry" role="listitem">
-Ward, Sally, and Susan Ault. 1990. <span>“<span>AIDS</span> Knowledge,
-Fear, and Safe Sex Practices on Campus.”</span> <em>Sociology and Social
-Research</em> 74 (3): 158–61.
+Ward, Sally, und Susan Ault. 1990. <span>„<span>AIDS</span> Knowledge, Fear, and Safe Sex Practices on Campus“</span>. <em>Sociology and Social Research</em> 74 (3): 158–61.
 </div>
 </div>
-
-
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -732,13 +1046,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Literature.html" class="pagination-link" aria-label="Empfohlene Literatur">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Empfohlene Literatur</span>
+      <a href="./07-NL.html" class="pagination-link" aria-label="Linearität">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Linearität</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Appendices/02-Random-Variables.html" class="pagination-link" aria-label="Diskrete Zufallsvariablen">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diskrete Zufallsvariablen</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Literature.html" class="pagination-link" aria-label="Empfohlene Literatur">
+        <span class="nav-page-text">Empfohlene Literatur</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
