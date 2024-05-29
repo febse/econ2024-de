@@ -25,6 +25,7 @@ book:
     - 05-Einweg-Varianzanalyse.ipynb
     - 06-Multiples-Regressionsmodell.ipynb
     - 07-NL.ipynb
+    - 08-Interaction-Effects.ipynb
     
     #     - 02-Review/02-Probability.ipynb
     # - part: "Einfache Lineare Regression"
@@ -46,7 +47,9 @@ book:
     - Appendices/04-LA.ipynb
 
 
-bibliography: references.bib
+bibliography: 
+  - references.bib
+  - examples.bib
 
 format:
   html:
