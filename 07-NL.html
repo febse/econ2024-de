@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -373,10 +373,9 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -428,7 +427,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</div>
 <div id="cell-2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove countries with missing values</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -436,10 +434,9 @@ window.Quarto = {
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -491,7 +488,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</div>
 <div id="cell-3" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, data<span class="op">=</span>gdpsp)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -506,10 +502,9 @@ window.Quarto = {
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gdpsp.sort_values(by<span class="op">=</span><span class="st">"spending"</span>).tail(<span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -596,13 +591,11 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</div>
 <div id="cell-5" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending"</span>, data<span class="op">=</span>gdpsp).fit()</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod1.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
-<div>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
@@ -625,13 +618,13 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Wed, 29 May 2024</td>
+<td>Thu, 06 Jun 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>7.86e-05</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>16:48:45</td>
+<td>15:23:38</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1605.1</td>
 </tr>
@@ -661,7 +654,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -692,7 +685,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Omnibus:</td>
@@ -723,7 +716,6 @@ window.Quarto = {
 <br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
-</div>
 <p>Create a new variable called <code>gdppc_gr</code> that has five categories:</p>
 <ul>
 <li>Low: if <span class="math inline">\text{gdppc} \leq 1025</span></li>
@@ -743,10 +735,9 @@ window.Quarto = {
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -804,7 +795,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</div>
 <div id="cell-8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>].value_counts()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -837,8 +827,7 @@ Name: count, dtype: int64</code></pre>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"gdppc ~ gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit()</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mod2.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
 <tr class="odd">
@@ -861,13 +850,13 @@ Name: count, dtype: int64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Wed, 29 May 2024</td>
+<td>Thu, 06 Jun 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>4.38e-53</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>16:48:45</td>
+<td>15:23:38</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1483.9</td>
 </tr>
@@ -897,7 +886,7 @@ Name: count, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td></td>
@@ -955,7 +944,7 @@ Name: count, dtype: int64</code></pre>
 </tr>
 </tbody>
 </table>
-<table class="simpletable table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Omnibus:</td>
@@ -986,7 +975,6 @@ Name: count, dtype: int64</code></pre>
 <br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
-</div>
 <p>Compare the coefficient estimates with the group averages of <code>gdppc</code></p>
 <div id="cell-12" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1002,7 +990,7 @@ dtype: float64</code></pre>
 <div id="cell-13" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gdpsp.groupby(<span class="st">"gdppc_gr"</span>)[<span class="st">"spending"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2558/2092294420.py:1: FutureWarning:
+<pre><code>/tmp/ipykernel_2477/2092294420.py:1: FutureWarning:
 
 The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
 </code></pre>
@@ -1023,10 +1011,9 @@ Name: spending, dtype: float64</code></pre>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1133,7 +1120,6 @@ Name: spending, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div id="cell-16" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>]).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x1</span>
@@ -1162,10 +1148,9 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>anova_lm(mod0, mod1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1199,7 +1184,6 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1258,7 +1242,7 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-18-output-1.png" width="470" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-18-output-1.png" width="469" height="468" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1272,10 +1256,9 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>dt_with_pred.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1293,68 +1276,67 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>1.658050</td>
-<td>61.176444</td>
-<td>5.532831</td>
-<td>8.433512</td>
-<td>2.922088</td>
-<td>2.633976</td>
-<td>14.233048</td>
-<td>-37.160070</td>
-<td>54.027094</td>
+<td>-3.328088</td>
+<td>23.818472</td>
+<td>-27.971951</td>
+<td>39.031603</td>
+<td>2.699054</td>
+<td>33.674727</td>
+<td>44.388479</td>
+<td>-0.102113</td>
+<td>78.165320</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>3.012611</td>
-<td>6.106948</td>
-<td>-55.788986</td>
-<td>27.431770</td>
-<td>3.040459</td>
-<td>21.397301</td>
-<td>33.466240</td>
-<td>-18.192290</td>
-<td>73.055831</td>
+<td>1.687876</td>
+<td>46.737686</td>
+<td>13.947892</td>
+<td>11.532281</td>
+<td>2.357620</td>
+<td>6.853058</td>
+<td>16.211504</td>
+<td>-27.514444</td>
+<td>50.579007</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>5.483327</td>
-<td>90.831690</td>
-<td>17.531536</td>
-<td>89.873997</td>
-<td>3.827032</td>
-<td>82.278398</td>
-<td>97.469596</td>
-<td>44.017338</td>
-<td>135.730657</td>
+<td>1.352289</td>
+<td>13.226526</td>
+<td>-20.834483</td>
+<td>8.556530</td>
+<td>2.338584</td>
+<td>3.915088</td>
+<td>13.197971</td>
+<td>-30.485686</td>
+<td>47.598746</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>1.804414</td>
-<td>26.233061</td>
-<td>-30.086132</td>
-<td>9.966369</td>
-<td>2.931986</td>
-<td>4.147188</td>
-<td>15.785549</td>
-<td>-35.629716</td>
-<td>55.562454</td>
+<td>-2.456444</td>
+<td>52.595540</td>
+<td>4.106933</td>
+<td>23.177693</td>
+<td>2.531968</td>
+<td>18.152437</td>
+<td>28.202949</td>
+<td>-15.912009</td>
+<td>62.267396</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>3.707052</td>
-<td>39.546331</td>
-<td>-25.554972</td>
-<td>41.355389</td>
-<td>3.154309</td>
-<td>35.094958</td>
-<td>47.615819</td>
-<td>-4.299108</td>
-<td>87.009886</td>
+<td>0.969456</td>
+<td>-21.607870</td>
+<td>-57.119063</td>
+<td>6.005071</td>
+<td>2.333917</td>
+<td>1.372891</td>
+<td>10.637250</td>
+<td>-33.036045</td>
+<td>45.046187</td>
 </tr>
 </tbody>
 </table>
 
-</div>
 </div>
 </div>
 </div>
@@ -1378,7 +1360,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-20-output-2.png" width="602" height="429" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-20-output-2.png" width="596" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>

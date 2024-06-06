@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.554">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -392,10 +392,9 @@ window.Quarto = {
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <div>
-<div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -447,7 +446,6 @@ window.Quarto = {
 </div>
 </div>
 </div>
-</div>
 <div id="cell-2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'drink'</span>, data<span class="op">=</span>df, hue<span class="op">=</span><span class="st">"male"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -464,9 +462,20 @@ window.Quarto = {
 <p><span class="math display">
 \text{drink} = \beta_0 + \beta_1 \text{gpa} + \epsilon
 </span></p>
+<p><span class="math display">
+\widehat{\text{drink}} = \hat{\beta}_0 + \hat{\beta}_1 \text{gpa}
+</span></p>
 <p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span> und <span class="math inline">\hat{\beta}_1</span> in diesem Modell schätzen.</p>
+<p>drink: л. бира на месец</p>
+<p>beta_0 ? beta_1 ?</p>
 <div id="cell-4" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m1 = ols("", data=df).fit()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="op">=</span> ols(<span class="st">"drink ~ gpa"</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>m1.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>Intercept    30.443583
+gpa          -4.138479
+dtype: float64</code></pre>
+</div>
 </div>
 </section>
 <section id="modell-2" class="level2" data-number="13.2">
@@ -475,9 +484,33 @@ window.Quarto = {
 <p><span class="math display">
 \text{drink} = \beta_0 + \beta_1 \text{gpa} + \beta_2 \text{male} + \epsilon
 </span></p>
+<p><span class="math display">
+\widehat{\text{drink}} = \hat{\beta}_0 + \hat{\beta}_1 \text{gpa} + \hat{\beta}_2 \text{male}
+</span></p>
 <p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span>, <span class="math inline">\hat{\beta}_1</span> und <span class="math inline">\hat{\beta}_2</span> in diesem Modell schätzen.</p>
 <div id="cell-6" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># m2 = ols("", data=df).fit()</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"gpa"</span>].describe()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>count    218.000000
+mean       2.808394
+std        0.459170
+min        1.450000
+25%        2.500000
+50%        2.805000
+75%        3.100000
+max        4.000000
+Name: gpa, dtype: float64</code></pre>
+</div>
+</div>
+<div id="cell-7" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="op">=</span> ols(<span class="st">"drink ~ gpa + male"</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m2.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>Intercept    26.912491
+gpa          -3.452900
+male          3.535818
+dtype: float64</code></pre>
+</div>
 </div>
 </section>
 <section id="modell-3" class="level2" data-number="13.3">
@@ -486,28 +519,163 @@ window.Quarto = {
 <p><span class="math display">
 \text{drink} = \beta_0 + \beta_1 \text{gpa} + \beta_2 \text{male} + \beta_3 \text{gpa} \times \text{male} + \epsilon
 </span></p>
+<p><span class="math display">
+\widehat{\text{drink}} = \hat{\beta}_0 + \hat{\beta}_1 \text{gpa} + \hat{\beta}_2 \text{male} + \hat{\beta}_3 \text{gpa}\times \text{male}
+</span></p>
 <p>Erläutern Sie, was <span class="math inline">\hat{\beta}_0</span>, <span class="math inline">\hat{\beta}_1</span>, <span class="math inline">\hat{\beta}_2</span> und <span class="math inline">\hat{\beta}_3</span> in diesem Modell schätzen.</p>
-<div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="op">=</span> ols(<span class="st">"drink ~ gpa*male"</span>, data<span class="op">=</span>df).fit()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>m3.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>Intercept    28.522064
-gpa          -4.011209
-male          0.148815
-gpa:male      1.212068
-dtype: float64</code></pre>
-</div>
-</div>
 <div id="cell-9" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m3p <span class="op">=</span> m3.get_prediction().summary_frame()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m3p_with_ci <span class="op">=</span> pd.concat([df, m3p], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>m3p_with_ci.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="op">=</span> ols(<span class="st">"drink ~ gpa*male"</span>, data<span class="op">=</span>df).fit()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>m3.params</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>m3.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<div>
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Regression Results</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>drink</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.148</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Model:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.136</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Method:</td>
+<td>Least Squares</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>12.35</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Thu, 06 Jun 2024</td>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
+<td>1.76e-07</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>15:23:43</td>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
+<td>-707.34</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>218</td>
+<td data-quarto-table-cell-role="th">AIC:</td>
+<td>1423.</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
+<td>214</td>
+<td data-quarto-table-cell-role="th">BIC:</td>
+<td>1436.</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Df Model:</td>
+<td>3</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
+<td>nonrobust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>28.5221</td>
+<td>3.740</td>
+<td>7.627</td>
+<td>0.000</td>
+<td>21.151</td>
+<td>35.893</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gpa</td>
+<td>-4.0112</td>
+<td>1.282</td>
+<td>-3.129</td>
+<td>0.002</td>
+<td>-6.538</td>
+<td>-1.485</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">male</td>
+<td>0.1488</td>
+<td>5.348</td>
+<td>0.028</td>
+<td>0.978</td>
+<td>-10.393</td>
+<td>10.690</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gpa:male</td>
+<td>1.2121</td>
+<td>1.889</td>
+<td>0.642</td>
+<td>0.522</td>
+<td>-2.511</td>
+<td>4.935</td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Omnibus:</td>
+<td>6.531</td>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
+<td>1.924</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
+<td>0.038</td>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
+<td>5.367</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skew:</td>
+<td>-0.291</td>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
+<td>0.0683</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
+<td>2.498</td>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
+<td>50.7</td>
+</tr>
+</tbody>
+</table>
+<br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</div>
+</div>
+<div id="cell-10" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>m3p <span class="op">=</span> m3.get_prediction().summary_frame()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>m3p_with_ci <span class="op">=</span> pd.concat([df, m3p], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>m3p_with_ci.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -595,10 +763,9 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div id="cell-10" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'drink'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'mean'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'drink'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">'gpa'</span>, y<span class="op">=</span><span class="st">'mean'</span>, data<span class="op">=</span>m3p_with_ci, hue<span class="op">=</span><span class="st">"male"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
 
@@ -620,7 +787,7 @@ When grouping with a length-1 list-like, you will need to pass a length-1 tuple 
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="08-Interaction-Effects_files/figure-html/cell-8-output-2.png" width="585" height="429" class="figure-img"></p>
+<p><img src="08-Interaction-Effects_files/figure-html/cell-9-output-2.png" width="585" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
