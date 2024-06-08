@@ -1,4 +1,4 @@
-# Hausarbeit 
+# Hausarbeit {.unnumbered}
 
 Link zur Hausarbeit: [https://classroom.github.com/a/G46qGWQc](https://classroom.github.com/a/G46qGWQc). Der Abgabetermin ist der **23. Juni 2024, 12:00**
 
@@ -20,7 +20,7 @@ Die Aufgabe wir in der Form eines Jupyter-Notebooks bereitgestellt und sie haben
 
 ## Lokal bearbeiten
 
-Sie können die Hausaufgabe-Repository klonen und der Anleitung in @setup folgen, um Ihre Pythonumgebung zu konfigurieren.
+Sie können die Hausaufgabe-Repository klonen und der Anleitung in @sec-setup folgen, um Ihre Pythonumgebung zu konfigurieren.
 
 
 ## Mit Google Colab bearbeiten
@@ -56,7 +56,7 @@ Die Abgabe erfolgt, indem Sie Ihre Lösung (als jupyter Notebook) in das Hausauf
 
 ![Add files](images/hw/Submission-02-Add-Files.png)
 ![Wählen Sie Ihre Lösung](images/hw/Submission-03-Find-Assignment-File.png)
-![Commit changes](images/hw/Submission-04-Commit-Changes.png)
+![Commit changes](images/hw/Submission-04-Commit-Changes-Button.png)
 
 3. Ihre Lösung wird jetzt hochgeladen. Sie können (und sollten) kontrollieren, ob die Datei korrekt hochgeladen wurde. Öffnen Sie Ihre Hausaufgabe-Repository, suchen Sie nach index.ipynb und klicken Sie darauf, um die Datei zu öffnen. Sie sollten Ihre Lösung sehen. Falls nicht, setzen Sie sich bitte mit mir in Verbindung, um das Problem zu lösen.
 

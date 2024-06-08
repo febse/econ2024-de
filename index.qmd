@@ -1,4 +1,4 @@
-# Setup {#setup .unnumbered}
+# Setup {#sec-setup}
 
 
 :::{.callout-note}
