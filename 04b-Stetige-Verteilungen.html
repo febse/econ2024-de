@@ -401,8 +401,8 @@ f(x) = \begin{cases}
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x_unif <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x_unif</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([ 0.43334208,  0.92004937,  0.31550613,  0.68980063, -0.44338914,
-       -0.6269753 , -0.3415305 , -0.85433803, -0.56452886, -0.5089876 ])</code></pre>
+<pre><code>array([-0.25063727,  0.79255718, -0.54666899, -0.59244954, -0.56858709,
+        0.25019847,  0.62799724,  0.531809  , -0.66872149,  0.75745695])</code></pre>
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="3">
@@ -416,7 +416,7 @@ f(x) = \begin{cases}
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>2</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="4">
@@ -440,7 +440,7 @@ f(x) = \begin{cases}
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>2</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
 <section id="die-normalverteilung" class="level2" data-number="9.1">
@@ -552,11 +552,11 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Gesamtgewinn'</span>)</span>
 <span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>([&lt;matplotlib.axis.XTick at 0x7fcd41eb4710&gt;,
-  &lt;matplotlib.axis.XTick at 0x7fcd41680250&gt;,
-  &lt;matplotlib.axis.XTick at 0x7fcd41f66710&gt;,
-  &lt;matplotlib.axis.XTick at 0x7fcd4133d750&gt;,
-  &lt;matplotlib.axis.XTick at 0x7fcd4133e610&gt;],
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7f2315777010&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f23156f7550&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f2315774c50&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f231555b350&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f23153f7310&gt;],
  [Text(0, 0, '0'),
   Text(4, 0, '4'),
   Text(8, 0, '8'),
@@ -640,7 +640,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04b-Stetige-Verteilungen_files/figure-html/cell-10-output-3.png" width="680" height="523" class="figure-img"></p>
+<p><img src="04b-Stetige-Verteilungen_files/figure-html/cell-10-output-3.png" width="672" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
