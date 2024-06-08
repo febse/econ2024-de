@@ -296,35 +296,6 @@ window.Quarto = {
  <span class="menu-text">Literaturverzeichnis</span></a>
   </div>
 </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Anhang</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Appendices/02-Random-Variables.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Diskrete Zufallsvariablen</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Appendices/03-Die-Normalverteilung.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Die Normalverteilung</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./Appendices/04-LA.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Elemente der Linearen Algebra</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -407,8 +378,8 @@ f(x) = \begin{cases}
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x_unif <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x_unif</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([ 0.29892749,  0.4249884 ,  0.95731683,  0.92820864,  0.92741226,
-       -0.43272865,  0.37920524, -0.56761899, -0.68366086, -0.40301301])</code></pre>
+<pre><code>array([ 0.60744999, -0.11180888,  0.59464158,  0.04289264, -0.99469088,
+        0.75957546, -0.12497525, -0.7158336 ,  0.97125989, -0.41955372])</code></pre>
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="3">
@@ -422,7 +393,7 @@ f(x) = \begin{cases}
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>3</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="4">
@@ -446,7 +417,7 @@ f(x) = \begin{cases}
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>3</code></pre>
+<pre><code>1</code></pre>
 </div>
 </div>
 <section id="die-normalverteilung" class="level2" data-number="10.1">
@@ -558,11 +529,11 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Gesamtgewinn'</span>)</span>
 <span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>([&lt;matplotlib.axis.XTick at 0x7ff2a124aed0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7ff2a1243250&gt;,
-  &lt;matplotlib.axis.XTick at 0x7ff2a1242cd0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7ff2e01bb750&gt;,
-  &lt;matplotlib.axis.XTick at 0x7ff2a0ef2b10&gt;],
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7f04b862add0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f04b8628ed0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f04b8fde2d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f04b82c59d0&gt;,
+  &lt;matplotlib.axis.XTick at 0x7f04b82c7710&gt;],
  [Text(0, 0, '0'),
   Text(4, 0, '4'),
   Text(8, 0, '8'),
@@ -622,7 +593,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="04b-Stetige-Verteilungen_files/figure-html/cell-9-output-3.png" width="680" height="523" class="figure-img"></p>
+<p><img src="04b-Stetige-Verteilungen_files/figure-html/cell-9-output-3.png" width="672" height="523" class="figure-img"></p>
 </figure>
 </div>
 </div>
