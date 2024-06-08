@@ -278,7 +278,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08-Interaction-Effects.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaktionseffekte</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -332,7 +332,7 @@ window.Quarto = {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#polynomial-regression" id="toc-polynomial-regression" class="nav-link active" data-scroll-target="#polynomial-regression"><span class="header-section-number">12.1</span> Polynomial regression</a></li>
+  <li><a href="#polynomiale-regression" id="toc-polynomiale-regression" class="nav-link active" data-scroll-target="#polynomiale-regression"><span class="header-section-number">12.1</span> Polynomiale Regression</a></li>
   </ul>
 </nav>
     </div>
@@ -358,6 +358,7 @@ window.Quarto = {
 </header>
 
 
+<p>Das folgende Beispiel benutzt Daten über das Bruttoinlandsprodukt pro Kopf (<code>gdppc</code>) und die Staatsausgaben als Prozent vom BIP (<code>spending</code>) für 142 Länder. Die Daten sind in der Datei <code>gdppc.csv</code> gespeichert. Wir möchten die Beziehung zwischen den beiden Variablen untersuchen und starten mit einem einfachen linearen Modell:</p>
 <p><span class="math display">
 \text{gdppc}_i = \beta_0 + \beta_1 \text{spending}_i + e_i, \quad e_i \sim N(0, \sigma^2)
 </span></p>
@@ -369,70 +370,9 @@ window.Quarto = {
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.anova <span class="im">import</span> anova_lm</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> patsy <span class="im">import</span> dmatrices</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>gdpsp <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/febse/data/main/econ/gdpgov2019.csv"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>gdpsp <span class="op">=</span> pd.read_csv(<span class="st">"https://raw.githubusercontent.com/febse/data/main/econ/gdpgov2019.csv"</span>).dropna()</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">country</th>
-<th data-quarto-table-cell-role="th">year</th>
-<th data-quarto-table-cell-role="th">gdppc</th>
-<th data-quarto-table-cell-role="th">spending</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Afghanistan</td>
-<td>2019</td>
-<td>586.204</td>
-<td>NaN</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Albania</td>
-<td>2019</td>
-<td>5345.058</td>
-<td>29.153132</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Algeria</td>
-<td>2019</td>
-<td>3953.402</td>
-<td>41.784138</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Andorra</td>
-<td>2019</td>
-<td>40688.491</td>
-<td>NaN</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Angola</td>
-<td>2019</td>
-<td>2612.246</td>
-<td>20.402984</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-<div id="cell-2" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove countries with missing values</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gdpsp <span class="op">=</span> gdpsp.dropna()</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -488,19 +428,19 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-3" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, data<span class="op">=</span>gdpsp)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-2" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, data<span class="op">=</span>gdpsp)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-4-output-1.png" width="469" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-3-output-1.png" width="469" height="468" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-4" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gdpsp.sort_values(by<span class="op">=</span><span class="st">"spending"</span>).tail(<span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="cell-3" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gdpsp.sort_values(by<span class="op">=</span><span class="st">"spending"</span>).tail(<span class="dv">10</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -591,10 +531,10 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-5" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending"</span>, data<span class="op">=</span>gdpsp).fit()</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mod1.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="cell-4" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>mod1 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>mod1.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
@@ -618,13 +558,13 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Thu, 06 Jun 2024</td>
+<td>Sat, 08 Jun 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>7.86e-05</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>15:23:38</td>
+<td>10:24:49</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1605.1</td>
 </tr>
@@ -716,7 +656,7 @@ window.Quarto = {
 <br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
-<p>Create a new variable called <code>gdppc_gr</code> that has five categories:</p>
+<p>Als Nächstes möchten wir untersuchen, ob diese Beziehung auch in verschiedenen Gruppen von Ländern gilt. Wir definieren die Gruppen anhand des Bruttoinlandsprodukts pro Kopf und speichern die Gruppenzugehörigkeit in der Variable <code>gdppc_group</code>:</p>
 <ul>
 <li>Low: if <span class="math inline">\text{gdppc} \leq 1025</span></li>
 <li>Medium-low: if <span class="math inline">1025 &lt; \text{gdppc} \leq 3995</span></li>
@@ -725,15 +665,15 @@ window.Quarto = {
 <li>Very high: if <span class="math inline">\text{gdppc} &gt; 30000</span></li>
 </ul>
 <p>Count the number of countries in each category</p>
-<div id="cell-7" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>] <span class="op">=</span> pd.cut(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    gdpsp[<span class="st">"gdppc"</span>], </span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1025</span>, <span class="dv">3995</span>, <span class="dv">12375</span>, <span class="dv">30000</span>, np.inf], </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">"Low"</span>, <span class="st">"Medium-low"</span>, <span class="st">"Medium-high"</span>, <span class="st">"High"</span>, <span class="st">"Very high"</span>]</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="cell-6" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>] <span class="op">=</span> pd.cut(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    gdpsp[<span class="st">"gdppc"</span>], </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1025</span>, <span class="dv">3995</span>, <span class="dv">12375</span>, <span class="dv">30000</span>, np.inf], </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>[<span class="st">"Low"</span>, <span class="st">"Medium-low"</span>, <span class="st">"Medium-high"</span>, <span class="st">"High"</span>, <span class="st">"Very high"</span>]</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>gdpsp.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -795,9 +735,9 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>].value_counts()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="cell-7" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gdpsp[<span class="st">"gdppc_gr"</span>].value_counts()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>gdppc_gr
 Medium-high    40
 Medium-low     36
@@ -807,11 +747,11 @@ Low            13
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<p>Estimate</p>
+<p>Nun möchten wir die kategoriale Variable <code>gdppc_group</code> in unser Modell aufnehmen. Wir könnten dies tun, indem wir die Gruppen in separate Variablen umwandeln und sie als separate Prädiktoren in unser Modell aufnehmen. Das Modell würde dann folgendermaßen aussehen:</p>
 <p><span class="math display">
 \text{gdppc}_i = \beta_0 + \beta_{\text{gdppc\_gr}_i} + e_i, e_i \sim N(0, \sigma^2)
 </span></p>
-<p>or equivalently</p>
+<p>oder equivalent:</p>
 <p><span class="math display">
 \begin{align*}
 \text{gdppc}_i &amp; = \beta_0 + \\
@@ -823,10 +763,10 @@ Name: count, dtype: int64</code></pre>
 &amp; e_i \sim N(0, \sigma^2)
 \end{align*}
 </span></p>
-<div id="cell-10" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"gdppc ~ gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit()</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mod2.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="cell-9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mod2 <span class="op">=</span> ols(<span class="st">"gdppc ~ gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>mod2.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>OLS Regression Results</caption>
 <tbody>
@@ -850,13 +790,13 @@ Name: count, dtype: int64</code></pre>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">Date:</td>
-<td>Thu, 06 Jun 2024</td>
+<td>Sat, 08 Jun 2024</td>
 <td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
 <td>4.38e-53</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>15:23:38</td>
+<td>10:24:49</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1483.9</td>
 </tr>
@@ -975,10 +915,10 @@ Name: count, dtype: int64</code></pre>
 <br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 </div>
 </div>
-<p>Compare the coefficient estimates with the group averages of <code>gdppc</code></p>
-<div id="cell-12" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<p>Um die geschätzten Koeffizienten zu verstehen, ist ein Vergleich mit den Gruppenmittelwerten hilfreich.</p>
+<div id="cell-11" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>mod2.params</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>Intercept                    712.251385
 gdppc_gr[T.Medium-low]      1754.095838
 gdppc_gr[T.Medium-high]     6315.773740
@@ -987,29 +927,29 @@ gdppc_gr[T.Very high]      52811.176245
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>gdpsp.groupby(<span class="st">"gdppc_gr"</span>)[<span class="st">"spending"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-12" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>gdpsp.groupby(<span class="st">"gdppc_gr"</span>)[<span class="st">"gdppc"</span>].mean()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2477/2092294420.py:1: FutureWarning:
+<pre><code>/tmp/ipykernel_2538/1539639733.py:1: FutureWarning:
 
 The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
 </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>gdppc_gr
-Low            19.123154
-Medium-low     29.074398
-Medium-high    29.834715
-High           36.457175
-Very high      39.001881
-Name: spending, dtype: float64</code></pre>
+Low              712.251385
+Medium-low      2466.347222
+Medium-high     7028.025125
+High           19948.954154
+Very high      53523.427630
+Name: gdppc, dtype: float64</code></pre>
 </div>
 </div>
-<p>How is the variable <code>gdppc_gr</code> represented inside the model?</p>
-<div id="cell-15" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'gdppc ~ gdppc_gr'</span>, data<span class="op">=</span>gdpsp, return_type<span class="op">=</span><span class="st">'dataframe'</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<p>Wir sehen, dass im Modell eine der Dummy-Variablen weggelassen wurde. Dies ist notwendig, um die Identifizierbarkeit des Modells zu gewährleisten. Die weggelassene Gruppe wird als Referenzgruppe bezeichnet.</p>
+<div id="cell-14" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>y, X <span class="op">=</span> dmatrices(<span class="st">'gdppc ~ gdppc_gr'</span>, data<span class="op">=</span>gdpsp, return_type<span class="op">=</span><span class="st">'dataframe'</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <div>
 
 
@@ -1120,33 +1060,19 @@ Name: spending, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="cell-16" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>x1 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>]).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>x1</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># np.linalg.inv(x1.T @ x1)</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<pre><code>array([[1, 2],
-       [2, 4]])</code></pre>
-</div>
-</div>
-<p>Very often we want test the hypothesis that a certain subset of the coefficients are simultaneously equal to zero. This is called a joint hypothesis.</p>
-<p>In our example we could test the hypothesis that the coefficients of <code>Med Low</code>, <code>Med High</code>, <code>High</code> and <code>Very High</code> are all equal to zero. This is equivalent to testing if the average of <code>gdppc</code> is the same in all groups.</p>
-<p>The test is called an F-test and is based on the ratio of the sum of squared errors of the restricted model and the sum of squared errors of the unrestricted model.</p>
-<p>The restricted model is the one where the coefficients of <code>Med Low</code>, <code>Med High</code>, <code>High</code> and <code>Very High</code> are all equal to zero.</p>
-<p>The unrestricted model is the one where all coefficients are estimated.</p>
-<p>The F-test is based on the following statistic:</p>
+<p>Bisher haben wir t-Tests verwendet, um Hypothesen über einzelne Koeffizienten im Regressionsmodell zu testen. In diesem Beispiel möchten wir jedoch eine Hypothese über mehrere Koeffizienten gleichzeitig testen.</p>
 <p><span class="math display">
 F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{restricted}} - p_{\text{unrestricted}})}{RSS_{\text{unrestricted}} / (n - p_{\text{unrestricted}})}
 </span></p>
-<p>where <span class="math inline">p</span> is the number of coefficients in the model and <span class="math inline">n</span> is the number of observations.</p>
-<div id="cell-18" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The zero model is the model with no predictors, i.e. the mean of the dependent variable</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>mod0 <span class="op">=</span> ols(<span class="st">"gdppc ~ 1"</span>, data<span class="op">=</span>gdpsp).fit()</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>anova_lm(mod0, mod1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<p>wobei <span class="math inline">RSS</span> der Residual Sum of Squares ist, <span class="math inline">p</span> die Anzahl der Koeffizienten im Modell und <span class="math inline">n</span> die Anzahl der Beobachtungen.</p>
+<div id="cell-16" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANOVA</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The zero model is the model with no predictors, i.e. the mean of the dependent variable</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>mod0 <span class="op">=</span> ols(<span class="st">"gdppc ~ 1"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>anova_lm(mod0, mod1)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
 <div>
 
 
@@ -1187,11 +1113,11 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 </div>
 </div>
 </div>
-<p>Estimate the following linear model and interpret the estimated coefficients</p>
+<p>Nachdem wir wissen, wie wir die Gruppenzugehörigkeit in unser Modell aufnehmen können, werden wir das erste Modell erweitern.</p>
 <p><span class="math display">
 \text{gdppc}_i = \beta_0 + \beta_{\text{gdppc\_gr}[i]} + \beta_1 \text{spending}_i + e_i, e_i \sim N(0, \sigma^2)
 </span></p>
-<p>or equivalently</p>
+<p>oder equivalent:</p>
 <p><span class="math display">
 \begin{align*}
 \text{gdppc}_i &amp; = \beta_0 + \\
@@ -1204,19 +1130,318 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 &amp; e_i \sim N(0, \sigma^2)
 \end{align*}
 </span></p>
-<div id="cell-21" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(data<span class="op">=</span>gdpsp, x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, hue<span class="op">=</span><span class="st">"gdppc_gr"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="op">=</span> ols(<span class="st">"gdppc ~ spending + gdppc_gr"</span>, data<span class="op">=</span>gdpsp).fit()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>m3.summary()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>OLS Regression Results</caption>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Dep. Variable:</td>
+<td>gdppc</td>
+<td data-quarto-table-cell-role="th">R-squared:</td>
+<td>0.839</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Model:</td>
+<td>OLS</td>
+<td data-quarto-table-cell-role="th">Adj. R-squared:</td>
+<td>0.833</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Method:</td>
+<td>Least Squares</td>
+<td data-quarto-table-cell-role="th">F-statistic:</td>
+<td>141.4</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Date:</td>
+<td>Sat, 08 Jun 2024</td>
+<td data-quarto-table-cell-role="th">Prob (F-statistic):</td>
+<td>4.52e-52</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Time:</td>
+<td>10:24:49</td>
+<td data-quarto-table-cell-role="th">Log-Likelihood:</td>
+<td>-1483.5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">No. Observations:</td>
+<td>142</td>
+<td data-quarto-table-cell-role="th">AIC:</td>
+<td>2979.</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Df Residuals:</td>
+<td>136</td>
+<td data-quarto-table-cell-role="th">BIC:</td>
+<td>2997.</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Df Model:</td>
+<td>5</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Covariance Type:</td>
+<td>nonrobust</td>
+<td data-quarto-table-cell-role="th"></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td></td>
+<td data-quarto-table-cell-role="th">coef</td>
+<td data-quarto-table-cell-role="th">std err</td>
+<td data-quarto-table-cell-role="th">t</td>
+<td data-quarto-table-cell-role="th">P&gt;|t|</td>
+<td data-quarto-table-cell-role="th">[0.025</td>
+<td data-quarto-table-cell-role="th">0.975]</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept</td>
+<td>-144.3893</td>
+<td>2593.150</td>
+<td>-0.056</td>
+<td>0.956</td>
+<td>-5272.501</td>
+<td>4983.722</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gdppc_gr[T.Medium-low]</td>
+<td>1308.3199</td>
+<td>2811.846</td>
+<td>0.465</td>
+<td>0.642</td>
+<td>-4252.277</td>
+<td>6868.917</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">gdppc_gr[T.Medium-high]</td>
+<td>5835.9387</td>
+<td>2784.606</td>
+<td>2.096</td>
+<td>0.038</td>
+<td>329.211</td>
+<td>1.13e+04</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">gdppc_gr[T.High]</td>
+<td>1.846e+04</td>
+<td>3051.440</td>
+<td>6.050</td>
+<td>0.000</td>
+<td>1.24e+04</td>
+<td>2.45e+04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">gdppc_gr[T.Very high]</td>
+<td>5.192e+04</td>
+<td>3082.839</td>
+<td>16.842</td>
+<td>0.000</td>
+<td>4.58e+04</td>
+<td>5.8e+04</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">spending</td>
+<td>44.7960</td>
+<td>55.906</td>
+<td>0.801</td>
+<td>0.424</td>
+<td>-65.762</td>
+<td>155.354</td>
+</tr>
+</tbody>
+</table>
+<table class="simpletable caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Omnibus:</td>
+<td>127.601</td>
+<td data-quarto-table-cell-role="th">Durbin-Watson:</td>
+<td>2.120</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Prob(Omnibus):</td>
+<td>0.000</td>
+<td data-quarto-table-cell-role="th">Jarque-Bera (JB):</td>
+<td>2565.305</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Skew:</td>
+<td>2.973</td>
+<td data-quarto-table-cell-role="th">Prob(JB):</td>
+<td>0.00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Kurtosis:</td>
+<td>22.955</td>
+<td data-quarto-table-cell-role="th">Cond. No.</td>
+<td>269.</td>
+</tr>
+</tbody>
+</table>
+<br><br>Notes:<br>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+</div>
+</div>
+<div id="cell-19" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>m3p <span class="op">=</span> m3.get_prediction().summary_frame()</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>m3p <span class="op">=</span> pd.concat([gdpsp, m3p], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>m3p.head()</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">country</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">gdppc</th>
+<th data-quarto-table-cell-role="th">spending</th>
+<th data-quarto-table-cell-role="th">gdppc_gr</th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">mean_se</th>
+<th data-quarto-table-cell-role="th">mean_ci_lower</th>
+<th data-quarto-table-cell-role="th">mean_ci_upper</th>
+<th data-quarto-table-cell-role="th">obs_ci_lower</th>
+<th data-quarto-table-cell-role="th">obs_ci_upper</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Albania</td>
+<td>2019</td>
+<td>5345.058</td>
+<td>29.153132</td>
+<td>Medium-high</td>
+<td>6997.492936</td>
+<td>1347.376100</td>
+<td>4332.974809</td>
+<td>9662.011062</td>
+<td>-10057.090016</td>
+<td>24052.075887</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Algeria</td>
+<td>2019</td>
+<td>3953.402</td>
+<td>41.784138</td>
+<td>Medium-low</td>
+<td>3035.692668</td>
+<td>1587.579202</td>
+<td>-103.841692</td>
+<td>6175.227027</td>
+<td>-14099.528918</td>
+<td>20170.914253</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Angola</td>
+<td>2019</td>
+<td>2612.246</td>
+<td>20.402984</td>
+<td>Medium-low</td>
+<td>2077.902578</td>
+<td>1500.179842</td>
+<td>-888.794234</td>
+<td>5044.599391</td>
+<td>-15026.495475</td>
+<td>19182.300632</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>Antigua and Barbuda</td>
+<td>2019</td>
+<td>17495.760</td>
+<td>22.618979</td>
+<td>High</td>
+<td>19329.058404</td>
+<td>1840.989666</td>
+<td>15688.389450</td>
+<td>22969.727358</td>
+<td>2094.975509</td>
+<td>36563.141299</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>Argentina</td>
+<td>2019</td>
+<td>10054.023</td>
+<td>37.702665</td>
+<td>Medium-high</td>
+<td>7380.477774</td>
+<td>1416.846215</td>
+<td>4578.578273</td>
+<td>10182.377275</td>
+<td>-9696.108056</td>
+<td>24457.063604</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sns.scatterplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"gdppc"</span>, hue<span class="op">=</span><span class="st">"gdppc_gr"</span>, data<span class="op">=</span>m3p)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">"spending"</span>, y<span class="op">=</span><span class="st">"mean"</span>, data<span class="op">=</span>m3p, hue<span class="op">=</span><span class="st">"gdppc_gr"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1119: FutureWarning:
+
+use_inf_as_na option is deprecated and will be removed in a future version. Convert inf values to NaN before operating instead.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1057: FutureWarning:
+
+The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+
+/usr/share/miniconda/envs/econ2024/lib/python3.11/site-packages/seaborn/_oldcore.py:1075: FutureWarning:
+
+When grouping with a length-1 list-like, you will need to pass a length-1 tuple to get_group in a future version of pandas. Pass `(name,)` instead of `name` to silence this warning.
+</code></pre>
+</div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-16-output-1.png" width="586" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-15-output-2.png" width="619" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="polynomial-regression" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="polynomial-regression"><span class="header-section-number">12.1</span> Polynomial regression</h2>
-<div id="cell-23" class="cell" data-execution_count="16">
+<section id="polynomiale-regression" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="polynomiale-regression"><span class="header-section-number">12.1</span> Polynomiale Regression</h2>
+<div id="cell-22" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulation</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">100</span>, scale<span class="op">=</span><span class="dv">4</span>)</span>
@@ -1228,12 +1453,12 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-17-output-1.png" width="469" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-16-output-1.png" width="469" height="468" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="17">
+<div id="cell-23" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mod_lin <span class="op">=</span> ols(<span class="st">"y ~ x"</span>, data<span class="op">=</span>dt).fit()</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>dt[<span class="st">"resid_lin"</span>] <span class="op">=</span> mod_lin.resid</span>
@@ -1242,12 +1467,12 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-18-output-1.png" width="469" height="468" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-17-output-1.png" width="469" height="468" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="18">
+<div id="cell-24" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mq <span class="op">=</span> ols(<span class="st">"y ~ x + I(x**2)"</span>, data<span class="op">=</span>dt).fit()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>pred_mq <span class="op">=</span> mq.get_prediction(dt).summary_frame()</span>
@@ -1276,63 +1501,63 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>-3.328088</td>
-<td>23.818472</td>
-<td>-27.971951</td>
-<td>39.031603</td>
-<td>2.699054</td>
-<td>33.674727</td>
-<td>44.388479</td>
-<td>-0.102113</td>
-<td>78.165320</td>
+<td>-4.021110</td>
+<td>39.840814</td>
+<td>2.940503</td>
+<td>49.694671</td>
+<td>2.797862</td>
+<td>44.141689</td>
+<td>55.247653</td>
+<td>12.812554</td>
+<td>86.576789</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>1.687876</td>
-<td>46.737686</td>
-<td>13.947892</td>
-<td>11.532281</td>
-<td>2.357620</td>
-<td>6.853058</td>
-<td>16.211504</td>
-<td>-27.514444</td>
-<td>50.579007</td>
+<td>-2.644462</td>
+<td>22.164216</td>
+<td>-17.835065</td>
+<td>21.476273</td>
+<td>2.383249</td>
+<td>16.746184</td>
+<td>26.206362</td>
+<td>-15.290950</td>
+<td>58.243497</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>1.352289</td>
-<td>13.226526</td>
-<td>-20.834483</td>
-<td>8.556530</td>
-<td>2.338584</td>
-<td>3.915088</td>
-<td>13.197971</td>
-<td>-30.485686</td>
-<td>47.598746</td>
+<td>5.262999</td>
+<td>63.890946</td>
+<td>6.091190</td>
+<td>85.801660</td>
+<td>3.064337</td>
+<td>79.719801</td>
+<td>91.883520</td>
+<td>48.836217</td>
+<td>122.767104</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>-2.456444</td>
-<td>52.595540</td>
-<td>4.106933</td>
-<td>23.177693</td>
-<td>2.531968</td>
-<td>18.152437</td>
-<td>28.202949</td>
-<td>-15.912009</td>
-<td>62.267396</td>
+<td>-3.993715</td>
+<td>63.757764</td>
+<td>26.795785</td>
+<td>49.019138</td>
+<td>2.785636</td>
+<td>43.490421</td>
+<td>54.547855</td>
+<td>12.140666</td>
+<td>85.897610</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>0.969456</td>
-<td>-21.607870</td>
-<td>-57.119063</td>
-<td>6.005071</td>
-<td>2.333917</td>
-<td>1.372891</td>
-<td>10.637250</td>
-<td>-33.036045</td>
-<td>45.046187</td>
+<td>1.978841</td>
+<td>-1.095273</td>
+<td>-51.502065</td>
+<td>12.258584</td>
+<td>2.259502</td>
+<td>7.774097</td>
+<td>16.743071</td>
+<td>-24.477850</td>
+<td>48.995019</td>
 </tr>
 </tbody>
 </table>
@@ -1340,7 +1565,7 @@ F = \frac{(RSS_{\text{restricted}} - RSS_{\text{unrestricted}}) / (p_{\text{rest
 </div>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="19">
+<div id="cell-25" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> sns.scatterplot(x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"y"</span>, data<span class="op">=</span>dt_with_pred)</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>sns.lineplot(x<span class="op">=</span><span class="st">"x"</span>, y<span class="op">=</span><span class="st">"mean"</span>, data<span class="op">=</span>dt_with_pred, ax<span class="op">=</span>ax)</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1360,7 +1585,7 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="07-NL_files/figure-html/cell-20-output-2.png" width="596" height="429" class="figure-img"></p>
+<p><img src="07-NL_files/figure-html/cell-19-output-2.png" width="593" height="429" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1786,8 +2011,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08-Interaction-Effects.html" class="pagination-link" aria-label="Interaction Effects">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaction Effects</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08-Interaction-Effects.html" class="pagination-link" aria-label="Interaktionseffekte">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Interaktionseffekte</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
