@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Setup</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -109,13 +109,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Setup</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-Hausarbeit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Hausarbeit</span></span></a>
+ <span class="menu-text">Hausarbeit</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -258,18 +258,18 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a>
+  <li><a href="#sec-setup" id="toc-sec-setup" class="nav-link active" data-scroll-target="#sec-setup"><span class="header-section-number">1</span> Setup</a>
   <ul class="collapse">
-  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
-  <li><a href="#github-account" id="toc-github-account" class="nav-link" data-scroll-target="#github-account">GitHub Account</a></li>
-  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code">Visual Studio Code</a></li>
-  <li><a href="#kursrepository-klonen" id="toc-kursrepository-klonen" class="nav-link" data-scroll-target="#kursrepository-klonen">Kursrepository klonen</a></li>
-  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git"><span class="header-section-number">1.1</span> Git</a></li>
+  <li><a href="#github-account" id="toc-github-account" class="nav-link" data-scroll-target="#github-account"><span class="header-section-number">1.2</span> GitHub Account</a></li>
+  <li><a href="#visual-studio-code" id="toc-visual-studio-code" class="nav-link" data-scroll-target="#visual-studio-code"><span class="header-section-number">1.3</span> Visual Studio Code</a></li>
+  <li><a href="#kursrepository-klonen" id="toc-kursrepository-klonen" class="nav-link" data-scroll-target="#kursrepository-klonen"><span class="header-section-number">1.4</span> Kursrepository klonen</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python"><span class="header-section-number">1.5</span> Python</a>
   <ul class="collapse">
-  <li><a href="#codespaces-empfohlen" id="toc-codespaces-empfohlen" class="nav-link" data-scroll-target="#codespaces-empfohlen">Codespaces (empfohlen)</a></li>
-  <li><a href="#miniconda" id="toc-miniconda" class="nav-link" data-scroll-target="#miniconda">Miniconda</a></li>
+  <li><a href="#codespaces-empfohlen" id="toc-codespaces-empfohlen" class="nav-link" data-scroll-target="#codespaces-empfohlen"><span class="header-section-number">1.5.1</span> Codespaces (empfohlen)</a></li>
+  <li><a href="#miniconda" id="toc-miniconda" class="nav-link" data-scroll-target="#miniconda"><span class="header-section-number">1.5.2</span> Miniconda</a></li>
   </ul></li>
-  <li><a href="#pycharm-optional" id="toc-pycharm-optional" class="nav-link" data-scroll-target="#pycharm-optional">Pycharm (optional)</a></li>
+  <li><a href="#pycharm-optional" id="toc-pycharm-optional" class="nav-link" data-scroll-target="#pycharm-optional"><span class="header-section-number">1.6</span> Pycharm (optional)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -308,8 +308,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="setup" class="level1 unnumbered">
-<h1 class="unnumbered">Setup</h1>
+<section id="sec-setup" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Setup</h1>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -326,14 +326,14 @@ URL der Kursseite
 </div>
 <p>In den Übungen werden wir die Programmiersprache Python verwenden, um die in der Vorlesung behandelten Themen zu erklären und an realen Daten zu üben. Die Übungen werden in Form von Jupyter Notebooks bereitgestellt, die Sie in Ihrer eigenen Umgebung ausführen können.</p>
 <p>Deswegen ist es notwendig, zuerst eine Arbeitsumgebung einzurichten.</p>
-<section id="git" class="level2">
-<h2 class="anchored" data-anchor-id="git">Git</h2>
+<section id="git" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="git"><span class="header-section-number">1.1</span> Git</h2>
 <p>Die Übungen werden in einem Git-Repository auf GitHub bereitgestellt. Git ist ein Versionskontrollsystem, das die Änderungen an Dateien verfolgt und es ermöglicht, verschiedene Versionen von Dateien zu speichern. GitHub ist eine Plattform, die auf Git basiert und es ermöglicht, Git-Repositories zu hosten und zu teilen.</p>
 <p>Wir werden Git verwenden, um die Übungen herunterzuladen und um Ihre Lösungen hochzuladen.</p>
 <p>Installieren Sie Git von <a href="https://git-scm.com/downloads">https://git-scm.com/downloads</a>. Wählen Sie die Version, die zu Ihrem Betriebssystem passt und folgen Sie den Anweisungen. Lassen Sie die Standardeinstellungen unverändert, es sei denn, Sie wissen ganz genau, was Sie tun.</p>
 </section>
-<section id="github-account" class="level2">
-<h2 class="anchored" data-anchor-id="github-account">GitHub Account</h2>
+<section id="github-account" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="github-account"><span class="header-section-number">1.2</span> GitHub Account</h2>
 <p>Für die Übungen brauchen Sie ein GitHub.com Konto:</p>
 <ul>
 <li>Erstellen Sie ein Konto auf <a href="https://github.com/signup">https://github.com/signup</a>.</li>
@@ -342,13 +342,13 @@ URL der Kursseite
 <li>Empfehlung: Beantragen Sie die <a href="https://education.github.com/discount_requests/application">Studentenvorteile</a>, um kostenlosen Zugang zu GitHub Copilot zu erhalten, einem KI-gestützten Code-Completion- und Chat-Tool.</li>
 </ul>
 </section>
-<section id="visual-studio-code" class="level2">
-<h2 class="anchored" data-anchor-id="visual-studio-code">Visual Studio Code</h2>
+<section id="visual-studio-code" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="visual-studio-code"><span class="header-section-number">1.3</span> Visual Studio Code</h2>
 <p>Visual Studio Code (VSC) ist ein Open-Source-Code-Editor, den wir für die Arbeit mit Python benutzen werden.</p>
 <p>Installieren Sie Visual Studio Code von <a href="https://code.visualstudio.com/">https://code.visualstudio.com/</a>. Wählen Sie die Version, die zu Ihrem Betriebssystem passt und folgen Sie den Anweisungen.</p>
 </section>
-<section id="kursrepository-klonen" class="level2">
-<h2 class="anchored" data-anchor-id="kursrepository-klonen">Kursrepository klonen</h2>
+<section id="kursrepository-klonen" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="kursrepository-klonen"><span class="header-section-number">1.4</span> Kursrepository klonen</h2>
 <p>Öffnen Sie VSC und drücken Sie <code>Ctrl+Shift+P</code>. Suchen Sie nach “Git: Clone” und drücken Sie Enter. Geben Sie die URL des Kursrepositories ein:</p>
 <pre class="plaintext"><code>http://github.com/febse/econ2024-de.git</code></pre>
 <p>Wählen Sie einen Ordner auf Ihrem Computer, in dem Sie das Repository speichern möchten. VSC wird das Repository herunterladen und fragen, ob Sie es öffnen möchten. Klicken Sie auf “Open”.</p>
@@ -365,15 +365,15 @@ URL der Kursseite
 </ul>
 <p>Drucken Sie <code>Ctrl+Shift+X</code>. Dieses wird die Erweiterungsansicht öffnen. Überprüfen Sie ob alle Erweiterungen installiert sind. Falls nicht, kopieren Sie die Kennzeichen (z.B. <code>ms-python.autopep8</code>) der fehlenden Erweiterungen von der Liste (oben), finden Sie die Erweiterungen in der Erweiterungsansicht und installieren Sie sie manuell.</p>
 </section>
-<section id="python" class="level2">
-<h2 class="anchored" data-anchor-id="python">Python</h2>
+<section id="python" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="python"><span class="header-section-number">1.5</span> Python</h2>
 <p>Python ist zurzeit eine der meistbenutzten Programmiersprachen in der Welt. Es ist einfach zu lernen und hat eine große Community, die viele Bibliotheken und Frameworks entwickelt hat. In der Welt der Datenwissenschaft werden meistens Python und R benutzt. In den letzten Jahren stieg die Popularität von Python.</p>
-<section id="codespaces-empfohlen" class="level3">
-<h3 class="anchored" data-anchor-id="codespaces-empfohlen">Codespaces (empfohlen)</h3>
+<section id="codespaces-empfohlen" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="codespaces-empfohlen"><span class="header-section-number">1.5.1</span> Codespaces (empfohlen)</h3>
 <p>Um die Konfiguration zu vereinfachen, können Sie Codespaces benutzen. In den ersten Übungen werden wir eine Anleitung zeigen, wie Sie Codespaces benutzen können.</p>
 </section>
-<section id="miniconda" class="level3">
-<h3 class="anchored" data-anchor-id="miniconda">Miniconda</h3>
+<section id="miniconda" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="miniconda"><span class="header-section-number">1.5.2</span> Miniconda</h3>
 <p>Es gibt viele Möglichkeiten, wie Sie Python local auf Ihrem Rechner installieren können. Hier zeigen wir die Installation mit Miniconda. Conda ist ein Paketmanager, der es ermöglicht, Python-Umgebungen zu verwalten. Eine Python-Umgebung ist eine isolierte Instanz von Python, die es ermöglicht, verschiedene Versionen von Python und verschiedenen Bibliotheken zu verwenden, ohne dass sie sich gegenseitig beeinflussen. Das ist vor allem dann nützlich, wenn Sie an verschiedenen Projekten arbeiten, die unterschiedliche Anforderungen an Python und Bibliotheken haben.</p>
 <ul>
 <li><p>Laden Sie das Miniconda Installationspaket von <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a> für Ihr Betriebssystem.</p></li>
@@ -387,8 +387,8 @@ URL der Kursseite
 </ul>
 </section>
 </section>
-<section id="pycharm-optional" class="level2">
-<h2 class="anchored" data-anchor-id="pycharm-optional">Pycharm (optional)</h2>
+<section id="pycharm-optional" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="pycharm-optional"><span class="header-section-number">1.6</span> Pycharm (optional)</h2>
 <p>Statt VSC können Sie auch PyCharm oder DataSpell benutzen. PyCharm ist eine integrierte Entwicklungsumgebung (IDE) für Python, die von JetBrains entwickelt wurde. PyCharm ist eine der beliebtesten Python-IDEs und bietet viele Funktionen, die die Entwicklung von Python-Programmen erleichtern. Falls Sie mit PyCharm oder DataSpell experimentieren möchten, bieten wir für die Übungen kostenfreie Lizenzen an.</p>
 <ul>
 <li>Registrieren Sie sich auf <a href="https://account.jetbrains.com/signup">https://account.jetbrains.com/signup</a> mit Ihrer Universitäts-E-Mail-Adresse (muss auf <code>feb.uni-sofia.bg</code> oder <code>feba.uni-sofia.bg</code> enden).</li>
@@ -815,7 +815,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./00-Hausarbeit.html" class="pagination-link" aria-label="Hausarbeit">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Hausarbeit</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text">Hausarbeit</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

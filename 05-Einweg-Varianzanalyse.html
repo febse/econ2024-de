@@ -189,13 +189,13 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Setup</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Setup</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./00-Hausarbeit.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Hausarbeit</span></span></a>
+ <span class="menu-text">Hausarbeit</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -612,7 +612,7 @@ y_i = \beta_0 + \beta_1 x_i + e_i, e_i \sim N(0, \sigma^2)
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>sim <span class="op">=</span> all_samples.groupby(<span class="st">'sim_id'</span>).<span class="bu">apply</span>(fit_ols)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_2410/1235863640.py:35: DeprecationWarning:
+<pre><code>/tmp/ipykernel_2464/1235863640.py:35: DeprecationWarning:
 
 DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
 </code></pre>
@@ -741,7 +741,7 @@ Abbildung&nbsp;11.2
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">Time:</td>
-<td>12:27:08</td>
+<td>12:35:03</td>
 <td data-quarto-table-cell-role="th">Log-Likelihood:</td>
 <td>-1913.3</td>
 </tr>
