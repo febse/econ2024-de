@@ -378,8 +378,8 @@ f(x) = \begin{cases}
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>x_unif <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>, high<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>x_unif</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>array([ 0.60744999, -0.11180888,  0.59464158,  0.04289264, -0.99469088,
-        0.75957546, -0.12497525, -0.7158336 ,  0.97125989, -0.41955372])</code></pre>
+<pre><code>array([ 0.64362848, -0.63139717,  0.24744074, -0.71490995,  0.4646002 ,
+        0.95621173,  0.52382323, -0.41434203,  0.46565844,  0.72492387])</code></pre>
 </div>
 </div>
 <div id="cell-3" class="cell" data-execution_count="3">
@@ -393,7 +393,7 @@ f(x) = \begin{cases}
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>1</code></pre>
+<pre><code>3</code></pre>
 </div>
 </div>
 <div id="cell-4" class="cell" data-execution_count="4">
@@ -417,7 +417,7 @@ f(x) = \begin{cases}
 <span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>np.<span class="bu">sum</span>((x_unif <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (x_unif <span class="op">&lt;</span> <span class="fl">0.5</span>))</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>1</code></pre>
+<pre><code>3</code></pre>
 </div>
 </div>
 <section id="die-normalverteilung" class="level2" data-number="10.1">
@@ -529,11 +529,11 @@ use_inf_as_na option is deprecated and will be removed in a future version. Conv
 <span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Gesamtgewinn'</span>)</span>
 <span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>plt.xticks([<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>])</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>([&lt;matplotlib.axis.XTick at 0x7f04b862add0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f04b8628ed0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f04b8fde2d0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f04b82c59d0&gt;,
-  &lt;matplotlib.axis.XTick at 0x7f04b82c7710&gt;],
+<pre><code>([&lt;matplotlib.axis.XTick at 0x7fb6b8116450&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb6b80ed210&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb6b8a82450&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb6b7d90d90&gt;,
+  &lt;matplotlib.axis.XTick at 0x7fb6b7d92d10&gt;],
  [Text(0, 0, '0'),
   Text(4, 0, '4'),
   Text(8, 0, '8'),
